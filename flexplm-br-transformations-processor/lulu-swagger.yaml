@@ -1,0 +1,197 @@
+swagger: '2.0'
+info:
+  title: Style Service
+  description: This is the API for the Style entity and should be the way to parse style data.
+  version: 0.0.1
+schemes:
+  - https
+basePath: /v1
+produces:
+  - application/json
+definitions:
+
+# Bamboo Rose Response
+
+  styleBambooRoseResponse:
+    type: object
+    properties:
+      document:
+        $ref: '#/definitions/document'
+
+  document:
+    type: object
+    properties:
+      request:
+        $ref: '#/definitions/request'
+
+  request:
+    type: object
+    properties:
+      quote:
+        $ref: '#/definitions/quote'
+
+  quote:
+    type: object
+    properties:
+      "@owner":
+        type: string
+        description: "owner name"
+      "@item_no":
+        type: string
+        description: "item number"
+      "@description":
+        type: string
+        description: "description of item"
+      "@season":
+        type: string
+        description: "Season"
+      "@season_year":
+        type: string
+        description: "Season year"
+      "@alt_desc1":
+        type: string
+        description: "alt_desc1"
+      "@status_04":
+        type: string
+        description: "seasonal style type"
+      "@request_type":
+        type: string
+        description: "request type"
+      "@status":
+        type: string
+        description: "status"
+      "@buy_program_no":
+        type: string
+        description: "buy program number"
+      "@commodity":
+        type: string
+        description: "commodity"
+      "@brand":
+        type: string
+        description: "brand"
+      "@class":
+        type: string
+        description: "class"
+      "@subclass":
+        type: string
+        description: "sub class"
+      "@dept":
+        type: string
+        description: "department"
+      "@division":
+        type: string
+        description: "division"
+      "@size_ranges":
+        $ref: '#/definitions/size_range'
+      "@quote_ext":
+        $ref: '#/definitions/quote_ext'
+      "@attachment":
+        $ref: '#/definitions/attachment'
+
+  size_range:
+    type: object
+    properties:
+      "@size_range":
+        type: string
+        description: "size range"
+
+  quote_ext:
+    type: object
+    properties:
+      "@pattern_maker":
+        type: string
+        description: "pattern maker"
+      "@prodmgr":
+        type: string
+        description: "prod manager"
+      "@designer":
+        type: string
+        description: "designer"
+
+  attachment:
+    type: object
+    properties:
+      "@location":
+        type: string
+        description: "location"
+      "@attachment_no":
+        type: string
+        description: "attachment number"
+      "@custom_location":
+        type: string
+        description: "custom location"
+      "@icon_location":
+        type: string
+        description: "icon location"
+      "@largeview_location":
+        type: string
+        description: "largeview location"
+      "@overview_location":
+        type: string
+        description: "overview location"
+      "@thumbnail_location":
+        type: string
+        description: "thumbnail location"
+
+
+# FlexPLM Response
+
+  styleFlexPLMResponse:
+    type: object
+    properties:
+      Flex_interface:
+        $ref: '#/definitions/flex_interface'
+
+  flex_interface:
+    type: object
+    properties:
+      FlexPLM_Header:
+        $ref: '#/definitions/flexplm_header'
+
+  flexplm_header:
+    type: object
+    properties:
+      EVENT:
+        type: string
+        description: "event type"
+      INTERFACE:
+        type: string
+        description: "interface name"
+      TIMESTAMP:
+        type: string
+        description: "A UTC timestamp for when the response was given"
+      Attribute_List:
+        type: array
+        items:
+          $ref: '#/definitions/attribute_list'
+
+  attribute_list:
+    type: object
+    properties:
+      OBJECT_LEVEL:
+        type: string
+        description: "object level"
+      OBJECT_ID:
+        type: string
+        description: "object id"
+      FLEXTYPE:
+        type: string
+        description: "flex type"
+      FIELD_NAME_KEY:
+        type: string
+        description: "field name key"
+      FIELD_NAME_DISPLAY:
+        type: string
+        description: "field name display"
+      FIELD_VALUE_KEY:
+        type: string
+        description: "field name value"
+      FIELD_VALUE_DISPLAY:
+        type: string
+        description: "field name display"
+      FIELD_TYPE:
+        type: string
+        description: "field type"
+      CHANGE_IND:
+        type: string
+        description: "change indicator"
