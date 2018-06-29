@@ -1,0 +1,22 @@
+{
+    "document":{
+        "@xmlns:xsi":"http://www.w3.org/2001/XMLSchema-instance",
+        "color_library":
+            {
+                "colorlib_h":{
+                    "@memo3":"464479009",
+                    "@color_name":"Q642",
+                    "@alt_name1":"SP15 Everywhere Sock Allez Stripe M",
+                    "@memo2":"SOLID",
+                    "@status":"IP",
+                    "@rgb_r":"",
+                    "@rgb_g":"",
+                    "@rgb_b":"",
+                    "@owner":"LULULEMON",
+                    "@active_ind":"Y",
+                    "attachment":{
+                    }
+                }
+            }		
+		}
+}		

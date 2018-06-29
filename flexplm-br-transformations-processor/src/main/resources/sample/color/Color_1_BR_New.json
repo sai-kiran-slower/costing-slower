@@ -1,0 +1,25 @@
+{
+  "document" : {
+    "@xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+    "color_library" : {
+      "colorlib_h" : {
+        "@memo3" : "869069",
+        "@color_name" : "X065",
+        "@alt_name1" : "X065",
+        "@memo2" : "solid",
+        "@status" : "CFREJECT",
+        "@owner" : "LULULEMON",
+        "@active_ind" : "Y",
+        "@attachment" : {
+          "@location" : "XO-65.jpg",
+          "@attachment_no" : "IMAGE",
+          "@custom_location" : "custom/XO-65.jpg",
+          "@icon_location" : "icons/XO-65.jpg",
+          "@largeview_location" : "largeview/XO-65.jpg",
+          "@overview_location" : "overview/XO-65.jpg",
+          "@thumbnail_location" : "thumbnails/XO-65.jpg"
+        }
+      }
+    }
+  }
+}

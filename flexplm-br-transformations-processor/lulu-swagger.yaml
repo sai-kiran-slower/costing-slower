@@ -12,13 +12,14 @@ definitions:
 
 # Bamboo Rose Response
 
+# style
   styleBambooRoseResponse:
     type: object
     properties:
       document:
-        $ref: '#/definitions/document'
+        $ref: '#/definitions/style_document'
 
-  document:
+  style_document:
     type: object
     properties:
       request:
@@ -133,8 +134,69 @@ definitions:
         type: string
         description: "thumbnail location"
 
+# Color
+
+  colorBambooRoseResponse:
+    type: object
+    properties:
+      document:
+        $ref: '#/definitions/color_document'
+
+  color_document:
+    type: object
+    properties:
+      "@xmlns:xsi":
+        type: string
+        description: "xlmns xsi"
+      color_library:
+        $ref: '#/definitions/color_library'
+
+  color_library:
+    type: object
+    properties:
+      colorlib_h:
+        $ref: '#/definitions/colorlib_h'
+
+  colorlib_h:
+    type: object
+    properties:
+      "@memo3":
+        type: string
+        description: "Color No"
+      "@color_name":
+        type: string
+        description: "Color Name"
+      "@alt_name1":
+        type: string
+        description: "Alt Color Name"
+      "@memo2":
+        type: string
+        description: "CATEGORY"
+      "@status":
+        type: string
+        description: "Status"
+      "@rgb_r":
+        type: string
+        description: "RGB_R"
+      "@rgb_g":
+        type: string
+        description: "RGB_G"
+      "@rgb_b":
+        type: string
+        description: "RGB_B"
+      "@owner":
+        type: string
+        description: "owner"
+      "@active_ind":
+        type: string
+        description: "Active"
+      "@attachment":
+        $ref: '#/definitions/attachment'
+
 
 # FlexPLM Response
+
+# style
 
   styleFlexPLMResponse:
     type: object
@@ -163,9 +225,9 @@ definitions:
       Attribute_List:
         type: array
         items:
-          $ref: '#/definitions/attribute_list'
+          $ref: '#/definitions/attribute'
 
-  attribute_list:
+  attribute:
     type: object
     properties:
       OBJECT_LEVEL:
@@ -195,3 +257,11 @@ definitions:
       CHANGE_IND:
         type: string
         description: "change indicator"
+
+# Color
+
+  colorFlexPLMResponse:
+    type: object
+    properties:
+      Flex_interface:
+        $ref: '#/definitions/flex_interface'

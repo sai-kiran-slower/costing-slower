@@ -1,14 +1,14 @@
 package com.slower.lulu;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.swagger.model.*;
+import model.*;
 
 import java.util.List;
 
 public class PayloadProcessor {
 
     public String processStyle(String payload) throws Exception {
-//        System.out.println("Payload: " + payload);
         ObjectMapper objectMapper = new ObjectMapper();
         StyleFlexPLMResponse styleFlexPLMResponse = objectMapper.readValue(payload, StyleFlexPLMResponse.class);
         return handleStyle(styleFlexPLMResponse);
@@ -17,106 +17,128 @@ public class PayloadProcessor {
     private String handleStyle(StyleFlexPLMResponse styleFlexPLMResponse) throws Exception {
 
         StyleBambooRoseResponse styleBambooRoseResponse = new StyleBambooRoseResponse();
-        Document document = new Document();
+        StyleDocument styleDocument = new StyleDocument();
         Request request = new Request();
-        Quote quote = new Quote();
 
-        QuoteExt quoteExt = new QuoteExt();
-        SizeRange sizeRange = new SizeRange();
-        Attachment attachment = new Attachment();
+        QuoteBuilder quoteBuilder = new QuoteBuilder();
+        SizeRangeBuilder sizeRangeBuilder = new SizeRangeBuilder();
+        QuoteExtBuilder quoteExtBuilder = new QuoteExtBuilder();
+        AttachmentBuilder attachmentBuilder = new AttachmentBuilder();
 
-        List<AttributeList> attributeLists = styleFlexPLMResponse.getFlexInterface().getFlexPLMHeader().getAttributeList();
+        List<Attribute> attributeList = styleFlexPLMResponse.getFlexInterface().getFlexPLMHeader().getAttributeList();
 
-        quote.setOwner("LULULEMON");
+        quoteBuilder.setOwner("LULULEMON");
+        quoteBuilder.setRequestType("FG");
 
-        for (AttributeList attributeObj : attributeLists) {
-            String field_name_key = attributeObj.getFIELDNAMEKEY();
-            switch (field_name_key.toLowerCase()) {
-                case "stylenum":
-                    quote.setItemNo(attributeObj.getFIELDVALUEKEY());
-                    break;
-                case "productname":
-                    quote.setDescription(attributeObj.getFIELDVALUEKEY());
-                    break;
-                case "nameline1":
-                    quote.setAltDesc1(attributeObj.getFIELDVALUEKEY());
-                    break;
-                case "productline":
-                    quote.setCommodity(attributeObj.getFIELDVALUEKEY());
-                    break;
-                case "seasonalstyle":
-                    quote.setStatus04(attributeObj.getFIELDVALUEKEY());
-                    break;
-                case "seasoncode":
-                    quote.setSeason(attributeObj.getFIELDVALUEKEY());
-                    break;
-                case "year":
-                    quote.setSeasonYear(attributeObj.getFIELDVALUEKEY());
-                    break;
-                case "masterstyleidnew":
-                    quote.setBuyProgramNo(attributeObj.getFIELDVALUEKEY());
-                    break;
-                case "brand":
-                    quote.setBrand(attributeObj.getFIELDVALUEKEY());
-                    break;
-                case "class":
-                    quote.setPropertyClass(attributeObj.getFIELDVALUEKEY());
-                    break;
-                case "subclass":
-                    quote.setSubclass(attributeObj.getFIELDVALUEKEY());
-                    break;
-                case "division":
-                    quote.setDivision(attributeObj.getFIELDVALUEKEY());
-                    break;
-                case "category":
-                    quote.setDept(attributeObj.getFIELDVALUEKEY());
-                    break;
-                case "status":
-                    quote.setStatus(attributeObj.getFIELDVALUEKEY());
-                    break;
-                case "sourcingmanager":
-                    quoteExt.setPatternMaker(attributeObj.getFIELDVALUEKEY());
-                    quote.setQuoteExt(quoteExt);
-                    break;
-                case "productdeveloper":
-                    quoteExt.setProdmgr(attributeObj.getFIELDVALUEKEY());
-                    quote.setQuoteExt(quoteExt);
-                    break;
-                case "designernew":
-                    quoteExt.setDesigner(attributeObj.getFIELDVALUEKEY());
-                    quote.setQuoteExt(quoteExt);
-                    break;
-                case "sizescale":
-                    sizeRange.setSizeRange(attributeObj.getFIELDVALUEKEY());
-                    quote.setSizeRanges(sizeRange);
-                    break;
-                case "thumbnail":
-                    String img_loc = attributeObj.getFIELDVALUEKEY();
-                    String img_file_name = img_loc.substring(img_loc.lastIndexOf('/') + 1);
-                    attachment.setLocation(img_file_name);
-                    attachment.setAttachmentNo("IMAGE");
-                    attachment.setCustomLocation("custom/" + img_file_name);
-                    attachment.iconLocation("icons/" + img_file_name);
-                    attachment.largeviewLocation("largeview/" + img_file_name);
-                    attachment.overviewLocation("overview/" + img_file_name);
-                    attachment.thumbnailLocation("thumbnails/" + img_file_name);
-                    quote.setAttachment(attachment);
-                    break;
-                default:
-                    System.out.println("ERROR: Mapping not found for Attribute Key: "
-                            + attributeObj.getFIELDNAMEKEY()
-                            + ", Attribute Value: "
-                            + attributeObj.getFIELDVALUEKEY()
-                    );
-
+        for (Attribute attribute : attributeList) {
+            String field_name_key = attribute.getFIELDNAMEKEY();
+            if (attribute.getFIELDNAMEKEY().equalsIgnoreCase("stylenum")) {
+                quoteBuilder.setItemNo(attribute.getFIELDVALUEKEY());
+            }
+            else if (attribute.getFIELDNAMEKEY().equalsIgnoreCase("seasoncode")) {
+                quoteBuilder.setSeason(attribute.getFIELDVALUEKEY());
+            }
+            else if (attribute.getCHANGEIND().equalsIgnoreCase("Y")) {
+                switch (field_name_key.toLowerCase()) {
+                    case "stylenum":
+                        quoteBuilder.setItemNo(attribute.getFIELDVALUEKEY());
+                        break;
+                    case "productname":
+                        quoteBuilder.setDescription(attribute.getFIELDVALUEKEY());
+                        break;
+                    case "nameline1":
+                        quoteBuilder.setAltDesc1(attribute.getFIELDVALUEKEY());
+                        break;
+                    case "productline":
+                        quoteBuilder.setCommodity(attribute.getFIELDVALUEKEY());
+                        break;
+                    case "seasonalstyle":
+                        quoteBuilder.setStatus04(attribute.getFIELDVALUEKEY());
+                        break;
+                    case "seasoncode":
+                        quoteBuilder.setSeason(attribute.getFIELDVALUEKEY());
+                        break;
+                    case "year":
+                        quoteBuilder.setSeasonYear(attribute.getFIELDVALUEKEY());
+                        break;
+                    case "masterstyleidnew":
+                        quoteBuilder.setBuyProgramNo(attribute.getFIELDVALUEKEY());
+                        break;
+                    case "brand":
+                        quoteBuilder.setBrand(attribute.getFIELDVALUEKEY());
+                        break;
+                    case "class":
+                        quoteBuilder.setPropertyClass(attribute.getFIELDVALUEKEY());
+                        break;
+                    case "subclass":
+                        quoteBuilder.setSubclass(attribute.getFIELDVALUEKEY());
+                        break;
+                    case "division":
+                        quoteBuilder.setDivision(attribute.getFIELDVALUEKEY());
+                        break;
+                    case "category":
+                        quoteBuilder.setDept(attribute.getFIELDVALUEKEY());
+                        break;
+                    case "status":
+                        quoteBuilder.setStatus(attribute.getFIELDVALUEKEY());
+                        break;
+                    case "sourcingmanager":
+                        quoteExtBuilder.setPatternMaker(attribute.getFIELDVALUEKEY());
+                        quoteBuilder.setQuoteExt(quoteExtBuilder.createQuoteExt());
+                        break;
+                    case "productdeveloper":
+                        quoteExtBuilder.setProdmgr(attribute.getFIELDVALUEKEY());
+                        quoteBuilder.setQuoteExt(quoteExtBuilder.createQuoteExt());
+                        break;
+                    case "designernew":
+                        quoteExtBuilder.setDesigner(attribute.getFIELDVALUEKEY());
+                        quoteBuilder.setQuoteExt(quoteExtBuilder.createQuoteExt());
+                        break;
+                    case "sizescale":
+                        sizeRangeBuilder.setSizeRange(attribute.getFIELDVALUEKEY());
+                        quoteBuilder.setSizeRanges(sizeRangeBuilder.createSizeRange());
+                        break;
+                    case "thumbnail":
+                        String img_loc = attribute.getFIELDVALUEKEY();
+                        String img_file_name = img_loc.substring(img_loc.lastIndexOf('/') + 1);
+                        attachmentBuilder.setLocation(img_file_name);
+                        attachmentBuilder.setAttachmentNo("IMAGE");
+                        attachmentBuilder.setCustomLocation("custom/" + img_file_name);
+                        attachmentBuilder.setIconLocation("icons/" + img_file_name);
+                        attachmentBuilder.setLargeviewLocation("largeview/" + img_file_name);
+                        attachmentBuilder.setOverviewLocation("overview/" + img_file_name);
+                        attachmentBuilder.setThumbnailLocation("thumbnails/" + img_file_name);
+                        quoteBuilder.setAttachment(attachmentBuilder.createAttachment());
+                        break;
+                    default:
+                        System.out.println("ERROR: Mapping not found for Attribute Key: "
+                                + attribute.getFIELDNAMEKEY()
+                                + ", Attribute Value: "
+                                + attribute.getFIELDVALUEKEY()
+                        );
+                }
+            }
+            else {
+                System.out.println("INFO: Change indicator is 'N' for Attribute Key: "
+                        + attribute.getFIELDNAMEKEY()
+                        + ", Attribute Value: "
+                        + attribute.getFIELDVALUEKEY()
+                );
             }
         }
 
-        request.setQuote(quote);
-        document.setRequest(request);
-        styleBambooRoseResponse.setDocument(document);
+        request.setQuote(quoteBuilder.createQuote());
+        styleDocument.setRequest(request);
+        styleBambooRoseResponse.setDocument(styleDocument);
 
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(styleBambooRoseResponse);
+    }
+
+    public String processColor(String payload) throws Exception {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ColorFlexPLMResponse colorFlexPLMResponse = objectMapper.readValue(payload, ColorFlexPLMResponse.class);
+        return new ColorResponseHandler().handleColor(colorFlexPLMResponse);
     }
 }

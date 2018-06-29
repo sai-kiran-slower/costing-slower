@@ -1,0 +1,132 @@
+{
+  "Flex_interface": {
+    "FlexPLM_Header": {
+      "EVENT": "CREATE",
+      "INTERFACE": "COLOR",
+      "TIMESTAMP": "2018-06-04T16:40:59Z",
+      "Attribute_List": [
+        {
+          "OBJECT_LEVEL": "LCSCOLOR",
+          "OBJECT_ID": "464479009",
+          "FLEXTYPE": "SOLID",
+          "FIELD_NAME_KEY": "colourwayCode",
+          "FIELD_NAME_DISPLAY": "Color ID",
+          "FIELD_VALUE_KEY": "",
+          "FIELD_VALUE_DISPLAY": "",
+          "FIELD_TYPE": "TEXT",
+          "CHANGE_IND": "N"
+        },
+        {
+          "OBJECT_LEVEL": "LCSCOLOR",
+          "OBJECT_ID": "464479009",
+          "FLEXTYPE": "SOLID",
+          "FIELD_NAME_KEY": "shortdescription",
+          "FIELD_NAME_DISPLAY": "Short Name",
+          "FIELD_VALUE_KEY": " ",
+          "FIELD_VALUE_DISPLAY": " ",
+          "FIELD_TYPE": "TEXT",
+          "CHANGE_IND": "N"
+        },
+        {
+          "OBJECT_LEVEL": "LCSCOLOR",
+          "OBJECT_ID": "464479009",
+          "FLEXTYPE": "SOLID",
+          "FIELD_NAME_KEY": "abbreviation",
+          "FIELD_NAME_DISPLAY": "Short Name",
+          "FIELD_VALUE_KEY": "Q642",
+          "FIELD_VALUE_DISPLAY": "Q642",
+          "FIELD_TYPE": "TEXT",
+          "CHANGE_IND": "Y"
+        },
+        {
+          "OBJECT_LEVEL": "LCSCOLOR",
+          "OBJECT_ID": "464479009",
+          "FLEXTYPE": "SOLID",
+          "FIELD_NAME_KEY": "longdescription",
+          "FIELD_NAME_DISPLAY": "Long Name",
+          "FIELD_VALUE_KEY": " ",
+          "FIELD_VALUE_DISPLAY": " ",
+          "FIELD_TYPE": "TEXT",
+          "CHANGE_IND": "N"
+        },
+        {
+          "OBJECT_LEVEL": "LCSCOLOR",
+          "OBJECT_ID": "464479009",
+          "FLEXTYPE": "SOLID",
+          "FIELD_NAME_KEY": "colorName",
+          "FIELD_NAME_DISPLAY": "Color Description",
+          "FIELD_VALUE_KEY": "SP15 Everywhere Sock Allez Stripe Multi Rose Bud",
+          "FIELD_VALUE_DISPLAY": "SP15 Everywhere Sock Allez Stripe Multi Rose Bud",
+          "FIELD_TYPE": "TEXT",
+          "CHANGE_IND": "Y"
+        },
+        {
+          "OBJECT_LEVEL": "LCSCOLOR",
+          "OBJECT_ID": "464479009",
+          "FLEXTYPE": "SOLID",
+          "FIELD_NAME_KEY": "colorType",
+          "FIELD_NAME_DISPLAY": "Color Type",
+          "FIELD_VALUE_KEY": "solid",
+          "FIELD_VALUE_DISPLAY": "Solid",
+          "FIELD_TYPE": "TEXT",
+          "CHANGE_IND": "Y"
+        },
+        {
+          "OBJECT_LEVEL": "LCSCOLOR",
+          "OBJECT_ID": "464479009",
+          "FLEXTYPE": "SOLID",
+          "FIELD_NAME_KEY": "status",
+          "FIELD_NAME_DISPLAY": "Color Status",
+          "FIELD_VALUE_KEY": "inProgress",
+          "FIELD_VALUE_DISPLAY": "In Progress",
+          "FIELD_TYPE": "TEXT",
+          "CHANGE_IND": "Y"
+        },
+        {
+          "OBJECT_LEVEL": "LCSCOLOR",
+          "OBJECT_ID": "464479009",
+          "FLEXTYPE": "SOLID",
+          "FIELD_NAME_KEY": "RGB_R",
+          "FIELD_NAME_DISPLAY": "RGB_R",
+          "FIELD_VALUE_KEY": "",
+          "FIELD_VALUE_DISPLAY": "",
+          "FIELD_TYPE": "TEXT",
+          "CHANGE_IND": "N"
+        },
+        {
+          "OBJECT_LEVEL": "LCSCOLOR",
+          "OBJECT_ID": "464479009",
+          "FLEXTYPE": "SOLID",
+          "FIELD_NAME_KEY": "RGB_G",
+          "FIELD_NAME_DISPLAY": "RGB_G",
+          "FIELD_VALUE_KEY": "",
+          "FIELD_VALUE_DISPLAY": "",
+          "FIELD_TYPE": "TEXT",
+          "CHANGE_IND": "N"
+        },
+        {
+          "OBJECT_LEVEL": "LCSCOLOR",
+          "OBJECT_ID": "464479009",
+          "FLEXTYPE": "SOLID",
+          "FIELD_NAME_KEY": "RGB_B",
+          "FIELD_NAME_DISPLAY": "RGB_B",
+          "FIELD_VALUE_KEY": "",
+          "FIELD_VALUE_DISPLAY": "",
+          "FIELD_TYPE": "TEXT",
+          "CHANGE_IND": "N"
+        },
+        {
+          "OBJECT_LEVEL": "LCSCOLOR",
+          "OBJECT_ID": "464479009",
+          "FLEXTYPE": "SOLID",
+          "FIELD_NAME_KEY": "thumbnail",
+          "FIELD_NAME_DISPLAY": "Thumbnail",
+          "FIELD_VALUE_KEY": "",
+          "FIELD_VALUE_DISPLAY": "",
+          "FIELD_TYPE": "IMAGE_LOCATION",
+          "CHANGE_IND": "N"
+        }
+      ]
+    }
+  }
+}
