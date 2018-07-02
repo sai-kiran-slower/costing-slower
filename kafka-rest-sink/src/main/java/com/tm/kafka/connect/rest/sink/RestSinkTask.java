@@ -3,6 +3,7 @@ package com.tm.kafka.connect.rest.sink;
 import com.tm.kafka.connect.rest.VersionUtil;
 import com.tm.kafka.connect.rest.converter.SinkRecordToPayloadConverter;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.kafka.clients.consumer.OffsetAndMetadata;
 import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.connect.sink.SinkRecord;
@@ -43,6 +44,8 @@ public class RestSinkTask extends SinkTask {
 
   @Override
   public void put(final Collection<SinkRecord> records) {
+    log.info("Received records: " + StringUtils.join(records.stream().map(SinkRecord::toString)));
+    HttpURLConnection conn = null;
     for (SinkRecord record : records) {
       while (true) {
         try {
@@ -51,45 +54,58 @@ public class RestSinkTask extends SinkTask {
           if ("GET".equals(method)) {
             urlString = urlString + URLEncoder.encode(data, "UTF-8");
           }
-          final HttpURLConnection conn = (HttpURLConnection) new URL(urlString).openConnection();
+           conn = (HttpURLConnection) new URL(urlString).openConnection();
 
-          // TODO look up http request properties
+          log.info("Writing data: \n" + data);
           httpRequestProperties.forEach(conn::setRequestProperty);
           conn.setRequestMethod(method);
           if ("POST".equals(method)) {
+            conn.setRequestProperty( "charset", "utf-8");
+            conn.setRequestProperty( "Content-Length", Integer.toString( data.length() ));
             conn.setDoOutput(true);
+            conn.setUseCaches( false );
             OutputStream os = conn.getOutputStream();
             os.write(data.getBytes());
             os.flush();
+            log.info("Flushed data" + data);
           }
 
-          // Also retry if there's a timeout, figure out how to timeout the URL request
+          // TODO Also retry if there's a timeout, figure out how to timeout the URL request
 
           // TODO We need to not just get a response code but get the full message so we can publish it if we need to
 
           int responseCode = conn.getResponseCode();
+          log.info("Response code: {}, Request data: {}, Message: {}", responseCode, data, conn.getResponseMessage());
           if (log.isTraceEnabled()) {
-            log.trace("Response code: {}, Request data: {}", responseCode, data);
+            log.trace("Response code: {}, Request data: {}, Message: {}", responseCode, data, conn.getResponseMessage());
           }
           break;
         } catch (ProtocolException e) {
           log.error("Unexpected connection protocol.", e);
+          retry();
         } catch (MalformedURLException e) {
           log.error("Malformed url: " + url, e);
+          retry();
         } catch (UnsupportedEncodingException e) {
           log.error("HTTP call failed. ", e);
+          retry();
         } catch (IOException e) {
           log.error("Error while writing output.", e);
+          retry();
         } finally {
-
-          try {
-            Thread.sleep(retryBackoff);
-          } catch (InterruptedException ignored) {
-
+          if (conn != null) {
+            conn.disconnect();
           }
         }
       }
     }
+  }
+
+  private void retry()
+  {
+    try {
+      Thread.sleep(retryBackoff);
+    } catch (InterruptedException ignored) {}
   }
 
   @Override
