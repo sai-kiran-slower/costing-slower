@@ -1,11 +1,17 @@
 package com.slower.lulu;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class Init {
+
+    private static final Logger logger = LoggerFactory.getLogger("Init");
+
     public static void main(String[] args) {
         try {
             System.out.println("Processing File: Style_1_FlexPLM.json");

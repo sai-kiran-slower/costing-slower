@@ -1,4 +1,6 @@
-package model;
+package com.slower.lulu.model;
+
+import com.slower.lulu.utils.Functions;
 
 public class ColorlibHBuilder {
     private String memo3;
@@ -13,23 +15,27 @@ public class ColorlibHBuilder {
     private String activeInd;
     private Attachment attachment;
 
+    public ColorlibHBuilder() {
+        setOwner("LULULEMON");
+    }
+
     public ColorlibHBuilder setMemo3(String memo3) {
-        this.memo3 = memo3;
+        this.memo3 = Functions.charLimit(memo3, 10);
         return this;
     }
 
     public ColorlibHBuilder setColorName(String colorName) {
-        this.colorName = colorName;
+        this.colorName = Functions.charLimit(colorName, 35);
         return this;
     }
 
     public ColorlibHBuilder setAltName1(String altName1) {
-        this.altName1 = altName1;
+        this.altName1 = Functions.charLimit(altName1, 35);
         return this;
     }
 
     public ColorlibHBuilder setMemo2(String memo2) {
-        this.memo2 = memo2;
+        this.memo2 = Functions.charLimit(memo2.toUpperCase(), 35);
         return this;
     }
 
@@ -57,23 +63,23 @@ public class ColorlibHBuilder {
                 this.status = "REQUESTD";
                 break;
             default:
-                this.status = "INVALID";
+                this.status = ""; //TODO
         }
         return this;
     }
 
     public ColorlibHBuilder setRgbR(String rgbR) {
-        this.rgbR = rgbR;
+        this.rgbR = Functions.charLimit(rgbR, 7);
         return this;
     }
 
     public ColorlibHBuilder setRgbG(String rgbG) {
-        this.rgbG = rgbG;
+        this.rgbG = Functions.charLimit(rgbG, 7);
         return this;
     }
 
     public ColorlibHBuilder setRgbB(String rgbB) {
-        this.rgbB = rgbB;
+        this.rgbB = Functions.charLimit(rgbB, 7);
         return this;
     }
 

@@ -2,7 +2,9 @@ package com.slower.lulu;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.*;
+import com.slower.lulu.model.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -10,18 +12,20 @@ import java.util.List;
  * Created by saiki on 6/29/2018.
  */
 public class ColorResponseHandler {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     public String handleColor(ColorFlexPLMResponse colorFlexPLMResponse) throws Exception {
         ColorBambooRoseResponse colorBambooRoseResponse = new ColorBambooRoseResponse();
         ColorDocument colorDocument = new ColorDocument();
         ColorLibrary colorLibrary = new ColorLibrary();
 
         ColorlibHBuilder colorlibHBuilder = new ColorlibHBuilder();
-        AttachmentBuilder attachmentBuilder = new AttachmentBuilder();
 
         FlexplmHeader flexplmHeader = colorFlexPLMResponse.getFlexInterface().getFlexPLMHeader();
         List<Attribute> attributeList = flexplmHeader.getAttributeList();
 
-        colorlibHBuilder.setOwner("LULULEMON");
+//        colorlibHBuilder.setOwner("LULULEMON");
         colorlibHBuilder.setActiveInd(flexplmHeader.getEVENT());
 
         for (Attribute attribute: attributeList) {
@@ -58,18 +62,11 @@ public class ColorResponseHandler {
                         colorlibHBuilder.setRgbB(attribute.getFIELDVALUEKEY());
                         break;
                     case "thumbnail":
-                        String img_file_name = attribute.getFIELDVALUEKEY();
-                        attachmentBuilder.setLocation(img_file_name);
-                        attachmentBuilder.setAttachmentNo("IMAGE");
-                        attachmentBuilder.setCustomLocation("custom/" + img_file_name);
-                        attachmentBuilder.setIconLocation("icons/" + img_file_name);
-                        attachmentBuilder.setLargeviewLocation("largeview/" + img_file_name);
-                        attachmentBuilder.setOverviewLocation("overview/" + img_file_name);
-                        attachmentBuilder.setThumbnailLocation("thumbnails/" + img_file_name);
+                        AttachmentBuilder attachmentBuilder = new AttachmentBuilder(attribute.getFIELDVALUEKEY());
                         colorlibHBuilder.setAttachment(attachmentBuilder.createAttachment());
                         break;
                     default:
-                        System.out.println("ERROR: Mapping not found for Attribute Key: "
+                        logger.warn("Mapping not found for Attribute Key: "
                                 + attribute.getFIELDNAMEKEY()
                                 + ", Attribute Value: "
                                 + attribute.getFIELDVALUEKEY()

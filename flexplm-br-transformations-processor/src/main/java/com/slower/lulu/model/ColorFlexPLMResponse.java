@@ -1,4 +1,4 @@
-package model;
+package com.slower.lulu.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
@@ -6,15 +6,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 
 /**
- * StyleFlexPLMResponse
+ * ColorFlexPLMResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-28T23:51:44.370-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-29T01:48:05.312-07:00")
 
-public class StyleFlexPLMResponse   {
+public class ColorFlexPLMResponse   {
   @JsonProperty("Flex_interface")
   private FlexInterface flexInterface = null;
 
-  public StyleFlexPLMResponse flexInterface(FlexInterface flexInterface) {
+  public ColorFlexPLMResponse flexInterface(FlexInterface flexInterface) {
     this.flexInterface = flexInterface;
     return this;
   }
@@ -41,8 +41,8 @@ public class StyleFlexPLMResponse   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    StyleFlexPLMResponse styleFlexPLMResponse = (StyleFlexPLMResponse) o;
-    return Objects.equals(this.flexInterface, styleFlexPLMResponse.flexInterface);
+    ColorFlexPLMResponse colorFlexPLMResponse = (ColorFlexPLMResponse) o;
+    return Objects.equals(this.flexInterface, colorFlexPLMResponse.flexInterface);
   }
 
   @Override
@@ -53,7 +53,7 @@ public class StyleFlexPLMResponse   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class StyleFlexPLMResponse {\n");
+    sb.append("class ColorFlexPLMResponse {\n");
 
     sb.append("    flexInterface: ").append(toIndentedString(flexInterface)).append("\n");
     sb.append("}");

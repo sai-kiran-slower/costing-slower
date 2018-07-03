@@ -1,4 +1,4 @@
-package model;
+package com.slower.lulu.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
@@ -6,30 +6,30 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 
 /**
- * StyleDocument
+ * StyleBambooRoseResponse
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-29T01:48:05.312-07:00")
 
-public class StyleDocument   {
-  @JsonProperty("request")
-  private Request request = null;
+public class StyleBambooRoseResponse   {
+  @JsonProperty("document")
+  private StyleDocument document = null;
 
-  public StyleDocument request(Request request) {
-    this.request = request;
+  public StyleBambooRoseResponse document(StyleDocument document) {
+    this.document = document;
     return this;
   }
 
    /**
-   * Get request
-   * @return request
+   * Get document
+   * @return document
   **/
   @ApiModelProperty(value = "")
-  public Request getRequest() {
-    return request;
+  public StyleDocument getDocument() {
+    return document;
   }
 
-  public void setRequest(Request request) {
-    this.request = request;
+  public void setDocument(StyleDocument document) {
+    this.document = document;
   }
 
 
@@ -41,21 +41,21 @@ public class StyleDocument   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    StyleDocument styleDocument = (StyleDocument) o;
-    return Objects.equals(this.request, styleDocument.request);
+    StyleBambooRoseResponse styleBambooRoseResponse = (StyleBambooRoseResponse) o;
+    return Objects.equals(this.document, styleBambooRoseResponse.document);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(request);
+    return Objects.hash(document);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class StyleDocument {\n");
+    sb.append("class StyleBambooRoseResponse {\n");
 
-    sb.append("    request: ").append(toIndentedString(request)).append("\n");
+    sb.append("    document: ").append(toIndentedString(document)).append("\n");
     sb.append("}");
     return sb.toString();
   }

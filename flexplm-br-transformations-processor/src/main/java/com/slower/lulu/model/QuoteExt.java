@@ -1,4 +1,4 @@
-package model;
+package com.slower.lulu.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
@@ -19,6 +19,9 @@ public class QuoteExt   {
 
   @JsonProperty("@designer")
   private String designer = null;
+
+  public QuoteExt() {
+  }
 
   public QuoteExt(String patternMaker, String prodmgr, String designer) {
     this.patternMaker = patternMaker;

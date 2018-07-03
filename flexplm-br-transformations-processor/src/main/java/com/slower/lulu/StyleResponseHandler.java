@@ -2,11 +2,16 @@ package com.slower.lulu;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.*;
+import com.slower.lulu.model.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 public class StyleResponseHandler {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     public String handleStyle(StyleFlexPLMResponse styleFlexPLMResponse) throws Exception {
         StyleBambooRoseResponse styleBambooRoseResponse = new StyleBambooRoseResponse();
         StyleDocument styleDocument = new StyleDocument();
@@ -15,12 +20,11 @@ public class StyleResponseHandler {
         QuoteBuilder quoteBuilder = new QuoteBuilder();
         SizeRangeBuilder sizeRangeBuilder = new SizeRangeBuilder();
         QuoteExtBuilder quoteExtBuilder = new QuoteExtBuilder();
-        AttachmentBuilder attachmentBuilder = new AttachmentBuilder();
 
         List<Attribute> attributeList = styleFlexPLMResponse.getFlexInterface().getFlexPLMHeader().getAttributeList();
 
-        quoteBuilder.setOwner("LULULEMON");
-        quoteBuilder.setRequestType("FG");
+//        quoteBuilder.setOwner("LULULEMON");
+//        quoteBuilder.setRequestType("FG");
 
         for (Attribute attribute : attributeList) {
             String field_name_key = attribute.getFIELDNAMEKEY();
@@ -91,19 +95,11 @@ public class StyleResponseHandler {
                         quoteBuilder.setSizeRanges(sizeRangeBuilder.createSizeRange());
                         break;
                     case "thumbnail":
-                        String img_loc = attribute.getFIELDVALUEKEY();
-                        String img_file_name = img_loc.substring(img_loc.lastIndexOf('/') + 1);
-                        attachmentBuilder.setLocation(img_file_name);
-                        attachmentBuilder.setAttachmentNo("IMAGE");
-                        attachmentBuilder.setCustomLocation("custom/" + img_file_name);
-                        attachmentBuilder.setIconLocation("icons/" + img_file_name);
-                        attachmentBuilder.setLargeviewLocation("largeview/" + img_file_name);
-                        attachmentBuilder.setOverviewLocation("overview/" + img_file_name);
-                        attachmentBuilder.setThumbnailLocation("thumbnails/" + img_file_name);
+                        AttachmentBuilder attachmentBuilder = new AttachmentBuilder(attribute.getFIELDVALUEKEY());
                         quoteBuilder.setAttachment(attachmentBuilder.createAttachment());
                         break;
                     default:
-                        System.out.println("ERROR: Mapping not found for Attribute Key: "
+                        logger.error("ERROR: Mapping not found for Attribute Key: "
                                 + attribute.getFIELDNAMEKEY()
                                 + ", Attribute Value: "
                                 + attribute.getFIELDVALUEKEY()
@@ -111,7 +107,7 @@ public class StyleResponseHandler {
                 }
             }
             else {
-                System.out.println("INFO: Change indicator is 'N' for Attribute Key: "
+                System.out.println("Change indicator is 'N' for Attribute Key: "
                         + attribute.getFIELDNAMEKEY()
                         + ", Attribute Value: "
                         + attribute.getFIELDVALUEKEY()

@@ -1,0 +1,20 @@
+{
+    "document":{
+        "@xmlns:xsi":"http://www.w3.org/2001/XMLSchema-instance",
+        "color_library":
+            {
+                "colorlib_h":{
+                    "@memo3":"480599", // set FlexPLM Object ID -since this is of type SOLID
+                    "@color_name":"CLEAR MINT",
+                    "@alt_name1":"CLMI",
+                    "@memo2":"SOLID",
+                    "@status":"APPROVED",
+                    "@owner":"LULULEMON", //default to LULULEMON
+                    "@active_ind":"Y", // default to Y , should be set to N on delete event
+                    "@rgb_r" : "120",
+					"@rgb_g" : "200",
+					"@rgb_b" : "180",
+                }
+            }		
+		}
+}		

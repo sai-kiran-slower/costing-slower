@@ -1,4 +1,4 @@
-package model;
+package com.slower.lulu.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
