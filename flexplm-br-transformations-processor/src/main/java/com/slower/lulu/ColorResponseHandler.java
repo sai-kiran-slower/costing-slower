@@ -74,7 +74,7 @@ public class ColorResponseHandler {
                 }
             }
             else {
-                System.out.println("INFO: Change indicator is 'N' for Attribute Key: "
+                logger.info("INFO: Change indicator is 'N' for Attribute Key: "
                         + attribute.getFIELDNAMEKEY()
                         + ", Attribute Value: "
                         + attribute.getFIELDVALUEKEY()
