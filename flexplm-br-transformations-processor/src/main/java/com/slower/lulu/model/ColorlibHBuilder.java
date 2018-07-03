@@ -15,31 +15,27 @@ public class ColorlibHBuilder {
     private String activeInd;
     private Attachment attachment;
 
-    public ColorlibHBuilder() {
-        setOwner("LULULEMON");
-    }
-
-    public ColorlibHBuilder setMemo3(String memo3) {
+    public ColorlibHBuilder setMemo3(final String memo3) {
         this.memo3 = Functions.charLimit(memo3, 10);
         return this;
     }
 
-    public ColorlibHBuilder setColorName(String colorName) {
+    public ColorlibHBuilder setColorName(final String colorName) {
         this.colorName = Functions.charLimit(colorName, 35);
         return this;
     }
 
-    public ColorlibHBuilder setAltName1(String altName1) {
+    public ColorlibHBuilder setAltName1(final String altName1) {
         this.altName1 = Functions.charLimit(altName1, 35);
         return this;
     }
 
     public ColorlibHBuilder setMemo2(String memo2) {
-        this.memo2 = Functions.charLimit(memo2.toUpperCase(), 35);
+        this.memo2 = Functions.charLimit(memo2, 35);
         return this;
     }
 
-    public ColorlibHBuilder setStatus(String status) {
+    public ColorlibHBuilder setStatus(final String status) {
         switch (status) {
             case "approved":
                 this.status = "APPROVED";
@@ -63,32 +59,34 @@ public class ColorlibHBuilder {
                 this.status = "REQUESTD";
                 break;
             default:
-                this.status = ""; //TODO
+                throw new IllegalArgumentException("Unsupported value for status: " + status);
         }
+
+        this.status = Functions.charLimit(this.status, 8);
         return this;
     }
 
-    public ColorlibHBuilder setRgbR(String rgbR) {
+    public ColorlibHBuilder setRgbR(final String rgbR) {
         this.rgbR = Functions.charLimit(rgbR, 7);
         return this;
     }
 
-    public ColorlibHBuilder setRgbG(String rgbG) {
+    public ColorlibHBuilder setRgbG(final String rgbG) {
         this.rgbG = Functions.charLimit(rgbG, 7);
         return this;
     }
 
-    public ColorlibHBuilder setRgbB(String rgbB) {
+    public ColorlibHBuilder setRgbB(final String rgbB) {
         this.rgbB = Functions.charLimit(rgbB, 7);
         return this;
     }
 
-    public ColorlibHBuilder setOwner(String owner) {
+    public ColorlibHBuilder setOwner(final String owner) {
         this.owner = owner;
         return this;
     }
 
-    public ColorlibHBuilder setActiveInd(String activeInd) {
+    public ColorlibHBuilder setActiveInd(final String activeInd) {
         switch (activeInd) {
             case "CREATE":
                 this.activeInd = "Y";
@@ -100,12 +98,12 @@ public class ColorlibHBuilder {
                 this.activeInd = "N";
                 break;
             default:
-                this.activeInd = "INVALID";
+                throw new IllegalArgumentException("Unsupported active indicator: " + activeInd);
         }
         return this;
     }
 
-    public ColorlibHBuilder setAttachment(Attachment attachment) {
+    public ColorlibHBuilder setAttachment(final Attachment attachment) {
         this.attachment = attachment;
         return this;
     }

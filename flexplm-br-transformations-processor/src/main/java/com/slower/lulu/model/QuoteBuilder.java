@@ -25,41 +25,39 @@ public class QuoteBuilder extends Quote{
 
     public QuoteBuilder() {
         setOwner("LULULEMON");
-        setRequestType("FG");
     }
 
-    public void setOwner(String owner) {
+    public void setOwner(final String owner) {
         this.owner = owner;
     }
 
     @Override
-    public void setItemNo(String itemNo) {
+    public void setItemNo(final String itemNo) {
         this.itemNo = Functions.charLimit(itemNo, 35);
     }
 
     @Override
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = Functions.charLimit(description, 80);
     }
 
     @Override
-    public void setSeason(String season) {
+    public void setSeason(final String season) {
         this.season = Functions.charLimit(season, 35);
     }
 
     @Override
-    public void setSeasonYear(String seasonYear) {
+    public void setSeasonYear(final String seasonYear) {
         this.seasonYear = Functions.charLimit(seasonYear, 35);
     }
 
     @Override
-    public void setAltDesc1(String altDesc1) {
+    public void setAltDesc1(final String altDesc1) {
         this.altDesc1 = Functions.charLimit(altDesc1, 80);
     }
 
     @Override
-    public void setStatus04(String status04) {
-        String status = "";
+    public void setStatus04(final String status04) {
         switch (status04.toLowerCase()) {
             case "new":
                 this.status04 = "N";
@@ -68,17 +66,17 @@ public class QuoteBuilder extends Quote{
                 this.status04 = "C";
                 break;
             default:
-                this.status04 = ""; //TODO
+                throw new IllegalArgumentException("Unsupported value for status04: " + status04);
         }
     }
 
     @Override
-    public void setRequestType(String requestType) {
+    public void setRequestType(final String requestType) {
         this.requestType = Functions.charLimit(requestType, 6);
     }
 
     @Override
-    public void setStatus(String status) {
+    public void setStatus(final String status) {
         switch (status.toLowerCase()) {
             case "active":
                 this.status = "ACTIVE";
@@ -87,57 +85,57 @@ public class QuoteBuilder extends Quote{
                 this.status = "DROP";
                 break;
             default:
-                this.status = ""; //TODO
+                throw new IllegalArgumentException("Unsupported value for status: " + status);
         }
     }
 
     @Override
-    public void setBuyProgramNo(String buyProgramNo) {
+    public void setBuyProgramNo(final String buyProgramNo) {
         this.buyProgramNo = Functions.charLimit(buyProgramNo, 35);
     }
 
     @Override
-    public void setCommodity(String commodity) {
+    public void setCommodity(final String commodity) {
         this.commodity = Functions.charLimit(commodity, 30);
     }
 
     @Override
-    public void setBrand(String brand) {
+    public void setBrand(final String brand) {
         this.brand = Functions.charLimit(brand, 17);
     }
 
     @Override
-    public void setPropertyClass(String propertyClass) {
+    public void setPropertyClass(final String propertyClass) {
         this.propertyClass = Functions.charLimit(propertyClass, 17);
     }
 
     @Override
-    public void setSubclass(String subclass) {
+    public void setSubclass(final String subclass) {
         this.subclass = Functions.charLimit(subclass, 17);
     }
 
     @Override
-    public void setDept(String dept) {
+    public void setDept(final String dept) {
         this.dept = Functions.charLimit(dept, 17);
     }
 
     @Override
-    public void setDivision(String division) {
+    public void setDivision(final String division) {
         this.division = Functions.charLimit(division, 17);
     }
 
     @Override
-    public void setSizeRanges(SizeRange sizeRanges) {
+    public void setSizeRanges(final SizeRange sizeRanges) {
         this.sizeRanges = sizeRanges;
     }
 
     @Override
-    public void setQuoteExt(QuoteExt quoteExt) {
+    public void setQuoteExt(final QuoteExt quoteExt) {
         this.quoteExt = quoteExt;
     }
 
     @Override
-    public void setAttachment(Attachment attachment) {
+    public void setAttachment(final Attachment attachment) {
         this.attachment = attachment;
     }
 

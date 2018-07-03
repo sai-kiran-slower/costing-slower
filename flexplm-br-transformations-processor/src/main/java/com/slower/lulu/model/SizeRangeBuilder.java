@@ -5,7 +5,7 @@ import com.slower.lulu.utils.Functions;
 public class SizeRangeBuilder extends SizeRange{
     private String sizeRange;
 
-    public void setSizeRange(String sizeRange) {
+    public void setSizeRange(final String sizeRange) {
         this.sizeRange = Functions.charLimit(sizeRange, 20);
     }
 

@@ -3,6 +3,7 @@ package com.slower.lulu;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.slower.lulu.model.*;
+import com.slower.lulu.utils.Functions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,105 +13,109 @@ public class StyleResponseHandler {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public String handleStyle(StyleFlexPLMResponse styleFlexPLMResponse) throws Exception {
-        StyleBambooRoseResponse styleBambooRoseResponse = new StyleBambooRoseResponse();
-        StyleDocument styleDocument = new StyleDocument();
-        Request request = new Request();
+    public String handleStyle(final StyleFlexPLMResponse styleFlexPLMResponse) throws Exception {
+        final StyleBambooRoseResponse styleBambooRoseResponse = new StyleBambooRoseResponse();
+        final StyleDocument styleDocument = new StyleDocument();
+        final Request request = new Request();
 
-        QuoteBuilder quoteBuilder = new QuoteBuilder();
-        SizeRangeBuilder sizeRangeBuilder = new SizeRangeBuilder();
-        QuoteExtBuilder quoteExtBuilder = new QuoteExtBuilder();
+        final QuoteBuilder quoteBuilder = new QuoteBuilder();
+        final SizeRangeBuilder sizeRangeBuilder = new SizeRangeBuilder();
+        final QuoteExtBuilder quoteExtBuilder = new QuoteExtBuilder();
 
-        List<Attribute> attributeList = styleFlexPLMResponse.getFlexInterface().getFlexPLMHeader().getAttributeList();
+        final List<Attribute> attributeList = styleFlexPLMResponse.getFlexInterface().getFlexPLMHeader().getAttributeList();
 
-//        quoteBuilder.setOwner("LULULEMON");
-//        quoteBuilder.setRequestType("FG");
+        quoteBuilder.setOwner("LULULEMON");
+        quoteBuilder.setRequestType("FG");
 
-        for (Attribute attribute : attributeList) {
-            String field_name_key = attribute.getFIELDNAMEKEY();
-            if (attribute.getFIELDNAMEKEY().equalsIgnoreCase("stylenum")) {
-                quoteBuilder.setItemNo(attribute.getFIELDVALUEKEY());
+        for (final Attribute attribute : attributeList) {
+            final String nameKey = attribute.getFIELDNAMEKEY();
+            final String valueKey = attribute.getFIELDVALUEKEY();
+
+            // TODO These logical keys appear to always be present in the flex PLM data (even if change ind = N),
+            // Can we consume these from there or should these exclusively come from a static configuration file?
+            if (nameKey.equalsIgnoreCase("stylenum")) {
+                quoteBuilder.setItemNo(valueKey);
             }
-            else if (attribute.getFIELDNAMEKEY().equalsIgnoreCase("seasoncode")) {
-                quoteBuilder.setSeason(attribute.getFIELDVALUEKEY());
+            else if (nameKey.equalsIgnoreCase("seasoncode")) {
+                quoteBuilder.setSeason(valueKey);
             }
-            else if (attribute.getCHANGEIND().equalsIgnoreCase("Y")) {
-                switch (field_name_key.toLowerCase()) {
+            else if (Functions.isChanged(attribute)) {
+                switch (nameKey.toLowerCase()) {
                     case "stylenum":
-                        quoteBuilder.setItemNo(attribute.getFIELDVALUEKEY());
+                        quoteBuilder.setItemNo(valueKey);
                         break;
                     case "productname":
-                        quoteBuilder.setDescription(attribute.getFIELDVALUEKEY());
+                        quoteBuilder.setDescription(valueKey);
                         break;
                     case "nameline1":
-                        quoteBuilder.setAltDesc1(attribute.getFIELDVALUEKEY());
+                        quoteBuilder.setAltDesc1(valueKey);
                         break;
                     case "productline":
-                        quoteBuilder.setCommodity(attribute.getFIELDVALUEKEY());
+                        quoteBuilder.setCommodity(valueKey);
                         break;
                     case "seasonalstyle":
-                        quoteBuilder.setStatus04(attribute.getFIELDVALUEKEY());
+                        quoteBuilder.setStatus04(valueKey);
                         break;
                     case "seasoncode":
-                        quoteBuilder.setSeason(attribute.getFIELDVALUEKEY());
+                        quoteBuilder.setSeason(valueKey);
                         break;
                     case "year":
-                        quoteBuilder.setSeasonYear(attribute.getFIELDVALUEKEY());
+                        quoteBuilder.setSeasonYear(valueKey);
                         break;
                     case "masterstyleidnew":
-                        quoteBuilder.setBuyProgramNo(attribute.getFIELDVALUEKEY());
+                        quoteBuilder.setBuyProgramNo(valueKey);
                         break;
                     case "brand":
-                        quoteBuilder.setBrand(attribute.getFIELDVALUEKEY());
+                        quoteBuilder.setBrand(valueKey);
                         break;
                     case "class":
-                        quoteBuilder.setPropertyClass(attribute.getFIELDVALUEKEY());
+                        quoteBuilder.setPropertyClass(valueKey);
                         break;
                     case "subclass":
-                        quoteBuilder.setSubclass(attribute.getFIELDVALUEKEY());
+                        quoteBuilder.setSubclass(valueKey);
                         break;
                     case "division":
-                        quoteBuilder.setDivision(attribute.getFIELDVALUEKEY());
+                        quoteBuilder.setDivision(valueKey);
                         break;
                     case "category":
-                        quoteBuilder.setDept(attribute.getFIELDVALUEKEY());
+                        quoteBuilder.setDept(valueKey);
                         break;
                     case "status":
-                        quoteBuilder.setStatus(attribute.getFIELDVALUEKEY());
+                        quoteBuilder.setStatus(valueKey);
                         break;
                     case "sourcingmanager":
-                        quoteExtBuilder.setPatternMaker(attribute.getFIELDVALUEKEY());
+                        quoteExtBuilder.setPatternMaker(valueKey);
                         quoteBuilder.setQuoteExt(quoteExtBuilder.createQuoteExt());
                         break;
                     case "productdeveloper":
-                        quoteExtBuilder.setProdmgr(attribute.getFIELDVALUEKEY());
+                        quoteExtBuilder.setProdmgr(valueKey);
                         quoteBuilder.setQuoteExt(quoteExtBuilder.createQuoteExt());
                         break;
                     case "designernew":
-                        quoteExtBuilder.setDesigner(attribute.getFIELDVALUEKEY());
+                        quoteExtBuilder.setDesigner(valueKey);
                         quoteBuilder.setQuoteExt(quoteExtBuilder.createQuoteExt());
                         break;
                     case "sizescale":
-                        sizeRangeBuilder.setSizeRange(attribute.getFIELDVALUEKEY());
+                        sizeRangeBuilder.setSizeRange(valueKey);
                         quoteBuilder.setSizeRanges(sizeRangeBuilder.createSizeRange());
                         break;
                     case "thumbnail":
-                        AttachmentBuilder attachmentBuilder = new AttachmentBuilder(attribute.getFIELDVALUEKEY());
-                        quoteBuilder.setAttachment(attachmentBuilder.createAttachment());
+                        final AttachmentBuilder attachmentBuilder = new AttachmentBuilder(valueKey);
+                        quoteBuilder.setAttachment(attachmentBuilder);
                         break;
                     default:
                         logger.error("ERROR: Mapping not found for Attribute Key: "
-                                + attribute.getFIELDNAMEKEY()
+                                + nameKey
                                 + ", Attribute Value: "
-                                + attribute.getFIELDVALUEKEY()
+                                + valueKey
                         );
                 }
             }
             else {
                 logger.info("Change indicator is 'N' for Attribute Key: "
-                        + attribute.getFIELDNAMEKEY()
+                        + nameKey
                         + ", Attribute Value: "
-                        + attribute.getFIELDVALUEKEY()
+                        + valueKey
                 );
             }
         }
@@ -119,7 +124,7 @@ public class StyleResponseHandler {
         styleDocument.setRequest(request);
         styleBambooRoseResponse.setDocument(styleDocument);
 
-        ObjectMapper objectMapper = new ObjectMapper();
+        final ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(styleBambooRoseResponse);
     }
