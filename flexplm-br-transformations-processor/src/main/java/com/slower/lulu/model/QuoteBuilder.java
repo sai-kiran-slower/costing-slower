@@ -25,6 +25,7 @@ public class QuoteBuilder extends Quote{
 
     public QuoteBuilder() {
         setOwner("LULULEMON");
+        setRequestType("FG");
     }
 
     public void setOwner(final String owner) {

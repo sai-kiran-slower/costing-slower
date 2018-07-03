@@ -23,7 +23,6 @@ public class ColorResponseHandler {
         final FlexplmHeader flexplmHeader = colorFlexPLMResponse.getFlexInterface().getFlexPLMHeader();
         final List<Attribute> attributeList = flexplmHeader.getAttributeList();
 
-        colorlibHBuilder.setOwner("LULULEMON");
         colorlibHBuilder.setActiveInd(flexplmHeader.getEVENT());
 
         for (final Attribute attribute : attributeList) {

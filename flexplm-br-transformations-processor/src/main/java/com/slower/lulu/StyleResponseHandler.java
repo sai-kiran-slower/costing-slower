@@ -24,9 +24,6 @@ public class StyleResponseHandler {
 
         final List<Attribute> attributeList = styleFlexPLMResponse.getFlexInterface().getFlexPLMHeader().getAttributeList();
 
-        quoteBuilder.setOwner("LULULEMON");
-        quoteBuilder.setRequestType("FG");
-
         for (final Attribute attribute : attributeList) {
             final String nameKey = attribute.getFIELDNAMEKEY();
             final String valueKey = attribute.getFIELDVALUEKEY();

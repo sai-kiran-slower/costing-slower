@@ -15,6 +15,10 @@ public class ColorlibHBuilder {
     private String activeInd;
     private Attachment attachment;
 
+    public ColorlibHBuilder() {
+        setOwner("LULULEMON");
+    }
+
     public ColorlibHBuilder setMemo3(final String memo3) {
         this.memo3 = Functions.charLimit(memo3, 10);
         return this;
@@ -31,7 +35,7 @@ public class ColorlibHBuilder {
     }
 
     public ColorlibHBuilder setMemo2(String memo2) {
-        this.memo2 = Functions.charLimit(memo2, 35);
+        this.memo2 = Functions.charLimit(memo2.toUpperCase(), 35);
         return this;
     }
 
