@@ -107,7 +107,7 @@ public class StyleResponseHandler {
                 }
             }
             else {
-                System.out.println("Change indicator is 'N' for Attribute Key: "
+                logger.info("Change indicator is 'N' for Attribute Key: "
                         + attribute.getFIELDNAMEKEY()
                         + ", Attribute Value: "
                         + attribute.getFIELDVALUEKEY()
