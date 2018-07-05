@@ -1,0 +1,25 @@
+{
+  "document" : {
+    "@xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+    "color_library" : {
+      "colorlib_h" : {
+        "@memo3" : "480599",
+        "@color_name" : "CLMI",
+        "@alt_name1" : "CLEAR MINT",
+        "@memo2" : "SOLID",
+        "@status" : "APPROVED",
+        "@owner" : "LULULEMON",
+        "@active_ind" : "Y",
+        "@attachment" : {
+          "@location" : "",
+          "@attachment_no" : "IMAGE",
+          "@custom_location" : "custom/",
+          "@icon_location" : "icons/",
+          "@largeview_location" : "largeview/",
+          "@overview_location" : "overview/",
+          "@thumbnail_location" : "thumbnails/"
+        }
+      }
+    }
+  }
+}

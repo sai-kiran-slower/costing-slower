@@ -1,6 +1,8 @@
 package com.slower.lulu.model;
 
+import com.slower.lulu.config.MappingConfig;
 import com.slower.lulu.utils.Functions;
+import com.slower.lulu.config.FlexBrMapping;
 
 public class QuoteBuilder extends Quote{
     private String owner;
@@ -59,16 +61,17 @@ public class QuoteBuilder extends Quote{
 
     @Override
     public void setStatus04(final String status04) {
-        switch (status04.toLowerCase()) {
-            case "new":
-                this.status04 = "N";
-                break;
-            case "carryover":
-                this.status04 = "C";
-                break;
-            default:
-                throw new IllegalArgumentException("Unsupported value for status04: " + status04);
-        }
+        this.status04 = Functions.getBRCode("quote", "seasonal_type", status04);
+//        switch (status04.toLowerCase()) {
+//            case "new":
+//                this.status04 = "N";
+//                break;
+//            case "carryover":
+//                this.status04 = "C";
+//                break;
+//            default:
+//                throw new IllegalArgumentException("Unsupported value for status04: " + status04);
+//        }
     }
 
     @Override
@@ -78,16 +81,17 @@ public class QuoteBuilder extends Quote{
 
     @Override
     public void setStatus(final String status) {
-        switch (status.toLowerCase()) {
-            case "active":
-                this.status = "ACTIVE";
-                break;
-            case "drop":
-                this.status = "DROP";
-                break;
-            default:
-                throw new IllegalArgumentException("Unsupported value for status: " + status);
-        }
+        this.status = Functions.getBRCode("quote", "season_style_level_status", status);
+//        switch (status.toLowerCase()) {
+//            case "active":
+//                this.status = "ACTIVE";
+//                break;
+//            case "drop":
+//                this.status = "DROP";
+//                break;
+//            default:
+//                throw new IllegalArgumentException("Unsupported value for status: " + status);
+//        }
     }
 
     @Override

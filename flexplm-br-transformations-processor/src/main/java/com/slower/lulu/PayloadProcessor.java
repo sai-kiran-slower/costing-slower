@@ -1,10 +1,15 @@
 package com.slower.lulu;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import com.slower.lulu.config.MappingConfig;
 import com.slower.lulu.model.ColorFlexPLMResponse;
 import com.slower.lulu.model.StyleFlexPLMResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.io.IOException;
 
 public class PayloadProcessor {
 
@@ -21,4 +26,6 @@ public class PayloadProcessor {
         final ColorFlexPLMResponse colorFlexPLMResponse = objectMapper.readValue(payload, ColorFlexPLMResponse.class);
         return new ColorResponseHandler().handleColor(colorFlexPLMResponse);
     }
+
+
 }

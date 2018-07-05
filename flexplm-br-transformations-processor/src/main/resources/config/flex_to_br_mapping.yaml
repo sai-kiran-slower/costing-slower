@@ -1,0 +1,41 @@
+mapping_rules:
+  quote_mapping:
+    seasonal_type:
+      - flex_code: new
+        flex_description: New
+        br_code: N
+        br_description: NEW
+        translation_required: Y
+      - flex_code: carryover
+        flex_description: Carryover
+        br_code: C
+        br_description: CARRYOVER
+        translation_required: Y
+    season_style_level_status:
+      - flex_code: active
+        flex_description: Active
+        br_code: ACTIVE
+        br_description: ACTIVE
+        translation_required: N
+      - flex_code: drop
+        flex_description: Drop
+        br_code: DROP
+        br_description: DROP
+        translation_required: N
+    season_style_option_level_status:
+      - flex_code: active
+        flex_description: Active
+        br_code: ACTIVE
+        br_description: ACTIVE
+        translation_required: N
+      - flex_code: drop
+        flex_description: Drop
+        br_code: DROP
+        br_description: DROP
+        translation_required: N
+      - flex_code: cancelled
+        flex_description: cancelled
+        br_code: CCL
+        br_description: CANCELLED
+        translation_required: Y
+

@@ -265,3 +265,53 @@ definitions:
     properties:
       Flex_interface:
         $ref: '#/definitions/flex_interface'
+
+
+# Rules
+
+  mapping_config:
+    type: object
+    properties:
+      mapping_rules:
+          $ref: '#/definitions/mapping_rule'
+
+  mapping_rule:
+    type: object
+    properties:
+      quote_mapping:
+        $ref: '#/definitions/quote_mapping'
+
+  quote_mapping:
+    type: object
+    properties:
+      seasonal_type:
+        type: array
+        items:
+          $ref: '#/definitions/flex_br_mapping'
+      season_style_level_status:
+        type: array
+        items:
+          $ref: '#/definitions/flex_br_mapping'
+      season_style_option_level_status:
+        type: array
+        items:
+          $ref: '#/definitions/flex_br_mapping'
+
+  flex_br_mapping:
+    type: object
+    properties:
+      flex_code:
+        type: string
+        description: "FlexPLM code"
+      flex_description:
+        type: string
+        description: "FlexPLM description"
+      br_code:
+        type: string
+        description: "Bamboo Rose code"
+      br_description:
+        type: string
+        description: "Bamboo Rose description"
+      translation_required:
+        type: string
+        description: "translation required or not"
