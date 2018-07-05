@@ -7,15 +7,15 @@ public class QuoteExtBuilder extends QuoteExt{
     private String prodmgr;
     private String designer;
 
-    public void setPatternMaker(String patternMaker) {
+    public void setPatternMaker(final String patternMaker) {
         this.patternMaker = Functions.charLimit(patternMaker, 18);
     }
 
-    public void setProdmgr(String prodmgr) {
+    public void setProdmgr(final String prodmgr) {
         this.prodmgr = Functions.charLimit(prodmgr, 18);
     }
 
-    public void setDesigner(String designer) {
+    public void setDesigner(final String designer) {
         this.designer = Functions.charLimit(designer, 18);
     }
 

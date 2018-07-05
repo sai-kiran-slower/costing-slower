@@ -32,8 +32,7 @@ public class Attachment   {
   @JsonProperty("@thumbnail_location")
   private String thumbnailLocation = null;
 
-  public Attachment() {
-  }
+  public Attachment() {}
 
   public Attachment(String location, String attachmentNo, String customLocation, String iconLocation, String largeviewLocation, String overviewLocation, String thumbnailLocation) {
     this.location = location;
