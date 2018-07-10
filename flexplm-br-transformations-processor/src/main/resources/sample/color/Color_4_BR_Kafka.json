@@ -10,7 +10,7 @@
         "@status" : "APPROVED",
         "@owner" : "LULULEMON",
         "@active_ind" : "Y",
-        "@attachment" : {
+        "attachment" : {
           "@location" : "",
           "@attachment_no" : "IMAGE",
           "@custom_location" : "custom/",

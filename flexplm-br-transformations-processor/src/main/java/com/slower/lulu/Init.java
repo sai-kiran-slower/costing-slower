@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 
 public class Init {
 
+
     private static final Logger logger = LoggerFactory.getLogger("Init");
 
     public static void main(String[] args) {
@@ -27,6 +28,10 @@ public class Init {
             processPayload(srcFilePath, destFilePath, payloadType);
             srcFilePath = parentDirPath + "Style_2_FlexPLM.json";
             destFilePath = parentDirPath + "Style_2_BR_Kafka.json";
+            payloadType = "STYLE";
+            processPayload(srcFilePath, destFilePath, payloadType);
+            srcFilePath = parentDirPath + "Style_3_FlexPLM.json";
+            destFilePath = parentDirPath + "Style_3_BR_Kafka.json";
             payloadType = "STYLE";
             processPayload(srcFilePath, destFilePath, payloadType);
 
@@ -83,7 +88,7 @@ public class Init {
     }
 
     private static void writeContentToJSONFile(String filePath, String fileContent) throws IOException {
-        logger.info("Writing processed JSON into file: Style_1_BR_Kafka.json");
+        logger.info("Writing processed JSON into file: " + filePath);
         Files.write(Paths.get(filePath), fileContent.getBytes());
     }
 }

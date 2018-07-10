@@ -25,8 +25,8 @@ public class StyleResponseHandler {
         final List<Attribute> attributeList = styleFlexPLMResponse.getFlexInterface().getFlexPLMHeader().getAttributeList();
 
         for (final Attribute attribute : attributeList) {
-            final String nameKey = attribute.getFIELDNAMEKEY();
-            final String valueKey = attribute.getFIELDVALUEKEY();
+            final String nameKey = attribute.getFIELDNAMEKEY().trim();
+            final String valueKey = attribute.getFIELDVALUEKEY().trim();
 
             // TODO These logical keys appear to always be present in the flex PLM data (even if change ind = N),
             // Can we consume these from there or should these exclusively come from a static configuration file?
@@ -35,6 +35,9 @@ public class StyleResponseHandler {
             }
             else if (nameKey.equalsIgnoreCase("seasoncode")) {
                 quoteBuilder.setSeason(valueKey);
+                if (Functions.isChanged(attribute)) {
+                    quoteBuilder.setRefNo(valueKey);
+                }
             }
             else if (Functions.isChanged(attribute)) {
                 switch (nameKey.toLowerCase()) {
@@ -48,18 +51,19 @@ public class StyleResponseHandler {
                         quoteBuilder.setAltDesc1(valueKey);
                         break;
                     case "productline":
-                        quoteBuilder.setCommodity(valueKey);
+                        quoteBuilder.setMemo1(valueKey);
                         break;
                     case "seasonalstyle":
                         quoteBuilder.setStatus04(valueKey);
                         break;
                     case "seasoncode":
                         quoteBuilder.setSeason(valueKey);
+                        quoteBuilder.setRefNo(valueKey);
                         break;
                     case "year":
                         quoteBuilder.setSeasonYear(valueKey);
                         break;
-                    case "masterstyleidnew":
+                    case "masterstyle":
                         quoteBuilder.setBuyProgramNo(valueKey);
                         break;
                     case "brand":
@@ -74,11 +78,11 @@ public class StyleResponseHandler {
                     case "division":
                         quoteBuilder.setDivision(valueKey);
                         break;
-                    case "category":
+                    case "department":
                         quoteBuilder.setDept(valueKey);
                         break;
                     case "status":
-                        quoteBuilder.setStatus(valueKey);
+                        quoteBuilder.setStatus06(valueKey);
                         break;
                     case "sourcingmanager":
                         quoteExtBuilder.setPatternMaker(valueKey);
@@ -99,6 +103,24 @@ public class StyleResponseHandler {
                     case "thumbnail":
                         final AttachmentBuilder attachmentBuilder = new AttachmentBuilder(valueKey);
                         quoteBuilder.setAttachment(attachmentBuilder);
+                        break;
+                    case "category":
+                        quoteBuilder.setSubdept(valueKey);
+                        break;
+                    case "designline":
+                        quoteBuilder.setMemo2(valueKey);
+                        break;
+                    case "initialprotoreviewmtgnotes":
+                        quoteBuilder.setNotes(new NoteBuilder(valueKey));
+                        break;
+                    case "calendartrack":
+                        quoteBuilder.setStatus05(valueKey);
+                        break;
+                    case "protosamplestatus":
+                        quoteBuilder.setStatus03(valueKey);
+                        break;
+                    case "sizerunsamplestatus":
+                        quoteBuilder.setStatus01(valueKey);
                         break;
                     default:
                         logger.error("ERROR: Mapping not found for Attribute Key: "

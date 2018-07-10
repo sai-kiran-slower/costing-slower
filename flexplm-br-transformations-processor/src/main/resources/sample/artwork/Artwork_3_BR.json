@@ -1,0 +1,22 @@
+{"document": {
+   "artwork_lib":   {
+                "artwork_lib_h":{
+                    "@owner":"LULULEMON",
+                    "@memo1":"11315400",
+                    "artwork_lib_b":{
+                        "@combo_id":"324563",
+                        "@memo1":"11315400",
+						"@status":"REQUESTD",
+                        "artwork_lib_d":[
+                            {
+                                "@memo3":"2095251",
+                                "@color_pos":"1",
+                                "@memo1":"11315400",
+                                "@combo_id":"324563"
+                            }
+                        ]
+                    }
+                }
+            }
+			}
+			}

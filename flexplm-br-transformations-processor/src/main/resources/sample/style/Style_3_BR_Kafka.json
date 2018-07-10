@@ -1,0 +1,51 @@
+{
+  "document" : {
+    "request" : {
+      "quote" : {
+        "@owner" : "LULULEMON",
+        "@item_no" : "LM3AU8S",
+        "@description" : "5 Year Basic T LM3AU8S",
+        "@season" : "18-1SP",
+        "@season_year" : "2018",
+        "@alt_desc1" : "5 Year Basic T",
+        "@status_04" : "N",
+        "@request_type" : "FG",
+        "@status_06" : "ACTIVE",
+        "@buy_program_no" : "5 Year Basic T",
+        "@memo1" : "mNoSweat",
+        "@brand" : "100",
+        "@class" : "100110100104",
+        "@subclass" : "100110100104104",
+        "@dept" : "100110100",
+        "@division" : "100110",
+        "@ref_no" : "18-1SP",
+        "@subdept" : "TOPS",
+        "@memo2" : "NOSWEAT",
+        "@status_01" : "IP",
+        "@status_03" : "APPROVED",
+        "@status_05" : "LLTDEV",
+        "notes" : {
+          "@note_id" : "PROTOREVIEW",
+          "@text" : "Base Style"
+        },
+        "size_ranges" : {
+          "@size_range" : "E"
+        },
+        "quote_ext" : {
+          "@pattern_maker" : "Amy Thompson",
+          "@prodmgr" : "lvanvuuren",
+          "@designer" : "Tiffany Weiland"
+        },
+        "attachment" : {
+          "@location" : "Screen_Shot_2017-04-19_at_4.26.06_PM2.png",
+          "@attachment_no" : "IMAGE",
+          "@custom_location" : "custom/Screen_Shot_2017-04-19_at_4.26.06_PM2.png",
+          "@icon_location" : "icons/Screen_Shot_2017-04-19_at_4.26.06_PM2.png",
+          "@largeview_location" : "largeview/Screen_Shot_2017-04-19_at_4.26.06_PM2.png",
+          "@overview_location" : "overview/Screen_Shot_2017-04-19_at_4.26.06_PM2.png",
+          "@thumbnail_location" : "thumbnails/Screen_Shot_2017-04-19_at_4.26.06_PM2.png"
+        }
+      }
+    }
+  }
+}

@@ -1,12 +1,13 @@
-{
-    "document": {
-        "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-        "color_library": {
-            "colorlib_h": {
-                "@memo3": "464479009",
-                "@color_name": "PTE7",
-                "@owner": "LULULEMON"
-            }
-        }
-    }
-}
+{ // JSON contains logical keys = memo3 and owner , along with updated fields only (reduces msg size) , alternatively entire message with all values can be sent just like create scenario
+    "document":{
+        "@xmlns:xsi":"http://www.w3.org/2001/XMLSchema-instance",this is not required
+        "color_library":
+            {
+                "colorlib_h":{
+                    "@memo3":"464479009",
+                    "@color_name":"PTE7",
+                    "@owner":"LULULEMON"
+                }
+            }		
+		}
+}		

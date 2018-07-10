@@ -1,14 +1,19 @@
 package com.slower.lulu.utils;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import com.slower.lulu.config.FlexBrMapping;
 import com.slower.lulu.config.MappingConfig;
 import com.slower.lulu.config.MappingRule;
+import com.slower.lulu.config.QuoteMapping;
 import com.slower.lulu.model.Attribute;
-import io.swagger.model.FlexBrMapping;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 
 public class Functions {
 
@@ -38,25 +43,82 @@ public class Functions {
         MappingConfig mappingConfig = Functions.getMappingConfigs();
         String brCode = null;
         if (mappingDomain.equalsIgnoreCase("quote")) {
+
             switch (mappingType.toLowerCase()) {
                 case "seasonal_type":
-                    for (com.slower.lulu.config.FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getSeasonalType()) {
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getSeasonalType()) {
                         if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
                             brCode = flexBrMapping.getBrCode();
                     }
                     break;
                 case "season_style_level_status":
-                    for (com.slower.lulu.config.FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getSeasonStyleLevelStatus()) {
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getSeasonStyleLevelStatus()) {
                         if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
                             brCode = flexBrMapping.getBrCode();
                     }
                     break;
                 case "season_style_option_level_status":
-                    for (com.slower.lulu.config.FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getSeasonStyleOptionLevelStatus()) {
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getSeasonStyleOptionLevelStatus()) {
                         if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
                             brCode = flexBrMapping.getBrCode();
                     }
                     break;
+                case "category":
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getCategory()) {
+                        if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
+                            brCode = flexBrMapping.getBrCode();
+                    }
+                    break;
+                case "design_line":
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getDesignLine()) {
+                        if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
+                            brCode = flexBrMapping.getBrCode();
+                    }
+                    break;
+                case "calendar_track":
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getCalendarTrack()) {
+                        if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
+                            brCode = flexBrMapping.getBrCode();
+                    }
+                    break;
+                case "proto_sample_status":
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getProtoSampleStatus()) {
+                        if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
+                            brCode = flexBrMapping.getBrCode();
+                    }
+                    break;
+                case "size_run_sample_status":
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getSizeRunSampleStatus()) {
+                        if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
+                            brCode = flexBrMapping.getBrCode();
+                    }
+                    break;
+                default:
+                    throw new IllegalArgumentException("Unsupported Flex Code: " + flexCode + "  for  Mapping Type: " + mappingType);
+            }
+        }
+        else if (mappingDomain.equalsIgnoreCase("color")) {
+            switch (mappingType.toLowerCase()) {
+                case "status":
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getColorMapping().getStatus()) {
+                        if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
+                            brCode = flexBrMapping.getBrCode();
+                    }
+                    break;
+                default:
+                    throw new IllegalArgumentException("Unsupported Flex Code: " + flexCode + "  for  Mapping Type: " + mappingType);
+            }
+        }
+        else if (mappingDomain.equalsIgnoreCase("common")) {
+            switch (mappingType.toLowerCase()) {
+                case "active_ind":
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getCommonMapping().getActiveInd()) {
+                        if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
+                            brCode = flexBrMapping.getBrCode();
+                    }
+                    break;
+                default:
+                    throw new IllegalArgumentException("Unsupported Flex Code: " + flexCode + "  for  Mapping Type: " + mappingType);
             }
         }
         return brCode;

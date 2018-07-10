@@ -1,25 +1,26 @@
 {
-    "document": {
-        "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-        "color_library": {
-            "colorlib_h": {
-                "@memo3": "869069",
-                "@color_name": "X065",
-                "@alt_name1": "X065",
-                "@memo2": "SOLID",
-                "@status": "CFREJECT",
-                "@owner": "LULULEMON",
-                "@active_ind": "Y",
-                "attachment": {
-                    "@location": "X0-65.jpg",
-                    "@attachment_no": "IMAGE",
-                    "@custom_location": "custom/X0-65.jpg",
-                    "@icon_location": "icons/X0-65.jpg",
-                    "@largeview_location": "largeview/X0-65.jpg",
-                    "@overview_location": "overview/X0-65.jpg",
-                    "@thumbnail_location": "thumbnails/X0-65.jpg"
+    "document":{
+        "@xmlns:xsi":"http://www.w3.org/2001/XMLSchema-instance",
+        "color_library":
+            {
+                "colorlib_h":{
+                    "@memo3":"869069", // set FlexPLM Object ID -since this is of type SOLID
+                    "@color_name":"X065",
+                    "@alt_name1":"X065",
+                    "@memo2":"SOLID",
+                    "@status":"CFREJECT",
+                    "@owner":"LULULEMON", //default to LULULEMON
+                    "@active_ind":"Y", // default to Y , should be set to N on delete event
+                    "attachment":{
+                        "@location":"X0-65.jpg",
+                        "@attachment_no":"IMAGE",
+                        "@custom_location":"custom/X0-65.jpg",
+                        "@icon_location":"icons/X0-65.jpg",
+                        "@largeview_location":"largeview/X0-65.jpg",
+                        "@overview_location":"overview/X0-65.jpg",
+                        "@thumbnail_location":"thumbnails/X0-65.jpg"
+                    }
                 }
-            }
-        }
-    }
-}
+            }		
+		}
+}		
