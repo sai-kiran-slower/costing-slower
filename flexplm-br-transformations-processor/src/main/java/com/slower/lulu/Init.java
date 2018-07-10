@@ -22,14 +22,14 @@ public class Init {
         try {
             parentDirPath = "src/main/resources/sample/style/";
 
-            srcFilePath = parentDirPath + "Style_1_FlexPLM.json";
-            destFilePath = parentDirPath + "Style_1_BR_Kafka.json";
-            payloadType = "STYLE";
-            processPayload(srcFilePath, destFilePath, payloadType);
-            srcFilePath = parentDirPath + "Style_2_FlexPLM.json";
-            destFilePath = parentDirPath + "Style_2_BR_Kafka.json";
-            payloadType = "STYLE";
-            processPayload(srcFilePath, destFilePath, payloadType);
+//            srcFilePath = parentDirPath + "Style_1_FlexPLM.json";
+//            destFilePath = parentDirPath + "Style_1_BR_Kafka.json";
+//            payloadType = "STYLE";
+//            processPayload(srcFilePath, destFilePath, payloadType);
+//            srcFilePath = parentDirPath + "Style_2_FlexPLM.json";
+//            destFilePath = parentDirPath + "Style_2_BR_Kafka.json";
+//            payloadType = "STYLE";
+//            processPayload(srcFilePath, destFilePath, payloadType);
             srcFilePath = parentDirPath + "Style_3_FlexPLM.json";
             destFilePath = parentDirPath + "Style_3_BR_Kafka.json";
             payloadType = "STYLE";
