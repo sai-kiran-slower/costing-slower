@@ -34,6 +34,19 @@ public class ArtworkLibB   {
   @JsonProperty("attachment")
   private Attachment attachment = null;
 
+  public ArtworkLibB() {
+  }
+
+  public ArtworkLibB(String comboId, String memo1, String comboName, String comboAbrv, String status, List<ArtworkLibD> artworkLibD, Attachment attachment) {
+    this.comboId = comboId;
+    this.memo1 = memo1;
+    this.comboName = comboName;
+    this.comboAbrv = comboAbrv;
+    this.status = status;
+    this.artworkLibD = artworkLibD;
+    this.attachment = attachment;
+  }
+
   public ArtworkLibB comboId(String comboId) {
     this.comboId = comboId;
     return this;

@@ -23,6 +23,16 @@ public class ArtworkLibD   {
   @JsonProperty("@combo_id")
   private String comboId = null;
 
+  public ArtworkLibD() {
+  }
+
+  public ArtworkLibD(String memo3, String colorPos, String memo1, String comboId) {
+    this.memo3 = memo3;
+    this.colorPos = colorPos;
+    this.memo1 = memo1;
+    this.comboId = comboId;
+  }
+
   public ArtworkLibD memo3(String memo3) {
     this.memo3 = memo3;
     return this;

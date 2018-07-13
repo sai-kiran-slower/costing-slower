@@ -6,7 +6,8 @@
                 "colorlib_h":{
                     "@memo3":"464479009",
                     "@color_name":"PTE7",
-                    "@owner":"LULULEMON"
+                    "@owner":"LULULEMON",
+					"@active_ind": "Y"
                 }
             }		
 		}

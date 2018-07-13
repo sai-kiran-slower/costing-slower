@@ -126,7 +126,7 @@ public class QuoteBuilder extends Quote{
 
     @Override
     public void setMemo1(final String memo1) {
-        this.memo1 = Functions.charLimit(memo1, 30);
+        this.memo1 = Functions.charLimit(Functions.getBRCode("quote", "design_pod", memo1), 30);
     }
 
     @Override

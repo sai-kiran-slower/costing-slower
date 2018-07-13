@@ -1,0 +1,51 @@
+{
+  "document" : {
+    "request" : {
+      "quote" : {
+        "@owner" : "LULULEMON",
+        "@item_no" : "LW5BAMS",
+        "@description" : "Every Moment Pant",
+        "@season" : "18-2SU",
+        "@season_year" : "2018",
+        "@alt_desc1" : "Every Moment Pant",
+        "@status_04" : "N",
+        "@request_type" : "FG",
+        "@status_06" : "ACTIVE",
+        "@buy_program_no" : "Every Moment Pant",
+        "@memo1" : "W NO SWEAT",
+        "@brand" : "100",
+        "@class" : "100110102104",
+        "@subclass" : "100110102104104",
+        "@dept" : "100110102",
+        "@division" : "100110",
+        "@ref_no" : "18-2SU",
+        "@subdept" : "PANTS",
+        "@memo2" : "ANDGO",
+        "@status_01" : "APPROVED",
+        "@status_03" : "APPROVED",
+        "@status_05" : "REGULAR",
+        "notes" : {
+          "@note_id" : "PROTOREVIEW",
+          "@text" : "Base Style"
+        },
+        "size_ranges" : {
+          "@size_range" : "I"
+        },
+        "quote_ext" : {
+          "@pattern_maker" : "Mina Wong",
+          "@prodmgr" : "Michelle Mui",
+          "@designer" : "Erika Rekis"
+        },
+        "attachment" : {
+          "@location" : "5BAMS.jpg",
+          "@attachment_no" : "IMAGE",
+          "@custom_location" : "custom/5BAMS.jpg",
+          "@icon_location" : "icons/5BAMS.jpg",
+          "@largeview_location" : "largeview/5BAMS.jpg",
+          "@overview_location" : "overview/5BAMS.jpg",
+          "@thumbnail_location" : "thumbnails/5BAMS.jpg"
+        }
+      }
+    }
+  }
+}

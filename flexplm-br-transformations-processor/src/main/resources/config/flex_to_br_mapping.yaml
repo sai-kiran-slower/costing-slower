@@ -53,6 +53,32 @@ mapping_rules:
         br_code: REQUESTD
         br_description: REQUESTED
         translation_required: Y
+    category:
+      - flex_code: colorwayCombination
+        flex_description: Colorway Combination
+        br_code: COLORCOM
+        br_description: COLORWAY COMBINATION
+        translation_required: Y
+      - flex_code: spaceDye
+        flex_description: Space Dye
+        br_code: spacedye
+        br_description: SPACE DYE
+        translation_required: N
+      - flex_code: Solid
+        flex_description: Solid
+        br_code: SOLID
+        br_description: SOLID
+        translation_required: N
+      - flex_code: Heather
+        flex_description: Heather
+        br_code: HEATHER
+        br_description: HEATHER
+        translation_required: N
+      - flex_code: Multicolor
+        flex_description: Multicolor
+        br_code: MULTICOL
+        br_description: MULTICOLOR
+        translation_required: Y
   quote_mapping:
     seasonal_type:
       - flex_code: new
@@ -139,6 +165,11 @@ mapping_rules:
         br_description: 9 - Accessories
         translation_required: N
     design_line:
+      - flex_code: andGo
+        flex_description: &Go
+        br_code: ANDGO
+        br_description: AND GO
+        translation_required: N
       - flex_code: apresPractice
         flex_description: Apres Practice
         br_code: APRESPRACTICE
@@ -387,6 +418,48 @@ mapping_rules:
         br_code: DROPPED
         br_description: Dropped
         translation_required: N
+    design_pod:
+      - flex_code: accessories
+        flex_description: Accessories
+        br_code: ACCESSORIES
+        br_description: Accessories
+        translation_required: N
+      - flex_code: transition
+        flex_description: Transition
+        br_code: TRANSITION
+        br_description: Transition
+        translation_required: N
+      - flex_code: train
+        flex_description: Train
+        br_code: TRAIN
+        br_description: Train
+        translation_required: N
+      - flex_code: mNoSweat
+        flex_description: M No Sweat
+        br_code: M NO SWEAT
+        br_description: M No Sweat
+        translation_required: N
+      - flex_code: mSweat
+        flex_description: M Sweat
+        br_code: M SWEAT
+        br_description: M Sweat
+        translation_required: N
+      - flex_code: wNoSweat
+        flex_description: W No Sweat
+        br_code: W NO SWEAT
+        br_description: W No Sweat
+        translation_required: N
+      - flex_code: wSweat
+        flex_description: W Sweat
+        br_code: W SWEAT
+        br_description: W Sweat
+        translation_required: N
+      - flex_code: fastTurn
+        flex_description: Fast Turn
+        br_code: FAST TURN
+        br_description: Fast Turn
+        translation_required: N
+
 
 
 

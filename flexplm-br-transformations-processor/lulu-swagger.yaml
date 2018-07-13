@@ -422,6 +422,10 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/flex_br_mapping'
+      category:
+        type: array
+        items:
+          $ref: '#/definitions/flex_br_mapping'
 
   quote_mapping:
     type: object
@@ -455,6 +459,10 @@ definitions:
         items:
           $ref: '#/definitions/flex_br_mapping'
       size_run_sample_status:
+        type: array
+        items:
+          $ref: '#/definitions/flex_br_mapping'
+      design_pod:
         type: array
         items:
           $ref: '#/definitions/flex_br_mapping'

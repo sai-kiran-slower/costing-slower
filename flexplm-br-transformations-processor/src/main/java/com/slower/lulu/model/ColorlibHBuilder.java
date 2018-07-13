@@ -32,7 +32,7 @@ public class ColorlibHBuilder extends ColorlibH{
     }
 
     public void setMemo2(String memo2) {
-        this.memo2 = Functions.charLimit(memo2.toUpperCase(), 35);
+        this.memo2 = Functions.charLimit(Functions.getBRCode("color", "category", memo2), 35);
     }
 
     public void setStatus(final String status) {

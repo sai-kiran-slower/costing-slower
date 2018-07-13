@@ -26,12 +26,20 @@ public class Init {
 //            destFilePath = parentDirPath + "Style_1_BR_Kafka.json";
 //            payloadType = "STYLE";
 //            processPayload(srcFilePath, destFilePath, payloadType);
-//            srcFilePath = parentDirPath + "Style_2_FlexPLM.json";
-//            destFilePath = parentDirPath + "Style_2_BR_Kafka.json";
-//            payloadType = "STYLE";
-//            processPayload(srcFilePath, destFilePath, payloadType);
+            srcFilePath = parentDirPath + "Style_2_FlexPLM.json";
+            destFilePath = parentDirPath + "Style_2_BR_Kafka.json";
+            payloadType = "STYLE";
+            processPayload(srcFilePath, destFilePath, payloadType);
             srcFilePath = parentDirPath + "Style_3_FlexPLM.json";
             destFilePath = parentDirPath + "Style_3_BR_Kafka.json";
+            payloadType = "STYLE";
+            processPayload(srcFilePath, destFilePath, payloadType);
+            srcFilePath = parentDirPath + "Style_4_FlexPLM.json";
+            destFilePath = parentDirPath + "Style_4_BR_Kafka.json";
+            payloadType = "STYLE";
+            processPayload(srcFilePath, destFilePath, payloadType);
+            srcFilePath = parentDirPath + "Style_5_FlexPLM.json";
+            destFilePath = parentDirPath + "Style_5_BR_Kafka.json";
             payloadType = "STYLE";
             processPayload(srcFilePath, destFilePath, payloadType);
 
@@ -54,7 +62,42 @@ public class Init {
             destFilePath = parentDirPath + "Color_4_BR_Kafka.json";
             payloadType = "COLOR";
             processPayload(srcFilePath, destFilePath, payloadType);
+            srcFilePath = parentDirPath + "Color_5_FlexPLM.json";
+            destFilePath = parentDirPath + "Color_5_BR_Kafka.json";
+            payloadType = "COLOR";
+            processPayload(srcFilePath, destFilePath, payloadType);
+            srcFilePath = parentDirPath + "Color_6_FlexPLM.json";
+            destFilePath = parentDirPath + "Color_6_BR_Kafka.json";
+            payloadType = "COLOR";
+            processPayload(srcFilePath, destFilePath, payloadType);
+            srcFilePath = parentDirPath + "Color_7_FlexPLM.json";
+            destFilePath = parentDirPath + "Color_7_BR_Kafka.json";
+            payloadType = "COLOR";
+            processPayload(srcFilePath, destFilePath, payloadType);
+            srcFilePath = parentDirPath + "Color_8_FlexPLM.json";
+            destFilePath = parentDirPath + "Color_8_BR_Kafka.json";
+            payloadType = "COLOR";
+            processPayload(srcFilePath, destFilePath, payloadType);
+            srcFilePath = parentDirPath + "Color_9_FlexPLM.json";
+            destFilePath = parentDirPath + "Color_9_BR_Kafka.json";
+            payloadType = "COLOR";
+            processPayload(srcFilePath, destFilePath, payloadType);
 
+
+            parentDirPath = "src/main/resources/sample/artwork/";
+
+            srcFilePath = parentDirPath + "Artwork_1_FlexPLM.json";
+            destFilePath = parentDirPath + "Artwork_1_BR_Kafka.json";
+            payloadType = "ARTWORK";
+            processPayload(srcFilePath, destFilePath, payloadType);
+            srcFilePath = parentDirPath + "Artwork_2_FlexPLM.json";
+            destFilePath = parentDirPath + "Artwork_2_BR_Kafka.json";
+            payloadType = "ARTWORK";
+            processPayload(srcFilePath, destFilePath, payloadType);
+            srcFilePath = parentDirPath + "Artwork_3_FlexPLM.json";
+            destFilePath = parentDirPath + "Artwork_3_BR_Kafka.json";
+            payloadType = "ARTWORK";
+            processPayload(srcFilePath, destFilePath, payloadType);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -72,6 +115,9 @@ public class Init {
                 break;
             case "COLOR":
                 brJsonStr = payloadProcessor.processColor(fileContent);
+                break;
+            case "ARTWORK":
+                brJsonStr = payloadProcessor.processArtwork(fileContent);
                 break;
         }
 

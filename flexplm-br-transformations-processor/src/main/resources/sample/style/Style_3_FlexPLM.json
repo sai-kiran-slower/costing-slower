@@ -310,7 +310,7 @@
 					"FIELD_NAME_DISPLAY": "Seasonal Style Meeting Notes",
 					"FIELD_VALUE_KEY": "Base Style",
 					"FIELD_VALUE_DISPLAY": "Base Style",
-					"FIELD_TYPE": "USERLIST",
+					"FIELD_TYPE": "TEXT",
 					"CHANGE_IND": "Y"
 				}
 			]

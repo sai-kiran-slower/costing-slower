@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * QuoteMapping
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-07-08T17:26:40.669-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-07-09T23:33:02.571-07:00")
 
 public class QuoteMapping {
   @JsonProperty("seasonal_type")
@@ -36,6 +36,9 @@ public class QuoteMapping {
 
   @JsonProperty("size_run_sample_status")
   private List<FlexBrMapping> sizeRunSampleStatus = new ArrayList<FlexBrMapping>();
+
+  @JsonProperty("design_pod")
+  private List<FlexBrMapping> designPod = new ArrayList<FlexBrMapping>();
 
   public QuoteMapping seasonalType(List<FlexBrMapping> seasonalType) {
     this.seasonalType = seasonalType;
@@ -221,6 +224,29 @@ public class QuoteMapping {
     this.sizeRunSampleStatus = sizeRunSampleStatus;
   }
 
+  public QuoteMapping designPod(List<FlexBrMapping> designPod) {
+    this.designPod = designPod;
+    return this;
+  }
+
+  public QuoteMapping addDesignPodItem(FlexBrMapping designPodItem) {
+    this.designPod.add(designPodItem);
+    return this;
+  }
+
+   /**
+   * Get designPod
+   * @return designPod
+  **/
+  @ApiModelProperty(value = "")
+  public List<FlexBrMapping> getDesignPod() {
+    return designPod;
+  }
+
+  public void setDesignPod(List<FlexBrMapping> designPod) {
+    this.designPod = designPod;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -238,12 +264,13 @@ public class QuoteMapping {
         Objects.equals(this.designLine, quoteMapping.designLine) &&
         Objects.equals(this.calendarTrack, quoteMapping.calendarTrack) &&
         Objects.equals(this.protoSampleStatus, quoteMapping.protoSampleStatus) &&
-        Objects.equals(this.sizeRunSampleStatus, quoteMapping.sizeRunSampleStatus);
+        Objects.equals(this.sizeRunSampleStatus, quoteMapping.sizeRunSampleStatus) &&
+        Objects.equals(this.designPod, quoteMapping.designPod);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(seasonalType, seasonStyleLevelStatus, seasonStyleOptionLevelStatus, category, designLine, calendarTrack, protoSampleStatus, sizeRunSampleStatus);
+    return Objects.hash(seasonalType, seasonStyleLevelStatus, seasonStyleOptionLevelStatus, category, designLine, calendarTrack, protoSampleStatus, sizeRunSampleStatus, designPod);
   }
 
   @Override
@@ -259,6 +286,7 @@ public class QuoteMapping {
     sb.append("    calendarTrack: ").append(toIndentedString(calendarTrack)).append("\n");
     sb.append("    protoSampleStatus: ").append(toIndentedString(protoSampleStatus)).append("\n");
     sb.append("    sizeRunSampleStatus: ").append(toIndentedString(sizeRunSampleStatus)).append("\n");
+    sb.append("    designPod: ").append(toIndentedString(designPod)).append("\n");
     sb.append("}");
     return sb.toString();
   }

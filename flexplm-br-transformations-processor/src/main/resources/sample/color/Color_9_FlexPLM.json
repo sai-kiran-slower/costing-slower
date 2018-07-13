@@ -7,8 +7,8 @@
       "Attribute_List": [
         {
           "OBJECT_LEVEL": "LCSCOLOR",
-          "OBJECT_ID": "480599",
-          "FLEXTYPE": "SOLID",
+          "OBJECT_ID": "769690",
+          "FLEXTYPE": "SPACEDYE",
           "FIELD_NAME_KEY": "colourwayCode",
           "FIELD_NAME_DISPLAY": "Color ID",
           "FIELD_VALUE_KEY": "",
@@ -18,8 +18,8 @@
         },
         {
           "OBJECT_LEVEL": "LCSCOLOR",
-          "OBJECT_ID": "480599",
-          "FLEXTYPE": "SOLID",
+          "OBJECT_ID": "769690",
+          "FLEXTYPE": "SPACEDYE",
           "FIELD_NAME_KEY": "shortdescription",
           "FIELD_NAME_DISPLAY": "Short Name",
           "FIELD_VALUE_KEY": " ",
@@ -29,19 +29,19 @@
         },
         {
           "OBJECT_LEVEL": "LCSCOLOR",
-          "OBJECT_ID": "480599",
-          "FLEXTYPE": "SOLID",
+          "OBJECT_ID": "769690",
+          "FLEXTYPE": "SPACEDYE",
           "FIELD_NAME_KEY": "abbreviation",
           "FIELD_NAME_DISPLAY": "Short Name",
-          "FIELD_VALUE_KEY": "CLMI",
-          "FIELD_VALUE_DISPLAY": "CLMI",
+          "FIELD_VALUE_KEY": "HHBW",
+          "FIELD_VALUE_DISPLAY": "HHBW",
           "FIELD_TYPE": "TEXT",
-          "CHANGE_IND": "Y"
+          "CHANGE_IND": "N"
         },
         {
           "OBJECT_LEVEL": "LCSCOLOR",
-          "OBJECT_ID": "480599",
-          "FLEXTYPE": "SOLID",
+          "OBJECT_ID": "769690",
+          "FLEXTYPE": "SPACEDYE",
           "FIELD_NAME_KEY": "longdescription",
           "FIELD_NAME_DISPLAY": "Long Name",
           "FIELD_VALUE_KEY": " ",
@@ -51,80 +51,80 @@
         },
         {
           "OBJECT_LEVEL": "LCSCOLOR",
-          "OBJECT_ID": "480599",
-          "FLEXTYPE": "SOLID",
+          "OBJECT_ID": "769690",
+          "FLEXTYPE": "SPACEDYE",
           "FIELD_NAME_KEY": "colorName",
           "FIELD_NAME_DISPLAY": "Color Description",
-          "FIELD_VALUE_KEY": "CLEAR MINT",
-          "FIELD_VALUE_DISPLAY": "CLEAR MINT",
+          "FIELD_VALUE_KEY": "60% Hero Blue/10% Hero Blue/White",
+          "FIELD_VALUE_DISPLAY": "60% Hero Blue/10% Hero Blue/White",
           "FIELD_TYPE": "TEXT",
-          "CHANGE_IND": "Y"
+          "CHANGE_IND": "N"
         },
         {
           "OBJECT_LEVEL": "LCSCOLOR",
-          "OBJECT_ID": "480599",
-          "FLEXTYPE": "SOLID",
+          "OBJECT_ID": "769690",
+          "FLEXTYPE": "SPACEDYE",
           "FIELD_NAME_KEY": "colorType",
           "FIELD_NAME_DISPLAY": "Color Type",
-          "FIELD_VALUE_KEY": "solid",
-          "FIELD_VALUE_DISPLAY": "Solid",
+          "FIELD_VALUE_KEY": "spaceDye",
+          "FIELD_VALUE_DISPLAY": "Space Dye",
           "FIELD_TYPE": "TEXT",
-          "CHANGE_IND": "Y"
+          "CHANGE_IND": "N"
         },
         {
           "OBJECT_LEVEL": "LCSCOLOR",
-          "OBJECT_ID": "480599",
-          "FLEXTYPE": "SOLID",
+          "OBJECT_ID": "769690",
+          "FLEXTYPE": "SPACEDYE",
           "FIELD_NAME_KEY": "status",
           "FIELD_NAME_DISPLAY": "Color Status",
-          "FIELD_VALUE_KEY": "approved",
-          "FIELD_VALUE_DISPLAY": "Approved",
+          "FIELD_VALUE_KEY": "created",
+          "FIELD_VALUE_DISPLAY": "Created",
           "FIELD_TYPE": "TEXT",
-          "CHANGE_IND": "Y"
+          "CHANGE_IND": "N"
         },
         {
           "OBJECT_LEVEL": "LCSCOLOR",
-          "OBJECT_ID": "480599",
-          "FLEXTYPE": "SOLID",
+          "OBJECT_ID": "769690",
+          "FLEXTYPE": "SPACEDYE",
           "FIELD_NAME_KEY": "RGB_R",
           "FIELD_NAME_DISPLAY": "RGB_R",
-          "FIELD_VALUE_KEY": "120",
-          "FIELD_VALUE_DISPLAY": "120",
+          "FIELD_VALUE_KEY": "",
+          "FIELD_VALUE_DISPLAY": "",
           "FIELD_TYPE": "TEXT",
           "CHANGE_IND": "N"
         },
         {
           "OBJECT_LEVEL": "LCSCOLOR",
-          "OBJECT_ID": "480599",
-          "FLEXTYPE": "SOLID",
+          "OBJECT_ID": "769690",
+          "FLEXTYPE": "SPACEDYE",
           "FIELD_NAME_KEY": "RGB_G",
           "FIELD_NAME_DISPLAY": "RGB_G",
-          "FIELD_VALUE_KEY": "200",
-          "FIELD_VALUE_DISPLAY": "200",
+          "FIELD_VALUE_KEY": "",
+          "FIELD_VALUE_DISPLAY": "",
           "FIELD_TYPE": "TEXT",
           "CHANGE_IND": "N"
         },
         {
           "OBJECT_LEVEL": "LCSCOLOR",
-          "OBJECT_ID": "480599",
-          "FLEXTYPE": "SOLID",
+          "OBJECT_ID": "769690",
+          "FLEXTYPE": "SPACEDYE",
           "FIELD_NAME_KEY": "RGB_B",
           "FIELD_NAME_DISPLAY": "RGB_B",
-          "FIELD_VALUE_KEY": "180",
-          "FIELD_VALUE_DISPLAY": "180",
+          "FIELD_VALUE_KEY": "",
+          "FIELD_VALUE_DISPLAY": "",
           "FIELD_TYPE": "TEXT",
           "CHANGE_IND": "N"
         },
         {
           "OBJECT_LEVEL": "LCSCOLOR",
-          "OBJECT_ID": "480599",
-          "FLEXTYPE": "SOLID",
+          "OBJECT_ID": "769690",
+          "FLEXTYPE": "SPACEDYE",
           "FIELD_NAME_KEY": "thumbnail",
           "FIELD_NAME_DISPLAY": "Thumbnail",
           "FIELD_VALUE_KEY": "",
           "FIELD_VALUE_DISPLAY": "",
           "FIELD_TYPE": "IMAGE_LOCATION",
-          "CHANGE_IND": "N"
+          "CHANGE_IND": "Y"
         }
       ]
     }

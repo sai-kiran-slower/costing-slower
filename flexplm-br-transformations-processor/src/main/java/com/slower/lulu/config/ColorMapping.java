@@ -10,11 +10,14 @@ import java.util.Objects;
 /**
  * ColorMapping
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-07-09T21:39:42.672-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-07-13T01:27:42.208-07:00")
 
-public class ColorMapping   {
+public class ColorMapping {
   @JsonProperty("status")
   private List<FlexBrMapping> status = new ArrayList<FlexBrMapping>();
+
+  @JsonProperty("category")
+  private List<FlexBrMapping> category = new ArrayList<FlexBrMapping>();
 
   public ColorMapping status(List<FlexBrMapping> status) {
     this.status = status;
@@ -39,6 +42,29 @@ public class ColorMapping   {
     this.status = status;
   }
 
+  public ColorMapping category(List<FlexBrMapping> category) {
+    this.category = category;
+    return this;
+  }
+
+  public ColorMapping addCategoryItem(FlexBrMapping categoryItem) {
+    this.category.add(categoryItem);
+    return this;
+  }
+
+   /**
+   * Get category
+   * @return category
+  **/
+  @ApiModelProperty(value = "")
+  public List<FlexBrMapping> getCategory() {
+    return category;
+  }
+
+  public void setCategory(List<FlexBrMapping> category) {
+    this.category = category;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -49,12 +75,13 @@ public class ColorMapping   {
       return false;
     }
     ColorMapping colorMapping = (ColorMapping) o;
-    return Objects.equals(this.status, colorMapping.status);
+    return Objects.equals(this.status, colorMapping.status) &&
+        Objects.equals(this.category, colorMapping.category);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status);
+    return Objects.hash(status, category);
   }
 
   @Override
@@ -63,6 +90,7 @@ public class ColorMapping   {
     sb.append("class ColorMapping {\n");
 
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,19 +1,13 @@
 package com.slower.lulu.utils;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.slower.lulu.config.FlexBrMapping;
 import com.slower.lulu.config.MappingConfig;
-import com.slower.lulu.config.MappingRule;
-import com.slower.lulu.config.QuoteMapping;
 import com.slower.lulu.model.Attribute;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
 
 public class Functions {
 
@@ -28,11 +22,10 @@ public class Functions {
         return attribute.getCHANGEIND().equals("Y");
     }
 
-    public static MappingConfig getMappingConfigs() {
+    private static MappingConfig getMappingConfigs() {
         try {
             final ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
-            MappingConfig mappingConfig = objectMapper.readValue(new File("src/main/resources/config/flex_to_br_mapping.yaml"), MappingConfig.class);
-            return mappingConfig;
+            return objectMapper.readValue(new File("src/main/resources/config/flex_to_br_mapping.yaml"), MappingConfig.class);
         } catch (IOException e) {
             e.printStackTrace();
             return new MappingConfig();
@@ -93,6 +86,12 @@ public class Functions {
                             brCode = flexBrMapping.getBrCode();
                     }
                     break;
+                case "design_pod":
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getDesignPod()) {
+                        if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
+                            brCode = flexBrMapping.getBrCode();
+                    }
+                    break;
                 default:
                     throw new IllegalArgumentException("Unsupported Flex Code: " + flexCode + "  for  Mapping Type: " + mappingType);
             }
@@ -101,6 +100,12 @@ public class Functions {
             switch (mappingType.toLowerCase()) {
                 case "status":
                     for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getColorMapping().getStatus()) {
+                        if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
+                            brCode = flexBrMapping.getBrCode();
+                    }
+                    break;
+                case "category":
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getColorMapping().getCategory()) {
                         if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
                             brCode = flexBrMapping.getBrCode();
                     }

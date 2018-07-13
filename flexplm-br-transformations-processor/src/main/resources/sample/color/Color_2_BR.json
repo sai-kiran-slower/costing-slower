@@ -10,9 +10,7 @@
                     "@memo2":"SOLID",
                     "@status":"IP",
                     "@owner":"LULULEMON",
-                    "@active_ind":"Y",
-                    "attachment":{
-                    }
+                    "@active_ind":"Y"
                 }
             }		
 		}
