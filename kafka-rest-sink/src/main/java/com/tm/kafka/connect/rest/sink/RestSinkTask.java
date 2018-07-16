@@ -14,11 +14,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
-import java.net.URLEncoder;
+import java.net.*;
 import java.util.Collection;
 import java.util.Map;
 
@@ -30,6 +26,8 @@ public class RestSinkTask extends SinkTask {
   private String url;
   private SinkRecordToPayloadConverter converter;
   private Long retryBackoff;
+  private Integer requestRetries;
+  private Integer requestTimeout;
 
   @Override
   public void start(final Map<String, String> map) {
@@ -40,16 +38,20 @@ public class RestSinkTask extends SinkTask {
     url = connectorConfig.getUrl();
     converter = connectorConfig.getSinkRecordToPayloadConverter();
     converter.start(connectorConfig);
+    requestTimeout = connectorConfig.getSinkResponseTimeoutMsConfig();
+    requestRetries = connectorConfig.getSinkRetryAttemptsConfig();
   }
 
   @Override
   public void put(final Collection<SinkRecord> records) {
     log.info("Received records: " + StringUtils.join(records.stream().map(SinkRecord::toString)));
     HttpURLConnection conn = null;
+    String data = "";
+
     for (SinkRecord record : records) {
       while (true) {
         try {
-          final String data = converter.convert(record);
+          data = converter.convert(record);
           String urlString = url;
           if ("GET".equals(method)) {
             urlString = urlString + URLEncoder.encode(data, "UTF-8");
@@ -58,7 +60,12 @@ public class RestSinkTask extends SinkTask {
 
           log.info("Writing data: \n" + data);
           httpRequestProperties.forEach(conn::setRequestProperty);
+
           conn.setRequestMethod(method);
+
+          // Set how long to wait for a response before giving up
+          conn.setReadTimeout(requestTimeout);
+
           if ("POST".equals(method)) {
             conn.setRequestProperty( "charset", "utf-8");
             conn.setRequestProperty( "Content-Length", Integer.toString( data.length() ));
@@ -70,20 +77,27 @@ public class RestSinkTask extends SinkTask {
             log.info("Flushed data" + data);
           }
 
-          // TODO Also retry if there's a timeout, figure out how to timeout the URL request
-
-          // TODO We need to not just get a response code but get the full message so we can publish it if we need to
+          if (conn.getReadTimeout() == 0) {
+            log.warn("No timeout is specified for awaiting response from server, this method may hang indefinitely.");
+          }
 
           int responseCode = conn.getResponseCode();
+
+          // TODO Delete info line
           log.info("Response code: {}, Request data: {}, Message: {}", responseCode, data, conn.getResponseMessage());
           if (log.isTraceEnabled()) {
             log.trace("Response code: {}, Request data: {}, Message: {}", responseCode, data, conn.getResponseMessage());
           }
+
           break;
         } catch (ProtocolException e) {
           log.error("Unexpected connection protocol.", e);
           retry();
-        } catch (MalformedURLException e) {
+        } catch (SocketTimeoutException e) {
+          log.error("Timed out while awaiting response from server for data: {} with connection: {}.", data, conn);
+          retry();
+        }
+        catch (MalformedURLException e) {
           log.error("Malformed url: " + url, e);
           retry();
         } catch (UnsupportedEncodingException e) {

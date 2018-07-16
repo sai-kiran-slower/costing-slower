@@ -23,36 +23,13 @@ public class RestSinkConnectorConfig extends AbstractConfig {
   // TODO Clean these up as enums so it's easier to read
 
   public static final String SINK_METHOD_CONFIG = "rest.sink.method";
-  private static final String SINK_METHOD_DOC = "The HTTP method for REST sink connector.";
-  private static final String SINK_METHOD_DISPLAY = "Sink method";
-  private static final String SINK_METHOD_DEFAULT = "POST";
-
   public static final String SINK_PROPERTIES_LIST_CONFIG = "rest.sink.properties";
-  private static final String SINK_PROPERTIES_LIST_DOC =
-    "The request properties (headers) for REST sink connector.";
-  private static final String SINK_PROPERTIES_LIST_DISPLAY = "Sink properties";
-
   public static final String SINK_URL_CONFIG = "rest.sink.url";
-  private static final String SINK_URL_DOC = "The URL for REST sink connector.";
-  private static final String SINK_URL_DISPLAY = "URL for REST sink connector.";
-
+  public static final String SINK_RESPONSE_TIMEOUT_MS_CONFIG = "rest.sink.response.timeout.ms";
+  public static final String SINK_RETRY_ATTEMPTS_CONFIG = "rest.sink.retry.attempts";
   public static final String SINK_PAYLOAD_CONVERTER_CONFIG = "rest.sink.payload.converter.class";
-  private static final Class PAYLOAD_CONVERTER_DEFAULT = StringPayloadConverter.class;
-  private static final String SINK_PAYLOAD_CONVERTER_DOC =
-    "Class to be used to convert messages from SinkRecords to Strings for REST calls";
-  private static final String SINK_PAYLOAD_CONVERTER_DISPLAY = "Payload converter class";
-
   private static final String SINK_PAYLOAD_CONVERTER_SCHEMA_CONFIG = "rest.sink.payload.converter.schema";
-  private static final String SINK_PAYLOAD_CONVERTER_SCHEMA_DOC = "Include schema in JSON output for JsonPayloadConverter";
-  private static final String SINK_PAYLOAD_CONVERTER_SCHEMA_DISPLAY = "Include schema in JSON output (true/false)";
-  private static final String SINK_PAYLOAD_CONVERTER_SCHEMA_DEFAULT = "false";
-
   private static final String SINK_RETRY_BACKOFF_CONFIG = "rest.sink.retry.backoff.ms";
-  private static final String SINK_RETRY_BACKOFF_DOC =
-    "The retry backoff in milliseconds. This config is used to notify Kafka connect to retry "
-      + "delivering a message batch or performing recovery in case of transient exceptions.";
-  private static final long SINK_RETRY_BACKOFF_DEFAULT = 5000L;
-  private static final String SINK_RETRY_BACKOFF_DISPLAY = "Retry Backoff (ms)";
 
   private final SinkRecordToPayloadConverter sinkRecordToPayloadConverter;
   private final Map<String, String> httpRequestProperties;
@@ -83,14 +60,14 @@ public class RestSinkConnectorConfig extends AbstractConfig {
       .define(
         SINK_METHOD_CONFIG,
         Type.STRING,
-        SINK_METHOD_DEFAULT,
+        "POST",
         new MethodValidator(),
         Importance.HIGH,
-        SINK_METHOD_DOC,
+        "The HTTP method for REST sink connector.",
         group,
         ++orderInGroup,
         ConfigDef.Width.SHORT,
-        SINK_METHOD_DISPLAY,
+        "Sink method",
         new MethodRecommender()
       )
 
@@ -99,11 +76,11 @@ public class RestSinkConnectorConfig extends AbstractConfig {
         Type.LIST,
         NO_DEFAULT_VALUE,
         Importance.HIGH,
-        SINK_PROPERTIES_LIST_DOC,
+        "The request properties (headers) for REST sink connector.",
         group,
         ++orderInGroup,
         ConfigDef.Width.SHORT,
-        SINK_PROPERTIES_LIST_DISPLAY
+        "Sink properties"
       )
 
       .define(
@@ -111,50 +88,75 @@ public class RestSinkConnectorConfig extends AbstractConfig {
         Type.STRING,
         NO_DEFAULT_VALUE,
         Importance.HIGH,
-        SINK_URL_DOC,
+        "The URL for REST sink connector.",
         group,
         ++orderInGroup,
         ConfigDef.Width.SHORT,
-        SINK_URL_DISPLAY
+        "URL for REST sink connector."
       )
 
       .define(
         SINK_PAYLOAD_CONVERTER_CONFIG,
         Type.CLASS,
-        PAYLOAD_CONVERTER_DEFAULT,
+        StringPayloadConverter.class,
         new PayloadConverterValidator(),
         Importance.LOW,
-        SINK_PAYLOAD_CONVERTER_DOC,
+        "Class to be used to convert messages from SinkRecords to Strings for REST calls",
         group,
         ++orderInGroup,
         ConfigDef.Width.SHORT,
-        SINK_PAYLOAD_CONVERTER_DISPLAY,
+        "Payload converter class",
         new PayloadConverterRecommender()
       )
 
       .define(
         SINK_PAYLOAD_CONVERTER_SCHEMA_CONFIG,
         Type.BOOLEAN,
-        SINK_PAYLOAD_CONVERTER_SCHEMA_DEFAULT,
+        "false",
         new PayloadConverterSchemaValidator(),
         Importance.LOW,
-        SINK_PAYLOAD_CONVERTER_SCHEMA_DOC,
+        "Include schema in JSON output for JsonPayloadConverter",
         group,
         ++orderInGroup,
         ConfigDef.Width.SHORT,
-        SINK_PAYLOAD_CONVERTER_SCHEMA_DISPLAY
+        "Include schema in JSON output (true/false)"
       )
 
       .define(
         SINK_RETRY_BACKOFF_CONFIG,
         Type.LONG,
-        SINK_RETRY_BACKOFF_DEFAULT,
+        5000L,
         Importance.LOW,
-        SINK_RETRY_BACKOFF_DOC,
+        "The retry backoff in milliseconds. This config is used to notify Kafka connect to retry "
+          + "delivering a message batch or performing recovery in case of transient exceptions.",
         group,
         ++orderInGroup,
         ConfigDef.Width.NONE,
-        SINK_RETRY_BACKOFF_DISPLAY
+        "Retry Backoff (ms)"
+      )
+
+      .define(
+        SINK_RESPONSE_TIMEOUT_MS_CONFIG,
+        Type.INT,
+        5000L,
+        Importance.HIGH,
+        "How long to wait in milliseconds before trying to re-send a HTTP request.",
+        group,
+        ++orderInGroup,
+        ConfigDef.Width.NONE,
+        "Read Timeout (ms)"
+      )
+
+      .define(
+        SINK_RETRY_ATTEMPTS_CONFIG,
+        Type.INT,
+        5,
+        Importance.HIGH,
+        "How any times to attempt to retry sending a POST before throwing an error to notify of failure.",
+        group,
+        ++orderInGroup,
+        ConfigDef.Width.NONE,
+        "Retry Count"
       )
       ;
   }
@@ -185,6 +187,14 @@ public class RestSinkConnectorConfig extends AbstractConfig {
 
   Map<String, String> getHttpRequestProperties() {
     return httpRequestProperties;
+  }
+
+  public Integer getSinkResponseTimeoutMsConfig() {
+    return this.getInt(SINK_RESPONSE_TIMEOUT_MS_CONFIG);
+  }
+
+  public Integer getSinkRetryAttemptsConfig() {
+    return this.getInt(SINK_RETRY_ATTEMPTS_CONFIG);
   }
 
   private static class PayloadConverterRecommender implements ConfigDef.Recommender {
