@@ -138,7 +138,7 @@ public class RestSinkConnectorConfig extends AbstractConfig {
       .define(
         SINK_RESPONSE_TIMEOUT_MS_CONFIG,
         Type.INT,
-        5000L,
+        5000,
         Importance.HIGH,
         "How long to wait in milliseconds before trying to re-send a HTTP request.",
         group,

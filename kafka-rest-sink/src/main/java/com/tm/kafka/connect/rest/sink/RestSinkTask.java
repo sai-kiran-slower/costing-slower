@@ -11,9 +11,7 @@ import org.apache.kafka.connect.sink.SinkTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.*;
 import java.util.Collection;
 import java.util.Map;
@@ -61,6 +59,13 @@ public class RestSinkTask extends SinkTask {
           log.info("Writing data: \n" + data);
           httpRequestProperties.forEach(conn::setRequestProperty);
 
+          // TODO pass credentials
+          Authenticator.setDefault (new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+              return new PasswordAuthentication ("step", "stone01".toCharArray());
+            }
+          });
+
           conn.setRequestMethod(method);
 
           // Set how long to wait for a response before giving up
@@ -83,8 +88,16 @@ public class RestSinkTask extends SinkTask {
 
           int responseCode = conn.getResponseCode();
 
+
           // TODO Delete info line
           log.info("Response code: {}, Request data: {}, Message: {}", responseCode, data, conn.getResponseMessage());
+
+          try (InputStream is = conn.getInputStream()) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(new BufferedInputStream(is)));
+            br.lines().forEach(s -> log.info(s));
+            br.close();
+          }
+
           if (log.isTraceEnabled()) {
             log.trace("Response code: {}, Request data: {}, Message: {}", responseCode, data, conn.getResponseMessage());
           }
