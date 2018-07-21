@@ -16,69 +16,35 @@ mapping_rules:
         br_code: N
         br_description: N
         translation_required: Y
+
   color_mapping:
     status:
       - flex_code: approved
-        flex_description: approved
         br_code: APPROVED
-        br_description: APPROVED
-        translation_required: N
       - flex_code: cfRejected
-        flex_description: cfRejected
         br_code: CFREJECT
-        br_description: CF REJECTED
-        translation_required: Y
       - flex_code: cancelled
-        flex_description: cancelled
         br_code: CCL
-        br_description: CANCELLED
-        translation_required: Y
       - flex_code: created
-        flex_description: created
         br_code: CREATED
-        br_description: CREATED
-        translation_required: N
       - flex_code: inProgress
-        flex_description: inProgress
         br_code: IP
-        br_description: IN PROGRESS
-        translation_required: Y
       - flex_code: limitedApproved
-        flex_description: limitedApproved
         br_code: LIMITAPP
-        br_description: LIMITED APPROVED
-        translation_required: Y
       - flex_code: requested
-        flex_description: requested
         br_code: REQUESTD
-        br_description: REQUESTED
-        translation_required: Y
     category:
       - flex_code: colorwayCombination
-        flex_description: Colorway Combination
         br_code: COLORCOM
-        br_description: COLORWAY COMBINATION
-        translation_required: Y
       - flex_code: spaceDye
-        flex_description: Space Dye
         br_code: spacedye
-        br_description: SPACE DYE
-        translation_required: N
       - flex_code: Solid
-        flex_description: Solid
         br_code: SOLID
-        br_description: SOLID
-        translation_required: N
       - flex_code: Heather
-        flex_description: Heather
         br_code: HEATHER
-        br_description: HEATHER
-        translation_required: N
       - flex_code: Multicolor
-        flex_description: Multicolor
         br_code: MULTICOL
-        br_description: MULTICOLOR
-        translation_required: Y
+
   quote_mapping:
     seasonal_type:
       - flex_code: new

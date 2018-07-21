@@ -54,6 +54,24 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.25</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>25.1-jre</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -74,6 +92,7 @@
                             <language>spring</language>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
+                                <mapper>lowerCamelCaseNamingStrategyMapper</mapper>
                             </configOptions>
                             <environmentVariables>
                                 <models/>

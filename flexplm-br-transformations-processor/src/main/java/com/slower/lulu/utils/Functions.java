@@ -2,12 +2,17 @@ package com.slower.lulu.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import com.slower.lulu.config.ColorMapping;
 import com.slower.lulu.config.FlexBrMapping;
 import com.slower.lulu.config.MappingConfig;
+import com.slower.lulu.config.MappingRule;
 import com.slower.lulu.model.Attribute;
+import org.apache.commons.text.CaseUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 public class Functions {
 
@@ -30,6 +35,35 @@ public class Functions {
             e.printStackTrace();
             return new MappingConfig();
         }
+    }
+
+    public static String getBRCodeReflected(String mappingDomain, String mappingType, String flexCode) {
+        final MappingConfig mappingConfig = Functions.getMappingConfigs();
+        final String brCode = null;
+
+        final MappingRule mappingRules = mappingConfig.getMappingRules();
+        final ColorMapping specificMapping;
+        try {
+            specificMapping = (ColorMapping) mappingRules.getClass().getMethod(getMappingCC(mappingDomain.toLowerCase())).invoke(mappingRules);
+
+            final String lookup = mappingType.toLowerCase();
+            final List<FlexBrMapping> mappings = (List<FlexBrMapping>) specificMapping.getClass().getMethod(getCC(lookup)).invoke(specificMapping);
+            for (FlexBrMapping flexBrMapping : mappings) {
+                if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
+                    return flexBrMapping.getBrCode();
+            }
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            // TODO Add explanation that we passed an unsupported mapping domain or mapping type
+            e.printStackTrace();
+        }
+
+        throw new IllegalArgumentException(
+                String.format("Failed to find mapping for flex code: %s with domain %s and type %s", flexCode, mappingDomain, mappingType)
+        );
     }
 
     public static String getBRCode(String mappingDomain, String mappingType, String flexCode) {
@@ -127,5 +161,17 @@ public class Functions {
             }
         }
         return brCode;
+    }
+
+    public static String getCC(final String s) {
+        return CaseUtils.toCamelCase("get_" + s, false, '_');
+    }
+
+    public static String getMappingCC(final String s) {
+        return CaseUtils.toCamelCase("get_" + s + "_mapping", false, '_');
+    }
+
+    public static String setCC(final String s) {
+        return CaseUtils.toCamelCase("set_" + s, false, '_');
     }
 }
