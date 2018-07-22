@@ -1,0 +1,13 @@
+{
+  "document" : {
+    "@xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+    "color_library" : {
+      "colorlib_h" : {
+        "@memo3" : "464479009",
+        "@color_name" : "PTE7",
+        "@owner" : "LULULEMON",
+        "@active_ind" : "Y"
+      }
+    }
+  }
+}

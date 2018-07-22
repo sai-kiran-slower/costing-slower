@@ -1,0 +1,16 @@
+{
+  "document" : {
+    "@xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+    "color_library" : {
+      "colorlib_h" : {
+        "@memo3" : "480599",
+        "@color_name" : "CLMI",
+        "@alt_name1" : "CLEAR MINT",
+        "@memo2" : "SOLID",
+        "@status" : "APPROVED",
+        "@owner" : "LULULEMON",
+        "@active_ind" : "Y"
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+    "document":{
+        "@xmlns:xsi":"http://www.w3.org/2001/XMLSchema-instance",
+        "color_library":
+            {
+                "colorlib_h":{
+                    "@memo3":"47055",
+                    "@color_name":"BASP",
+                    "@owner":"LULULEMON",
+                    "@active_ind":"Y",
+					"@rgb_r":"80",
+					"@rgb_g":"120",
+					"@rgb_b":"120"
+					
+                }
+            }		
+		}
+}		

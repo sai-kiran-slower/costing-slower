@@ -1,0 +1,26 @@
+{
+    "document":{
+        "@xmlns:xsi":"http://www.w3.org/2001/XMLSchema-instance",
+        "color_library":
+            {
+                "colorlib_h":{
+                    "@memo3":"769690",
+                    "@color_name":"HHBW",
+                    "@owner":"LULULEMON",
+                    "@active_ind":"Y",
+					"attachment" : // if change_ind=Y and value is empty , set it this way
+					{
+						"@location":"",
+                        "@attachment_no":"",
+                        "@custom_location":"",
+                        "@icon_location":"",
+                        "@largeview_location":"",
+                        "@overview_location":"",
+                        "@thumbnail_location":""
+					}
+					
+                }
+            }		
+		}
+}		
+

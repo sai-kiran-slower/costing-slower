@@ -1,0 +1,50 @@
+{
+    "document":{
+		"request": {
+					"quote": {
+								"@owner" : "LULULEMON", 
+								"@item_no" : "LM9578S",
+								"@description" : "Control the Cold Cashmere Beanie LM9578S",
+								"@season" : "18-4WI",
+								"@season_year" : "2018",
+								"@alt_desc1": "Control the Cold Cashmere Bnie",
+								"@status_04" : "C", 
+								"@request_type" : "FG", 
+								"@status_06" : "ACTIVE",
+								"@buy_program_no" : "Control the Cold Cashmere Beanie",
+								"@memo1" : "ACCESSORIES",	//key changed from commodity to memo1				
+								"@brand": "100",
+								"@class": "100100300502",
+								"@subclass" : "100100300502705",
+								"@dept" :"100100300",
+								"@division" : "100100",
+								//newly added fields
+								"@ref_no" : "18-4WI",
+								"@subdept" : "ACCESSORIES",
+								"@memo2" : "MENSACCESSORIES",
+								"@status_05" :"REGULAR",
+								"notes" : { // Seasonal Style Meeting Notes
+									"@note_id" : "PROTOREVIEW",
+									"@text" : "FOUNDATION BS"
+								},
+								"size_ranges" : {
+											"@size_range" : "C"
+											},
+								"quote_ext" : {
+											"@pattern_maker" : "angelliu",
+											"@prodmgr" : "Courtenay Parent",
+											"@designer" : "Ali Linton"
+											},
+								"attachment" : {
+									"@location":"LM9578S.png",
+									"@attachment_no":"IMAGE", 
+									"@custom_location":"custom/LM9578S.png",
+									"@icon_location":"icons/LM9578S.png",
+									"@largeview_location":"largeview/LM9578S.png",
+									"@overview_location":"overview/LM9578S.png",
+									"@thumbnail_location":"thumbnails/LM9578S.png"
+								}
+								}
+					}
+				}
+}				

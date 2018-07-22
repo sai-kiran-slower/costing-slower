@@ -1,0 +1,465 @@
+mapping_rules:
+  common_mapping:
+    active_ind:
+      - flex_code: CREATE
+        flex_description: CREATE
+        br_code: Y
+        br_description: Y
+        translation_required: Y
+      - flex_code: UPDATE
+        flex_description: UPDATE
+        br_code: Y
+        br_description: Y
+        translation_required: Y
+      - flex_code: DELETE
+        flex_description: DELETE
+        br_code: N
+        br_description: N
+        translation_required: Y
+  color_mapping:
+    status:
+      - flex_code: approved
+        flex_description: approved
+        br_code: APPROVED
+        br_description: APPROVED
+        translation_required: N
+      - flex_code: cfRejected
+        flex_description: cfRejected
+        br_code: CFREJECT
+        br_description: CF REJECTED
+        translation_required: Y
+      - flex_code: cancelled
+        flex_description: cancelled
+        br_code: CCL
+        br_description: CANCELLED
+        translation_required: Y
+      - flex_code: created
+        flex_description: created
+        br_code: CREATED
+        br_description: CREATED
+        translation_required: N
+      - flex_code: inProgress
+        flex_description: inProgress
+        br_code: IP
+        br_description: IN PROGRESS
+        translation_required: Y
+      - flex_code: limitedApproved
+        flex_description: limitedApproved
+        br_code: LIMITAPP
+        br_description: LIMITED APPROVED
+        translation_required: Y
+      - flex_code: requested
+        flex_description: requested
+        br_code: REQUESTD
+        br_description: REQUESTED
+        translation_required: Y
+    category:
+      - flex_code: colorwayCombination
+        flex_description: Colorway Combination
+        br_code: COLORCOM
+        br_description: COLORWAY COMBINATION
+        translation_required: Y
+      - flex_code: spaceDye
+        flex_description: Space Dye
+        br_code: spacedye
+        br_description: SPACE DYE
+        translation_required: N
+      - flex_code: Solid
+        flex_description: Solid
+        br_code: SOLID
+        br_description: SOLID
+        translation_required: N
+      - flex_code: Heather
+        flex_description: Heather
+        br_code: HEATHER
+        br_description: HEATHER
+        translation_required: N
+      - flex_code: Multicolor
+        flex_description: Multicolor
+        br_code: MULTICOL
+        br_description: MULTICOLOR
+        translation_required: Y
+  quote_mapping:
+    seasonal_type:
+      - flex_code: new
+        flex_description: New
+        br_code: N
+        br_description: NEW
+        translation_required: Y
+      - flex_code: carryover
+        flex_description: Carryover
+        br_code: C
+        br_description: CARRYOVER
+        translation_required: Y
+    season_style_level_status:
+      - flex_code: active
+        flex_description: Active
+        br_code: ACTIVE
+        br_description: ACTIVE
+        translation_required: N
+      - flex_code: drop
+        flex_description: Drop
+        br_code: DROP
+        br_description: DROP
+        translation_required: N
+    season_style_option_level_status:
+      - flex_code: active
+        flex_description: Active
+        br_code: ACTIVE
+        br_description: ACTIVE
+        translation_required: N
+      - flex_code: drop
+        flex_description: Drop
+        br_code: DROP
+        br_description: DROP
+        translation_required: N
+      - flex_code: cancelled
+        flex_description: cancelled
+        br_code: CCL
+        br_description: CANCELLED
+        translation_required: Y
+    category:
+      - flex_code: tanks
+        flex_description: 1 - Tanks
+        br_code: TANKS
+        br_description: 1 - Tanks
+        translation_required: N
+      - flex_code: bras
+        flex_description: 2 - Bras
+        br_code: BRAS
+        br_description: 2 - Bras
+        translation_required: N
+      - flex_code: tops
+        flex_description: 3 - Tops
+        br_code: TOPS
+        br_description: 3 - Tops
+        translation_required: N
+      - flex_code: jackets
+        flex_description: 4 - Jackets
+        br_code: JACKETS
+        br_description: 4 - Jackets
+        translation_required: N
+      - flex_code: pants
+        flex_description: 5 - Pants
+        br_code: PANTS
+        br_description: 5 - Pants
+        translation_required: N
+      - flex_code: crops
+        flex_description: 6 - Crops
+        br_code: CROPS
+        br_description: 6 - Crops
+        translation_required: N
+      - flex_code: shorts
+        flex_description: 7 - Shorts
+        br_code: SHORTS
+        br_description: 7 - Shorts
+        translation_required: N
+      - flex_code: skirts
+        flex_description: 8 - Skirts
+        br_code: SKIRTS
+        br_description: 8 - Skirts
+        translation_required: N
+      - flex_code: accessories
+        flex_description: 9 - Accessories
+        br_code: ACCESSORIES
+        br_description: 9 - Accessories
+        translation_required: N
+    design_line:
+      - flex_code: andGo
+        flex_description: &Go
+        br_code: ANDGO
+        br_description: AND GO
+        translation_required: N
+      - flex_code: apresPractice
+        flex_description: Apres Practice
+        br_code: APRESPRACTICE
+        br_description: Apres Practice
+        translation_required: N
+      - flex_code: apresStudio
+        flex_description: Apres Studio
+        br_code: APRESSTUDIO
+        br_description: Apres Studio
+        translation_required: N
+      - flex_code: block
+        flex_description: Block
+        br_code: BLOCK
+        br_description: Block
+        translation_required: N
+      - flex_code: cycling
+        flex_description: Cycling
+        br_code: CYCLING
+        br_description: Cycling
+        translation_required: N
+      - flex_code: girlsAccessories
+        flex_description: Girls Accessories
+        br_code: GIRLSACCESSORIES
+        br_description: Girls Accessories
+        translation_required: N
+      - flex_code: fAndF
+        flex_description: F&amp;F
+        br_code: FANDF
+        br_description: F AND F
+        translation_required: N
+      - flex_code: girlsOuterwear
+        flex_description: Girls Outerwear
+        br_code: GIRLSOUTERWEAR
+        br_description: Girls Outerwear
+        translation_required: N
+      - flex_code: girlsSeamless
+        flex_description: Girls Seamless
+        br_code: GIRLSSEAMLESS
+        br_description: Girls Seamless
+        translation_required: N
+      - flex_code: girlsSwim
+        flex_description: Girls Swim
+        br_code: GIRLSSWIM
+        br_description: Girls Swim
+        translation_required: N
+      - flex_code: intimates
+        flex_description: Intimates
+        br_code: INTIMATES
+        br_description: Intimates
+        translation_required: N
+      - flex_code: lab
+        flex_description: Lab
+        br_code: LAB
+        br_description: Lab
+        translation_required: N
+      - flex_code: mensAccessories
+        flex_description: Mens Accessories
+        br_code: MENSACCESSORIES
+        br_description: Mens Accessories
+        translation_required: N
+      - flex_code: mensFastTurn
+        flex_description: Mens Fast Turn
+        br_code: MENSFASTTURN
+        br_description: Mens Fast Turn
+        translation_required: N
+      - flex_code: lTT
+        flex_description: LTT
+        br_code: LTT
+        br_description: LTT
+        translation_required: N
+      - flex_code: naturalPractice
+        flex_description: Natural Practice
+        br_code: NATURALPRACTICE
+        br_description: Natural Practice
+        translation_required: N
+      - flex_code: noSweat
+        flex_description: No Sweat
+        br_code: NOSWEAT
+        br_description: No Sweat
+        translation_required: N
+      - flex_code: postSweat
+        flex_description: Post Sweat
+        br_code: POSTSWEAT
+        br_description: Post Sweat
+        translation_required: N
+      - flex_code: rideInside
+        flex_description: Ride Inside
+        br_code: RIDEINSIDE
+        br_description: Ride Inside
+        translation_required: N
+      - flex_code: runAndDone
+        flex_description: Run &amp; Done
+        br_code: RUNANDDONE
+        br_description: RUN AND DONE
+        translation_required: N
+      - flex_code: oTC
+        flex_description: OTC
+        br_code: OTC
+        br_description: OTC
+        translation_required: N
+      - flex_code: seaWheeze
+        flex_description: Sea Wheeze
+        br_code: SEAWHEEZE
+        br_description: Sea Wheeze
+        translation_required: N
+      - flex_code: sweat
+        flex_description: Sweat
+        br_code: SWEAT
+        br_description: Sweat
+        translation_required: N
+      - flex_code: teamSport
+        flex_description: Team Sport
+        br_code: TEAMSPORT
+        br_description: Team Sport
+        translation_required: N
+      - flex_code: technicalRun
+        flex_description: Technical Run
+        br_code: TECHNICALRUN
+        br_description: Technical Run
+        translation_required: N
+      - flex_code: technicalYoga
+        flex_description: Technical Yoga
+        br_code: TECHNICALYOGA
+        br_description: Technical Yoga
+        translation_required: N
+      - flex_code: tennis
+        flex_description: Tennis
+        br_code: TENNIS
+        br_description: Tennis
+        translation_required: N
+      - flex_code: warmUpCoolDown
+        flex_description: Warm Up / Cool Down
+        br_code: WARMUPCOOLDOWN
+        br_description: Warm Up / Cool Down
+        translation_required: N
+      - flex_code: womensAccessories
+        flex_description: Womens Accessories
+        br_code: WOMENSACCESSORIES
+        br_description: Womens Accessories
+        translation_required: N
+      - flex_code: womensFastTurn
+        flex_description: Womens Fast Turn
+        br_code: WOMENSFASTTURN
+        br_description: Womens Fast Turn
+        translation_required: N
+      - flex_code: womensOuterwear
+        flex_description: Womens Outerwear
+        br_code: WOMENSOUTERWEAR
+        br_description: Womens Outerwear
+        translation_required: N
+      - flex_code: womensSeamless
+        flex_description: Womens Seamless
+        br_code: WOMENSSEAMLESS
+        br_description: Womens Seamless
+        translation_required: N
+      - flex_code: whiteSpace
+        flex_description: White Space
+        br_code: WHITESPACE
+        br_description: White Space
+        translation_required: N
+      - flex_code: womensSwim
+        flex_description: Womens Swim
+        br_code: WOMENSSWIM
+        br_description: Womens Swim
+        translation_required: N
+      - flex_code: yogaDanceSkateGymnasticsCheer
+        flex_description: Yoga/Dance/Skate/Gymnastics/Cheer
+        br_code: YOGADANCESKATEGYMNASTICSCHEER
+        br_description: Yoga/Dance/Skate/Gymnastics/Cheer
+        translation_required: N
+    calendar_track:
+      - flex_code: lltDevelopment
+        flex_description: LLT Development
+        br_code: LLTDEV
+        br_description: LLT Dev
+        translation_required: Y
+      - flex_code: lltMake
+        flex_description: LLT Make
+        br_code: LLTMAKE
+        br_description: LLT Make
+        translation_required: N
+      - flex_code: regular
+        flex_description: Regular
+        br_code: REGULAR
+        br_description: Regular
+        translation_required: N
+      - flex_code: socks
+        flex_description: Socks
+        br_code: SOCKS
+        br_description: Socks
+        translation_required: N
+      - flex_code: lab
+        flex_description: Lab
+        br_code: LAB
+        br_description: Lab
+        translation_required: N
+    proto_sample_status:
+      - flex_code: inProgress
+        flex_description: In Progress
+        br_code: IP
+        br_description: In Progress
+        translation_required: Y
+      - flex_code: approved
+        flex_description: Approved
+        br_code: APPROVED
+        br_description: Approved
+        translation_required: N
+      - flex_code: approvedWithComments
+        flex_description: Approved With Comments
+        br_code: APPWCOMT
+        br_description: Approved With Comments
+        translation_required: Y
+      - flex_code: resubmit
+        flex_description: Resubmit
+        br_code: RESUBMIT
+        br_description: Resubmit
+        translation_required: N
+      - flex_code: dropped
+        flex_description: Dropped
+        br_code: DROPPED
+        br_description: Dropped
+        translation_required: N
+    size_run_sample_status:
+      - flex_code: inProgress
+        flex_description: In Progress
+        br_code: IP
+        br_description: In Progress
+        translation_required: Y
+      - flex_code: approved
+        flex_description: Approved
+        br_code: APPROVED
+        br_description: Approved
+        translation_required: N
+      - flex_code: approvedWithComments
+        flex_description: Approved With Comments
+        br_code: APPWCOMT
+        br_description: Approved With Comments
+        translation_required: Y
+      - flex_code: resubmit
+        flex_description: Resubmit
+        br_code: RESUBMIT
+        br_description: Resubmit
+        translation_required: N
+      - flex_code: dropped
+        flex_description: Dropped
+        br_code: DROPPED
+        br_description: Dropped
+        translation_required: N
+    design_pod:
+      - flex_code: accessories
+        flex_description: Accessories
+        br_code: ACCESSORIES
+        br_description: Accessories
+        translation_required: N
+      - flex_code: transition
+        flex_description: Transition
+        br_code: TRANSITION
+        br_description: Transition
+        translation_required: N
+      - flex_code: train
+        flex_description: Train
+        br_code: TRAIN
+        br_description: Train
+        translation_required: N
+      - flex_code: mNoSweat
+        flex_description: M No Sweat
+        br_code: M NO SWEAT
+        br_description: M No Sweat
+        translation_required: N
+      - flex_code: mSweat
+        flex_description: M Sweat
+        br_code: M SWEAT
+        br_description: M Sweat
+        translation_required: N
+      - flex_code: wNoSweat
+        flex_description: W No Sweat
+        br_code: W NO SWEAT
+        br_description: W No Sweat
+        translation_required: N
+      - flex_code: wSweat
+        flex_description: W Sweat
+        br_code: W SWEAT
+        br_description: W Sweat
+        translation_required: N
+      - flex_code: fastTurn
+        flex_description: Fast Turn
+        br_code: FAST TURN
+        br_description: Fast Turn
+        translation_required: N
+
+
+
+

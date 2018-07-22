@@ -1,0 +1,46 @@
+{
+  "document" : {
+    "artwork_lib" : {
+      "artwork_lib_h" : {
+        "@artwork_name" : "Straight Shot",
+        "@owner" : "LULULEMON",
+        "@active_ind" : "Y",
+        "@memo1" : "62459200",
+        "@artwork_type" : "print",
+        "@status" : "APPROVED",
+        "artwork_lib_b" : {
+          "@combo_id" : "62459214",
+          "@memo1" : "62459200",
+          "@combo_name" : "Straight Shot Silver Spoon Dark Sl",
+          "@combo_abrv" : "DSSS",
+          "@status" : "APPROVED",
+          "artwork_lib_d" : [ {
+            "@memo3" : "119278",
+            "@color_pos" : "0",
+            "@memo1" : "62459200",
+            "@combo_id" : "62459214"
+          }, {
+            "@memo3" : "135230",
+            "@color_pos" : "1",
+            "@memo1" : "62459200",
+            "@combo_id" : "62459214"
+          }, {
+            "@memo3" : "124302",
+            "@color_pos" : "2",
+            "@memo1" : "62459200",
+            "@combo_id" : "62459214"
+          } ],
+          "attachment" : {
+            "@location" : "StrightShot_SilverSpoon_DarkSlate.png",
+            "@attachment_no" : "IMAGE",
+            "@custom_location" : "custom/StrightShot_SilverSpoon_DarkSlate.png",
+            "@icon_location" : "icons/StrightShot_SilverSpoon_DarkSlate.png",
+            "@largeview_location" : "largeview/StrightShot_SilverSpoon_DarkSlate.png",
+            "@overview_location" : "overview/StrightShot_SilverSpoon_DarkSlate.png",
+            "@thumbnail_location" : "thumbnails/StrightShot_SilverSpoon_DarkSlate.png"
+          }
+        }
+      }
+    }
+  }
+}

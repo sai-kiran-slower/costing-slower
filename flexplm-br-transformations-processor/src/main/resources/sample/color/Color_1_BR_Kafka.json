@@ -10,7 +10,7 @@
         "@status" : "CFREJECT",
         "@owner" : "LULULEMON",
         "@active_ind" : "Y",
-        "@attachment" : {
+        "attachment" : {
           "@location" : "XO-65.jpg",
           "@attachment_no" : "IMAGE",
           "@custom_location" : "custom/XO-65.jpg",

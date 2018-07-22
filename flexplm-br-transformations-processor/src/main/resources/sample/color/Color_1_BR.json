@@ -4,16 +4,13 @@
         "color_library":
             {
                 "colorlib_h":{
-                    "@memo3":"869069",
+                    "@memo3":"869069", // set FlexPLM Object ID -since this is of type SOLID
                     "@color_name":"X065",
                     "@alt_name1":"X065",
                     "@memo2":"SOLID",
                     "@status":"CFREJECT",
-                    "@rgb_r":"",
-                    "@rgb_g":"",
-                    "@rgb_b":"",
-                    "@owner":"LULULEMON",
-                    "@active_ind":"Y",
+                    "@owner":"LULULEMON", //default to LULULEMON
+                    "@active_ind":"Y", // default to Y , should be set to N on delete event
                     "attachment":{
                         "@location":"X0-65.jpg",
                         "@attachment_no":"IMAGE",

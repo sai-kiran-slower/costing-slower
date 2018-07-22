@@ -1,0 +1,28 @@
+{
+    "document":{
+        "@xmlns:xsi":"http://www.w3.org/2001/XMLSchema-instance",
+        "color_library":
+            {
+                "colorlib_h":{
+                    "@memo3":"769690",
+                    "@color_name":"HHBW",
+                    "@alt_name1":"60% Hero Blue/10% Hero Blue/White",
+                    "@memo2":"SPACEDYE",
+                    "@status":"CREATED",
+                    "@owner":"LULULEMON",
+                    "@active_ind":"Y",
+					"attachment" :
+					{
+						"@location":"Hero_Blue_White.png",
+                        "@attachment_no":"IMAGE",
+                        "@custom_location":"custom/Hero_Blue_White.png",
+                        "@icon_location":"icons/Hero_Blue_White.png",
+                        "@largeview_location":"largeview/Hero_Blue_White.png",
+                        "@overview_location":"overview/Hero_Blue_White.png",
+                        "@thumbnail_location":"thumbnails/Hero_Blue_White.png"
+					}
+					
+                }
+            }		
+		}
+}		

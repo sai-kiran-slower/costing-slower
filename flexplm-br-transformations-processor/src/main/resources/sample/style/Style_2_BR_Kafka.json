@@ -5,8 +5,9 @@
         "@owner" : "LULULEMON",
         "@item_no" : "LW4H61S",
         "@season" : "18-3FA",
-        "@alt_desc1" : "Cityfarer Anorak ",
-        "@size_ranges" : {
+        "@alt_desc1" : "Cityfarer Anorak",
+        "@request_type" : "FG",
+        "size_ranges" : {
           "@size_range" : "M"
         }
       }

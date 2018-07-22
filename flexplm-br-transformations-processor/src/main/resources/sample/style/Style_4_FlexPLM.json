@@ -1,0 +1,319 @@
+{
+	"Flex_interface": {
+		"FlexPLM_Header": {
+			"EVENT": "CREATE",
+			"INTERFACE": "STYLE",
+			"TIMESTAMP": "2018-06-04T16:40:59Z",
+			"Attribute_List": [
+				{
+					"OBJECT_LEVEL": "LCSSEASONPRODUCTLINK",
+					"OBJECT_ID": "167899",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "status",
+					"FIELD_NAME_DISPLAY": "STATUS",
+					"FIELD_VALUE_KEY": "active",
+					"FIELD_VALUE_DISPLAY": "ACTIVE",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSSEASONPRODUCTLINK",
+					"OBJECT_ID": "167899",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "designerNew",
+					"FIELD_NAME_DISPLAY": "Designer",
+					"FIELD_VALUE_KEY": "Erika Rekis",
+					"FIELD_VALUE_DISPLAY": "Erika Rekis",
+					"FIELD_TYPE": "USERLIST",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSSEASONPRODUCTLINK",
+					"OBJECT_ID": "167899",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "sourcingManager",
+					"FIELD_NAME_DISPLAY": "Sourcing",
+					"FIELD_VALUE_KEY": "Mina Wong",
+					"FIELD_VALUE_DISPLAY": "Mina Wong",
+					"FIELD_TYPE": "USERLIST",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSSEASONPRODUCTLINK",
+					"OBJECT_ID": "167899",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "productDeveloper",
+					"FIELD_NAME_DISPLAY": "Product Developer",
+					"FIELD_VALUE_KEY": "Michelle Mui",
+					"FIELD_VALUE_DISPLAY": "Michelle Mui",
+					"FIELD_TYPE": "USERLIST",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "54378908",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "styleNum",
+					"FIELD_NAME_DISPLAY": "Style ID",
+					"FIELD_VALUE_KEY": "LW5BAMS",
+					"FIELD_VALUE_DISPLAY": "LW5BAMS",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "54378908",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "productName",
+					"FIELD_NAME_DISPLAY": "Style Name",
+					"FIELD_VALUE_KEY": "Every Moment Pant",
+					"FIELD_VALUE_DISPLAY": "Every Moment Pant",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "54378908",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "productLine",
+					"FIELD_NAME_DISPLAY": "POD",
+					"FIELD_VALUE_KEY": "wNoSweat",
+					"FIELD_VALUE_DISPLAY": "W No SWEAT",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "54378908",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "nameLine1",
+					"FIELD_NAME_DISPLAY": "Guest Facing Name",
+					"FIELD_VALUE_KEY": "Every Moment Pant",
+					"FIELD_VALUE_DISPLAY": "Every Moment Pant",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "54378908",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "seasonalStyle",
+					"FIELD_NAME_DISPLAY": "Seasonal Style",
+					"FIELD_VALUE_KEY": "New",
+					"FIELD_VALUE_DISPLAY": "New",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "54378908",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "seasonCode",
+					"FIELD_NAME_DISPLAY": "Season Code",
+					"FIELD_VALUE_KEY": "18-2SU",
+					"FIELD_VALUE_DISPLAY": "18-2SU",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "54378908",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "year",
+					"FIELD_NAME_DISPLAY": "Year",
+					"FIELD_VALUE_KEY": "2018",
+					"FIELD_VALUE_DISPLAY": "2018",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "54378908",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "masterStyle",
+					"FIELD_NAME_DISPLAY": "Master Style",
+					"FIELD_VALUE_KEY": "Every Moment Pant",
+					"FIELD_VALUE_DISPLAY": "Every Moment Pant",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "54378908",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "brand",
+					"FIELD_NAME_DISPLAY": "Brand",
+					"FIELD_VALUE_KEY": "100",
+					"FIELD_VALUE_DISPLAY": "lululemon",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "54378908",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "class",
+					"FIELD_NAME_DISPLAY": "Class",
+					"FIELD_VALUE_KEY": "100110102104",
+					"FIELD_VALUE_DISPLAY": "Womens Pants",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "54378908",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "subClass",
+					"FIELD_NAME_DISPLAY": "SubClass",
+					"FIELD_VALUE_KEY": "100110102104104",
+					"FIELD_VALUE_DISPLAY": "Womens Pants",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "54378908",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "division",
+					"FIELD_NAME_DISPLAY": "Division",
+					"FIELD_VALUE_KEY": "100110",
+					"FIELD_VALUE_DISPLAY": "lulu Womens",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "54378908",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "department",
+					"FIELD_NAME_DISPLAY": "Dept",
+					"FIELD_VALUE_KEY": "100110102",
+					"FIELD_VALUE_DISPLAY": "Womens Bottoms",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "54378908",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "sizeScale",
+					"FIELD_NAME_DISPLAY": "Size Scale",
+					"FIELD_VALUE_KEY": "I",
+					"FIELD_VALUE_DISPLAY": "I",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "54378908",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "thumbnail",
+					"FIELD_NAME_DISPLAY": "Thumbnail",
+					"FIELD_VALUE_KEY": "/Windchill/images/5BAMS.jpg",
+					"FIELD_VALUE_DISPLAY": "/Windchill/images/5BAMS.jpg",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "lCSSEASON",
+					"OBJECT_ID": "7438069",
+					"FLEXTYPE": "SEASON",
+					"FIELD_NAME_KEY": "seasonCode",
+					"FIELD_NAME_DISPLAY": "Season Code",
+					"FIELD_VALUE_KEY": "18-2SU",
+					"FIELD_VALUE_DISPLAY": "18-2SU",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "lCSSEASON",
+					"OBJECT_ID": "7438069",
+					"FLEXTYPE": "SEASON",
+					"FIELD_NAME_KEY": "seasonName",
+					"FIELD_NAME_DISPLAY": "Season Name",
+					"FIELD_VALUE_KEY": " Summer 2018",
+					"FIELD_VALUE_DISPLAY": "Summer 2018",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "lCSSEASON",
+					"OBJECT_ID": "7438069",
+					"FLEXTYPE": "SEASON",
+					"FIELD_NAME_KEY": "year",
+					"FIELD_NAME_DISPLAY": "Year",
+					"FIELD_VALUE_KEY": "2018",
+					"FIELD_VALUE_DISPLAY": "2018",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "54378908",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "category",
+					"FIELD_NAME_DISPLAY": "Category",
+					"FIELD_VALUE_KEY": "pants",
+					"FIELD_VALUE_DISPLAY": "5-Pants",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "54378908",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "designLine",
+					"FIELD_NAME_DISPLAY": "Design Line",
+					"FIELD_VALUE_KEY": "andGo",
+					"FIELD_VALUE_DISPLAY": "&Go",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSSEASONPRODUCTLINK",
+					"OBJECT_ID": "167899",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "calendarTrack",
+					"FIELD_NAME_DISPLAY": "Calendar Track",
+					"FIELD_VALUE_KEY": "regular",
+					"FIELD_VALUE_DISPLAY": "Regular",
+					"FIELD_TYPE": "USERLIST",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSSEASONPRODUCTLINK",
+					"OBJECT_ID": "167899",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "protoSampleStatus",
+					"FIELD_NAME_DISPLAY": "Proto Sample Status",
+					"FIELD_VALUE_KEY": "approved",
+					"FIELD_VALUE_DISPLAY": "APPROVED",
+					"FIELD_TYPE": "USERLIST",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSSEASONPRODUCTLINK",
+					"OBJECT_ID": "167899",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "sizeRunSampleStatus",
+					"FIELD_NAME_DISPLAY": "Size Run Sample Status",
+					"FIELD_VALUE_KEY": "approved",
+					"FIELD_VALUE_DISPLAY": "Approved",
+					"FIELD_TYPE": "USERLIST",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSSEASONPRODUCTLINK",
+					"OBJECT_ID": "167899",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "initialProtoReviewMtgNotes",
+					"FIELD_NAME_DISPLAY": "Seasonal Style Meeting Notes",
+					"FIELD_VALUE_KEY": "Base Style",
+					"FIELD_VALUE_DISPLAY": "Base Style",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				}
+			]
+		}
+	}
+}

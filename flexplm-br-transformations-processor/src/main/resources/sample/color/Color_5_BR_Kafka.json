@@ -1,0 +1,19 @@
+{
+  "document" : {
+    "@xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+    "color_library" : {
+      "colorlib_h" : {
+        "@memo3" : "47055",
+        "@color_name" : "BASP",
+        "@alt_name1" : "Beachy Green Aruba Salt & Pepper",
+        "@memo2" : "HEATHER",
+        "@status" : "CREATED",
+        "@rgb_r" : "90",
+        "@rgb_g" : "100",
+        "@rgb_b" : "110",
+        "@owner" : "LULULEMON",
+        "@active_ind" : "Y"
+      }
+    }
+  }
+}

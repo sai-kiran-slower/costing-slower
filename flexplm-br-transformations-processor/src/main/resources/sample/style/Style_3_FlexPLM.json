@@ -1,0 +1,319 @@
+{
+	"Flex_interface": {
+		"FlexPLM_Header": {
+			"EVENT": "CREATE",
+			"INTERFACE": "STYLE",
+			"TIMESTAMP": "2018-06-04T16:40:59Z",
+			"Attribute_List": [
+				{
+					"OBJECT_LEVEL": "LCSSEASONPRODUCTLINK",
+					"OBJECT_ID": "279096",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "status",
+					"FIELD_NAME_DISPLAY": "STATUS",
+					"FIELD_VALUE_KEY": "active",
+					"FIELD_VALUE_DISPLAY": "ACTIVE",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSSEASONPRODUCTLINK",
+					"OBJECT_ID": "279096",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "designerNew",
+					"FIELD_NAME_DISPLAY": "Designer",
+					"FIELD_VALUE_KEY": "Tiffany Weiland",
+					"FIELD_VALUE_DISPLAY": "Tiffany Weiland",
+					"FIELD_TYPE": "USERLIST",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSSEASONPRODUCTLINK",
+					"OBJECT_ID": "279096",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "sourcingManager",
+					"FIELD_NAME_DISPLAY": "Sourcing",
+					"FIELD_VALUE_KEY": "Amy Thompson",
+					"FIELD_VALUE_DISPLAY": "Amy Thompson",
+					"FIELD_TYPE": "USERLIST",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSSEASONPRODUCTLINK",
+					"OBJECT_ID": "279096",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "productDeveloper",
+					"FIELD_NAME_DISPLAY": "Product Developer",
+					"FIELD_VALUE_KEY": "lvanvuuren",
+					"FIELD_VALUE_DISPLAY": "lvanvuuren",
+					"FIELD_TYPE": "USERLIST",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "16578090",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "styleNum",
+					"FIELD_NAME_DISPLAY": "Style ID",
+					"FIELD_VALUE_KEY": "LM3AU8S",
+					"FIELD_VALUE_DISPLAY": "LM3AU8S",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "16578090",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "productName",
+					"FIELD_NAME_DISPLAY": "Style Name",
+					"FIELD_VALUE_KEY": "5 Year Basic T LM3AU8S",
+					"FIELD_VALUE_DISPLAY": "5 Year Basic T LM3AU8S",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "16578090",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "productLine",
+					"FIELD_NAME_DISPLAY": "POD",
+					"FIELD_VALUE_KEY": "mNoSweat",
+					"FIELD_VALUE_DISPLAY": "M No SWEAT",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "16578090",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "nameLine1",
+					"FIELD_NAME_DISPLAY": "Guest Facing Name",
+					"FIELD_VALUE_KEY": "5 Year Basic T",
+					"FIELD_VALUE_DISPLAY": "5 Year Basic T",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "16578090",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "seasonalStyle",
+					"FIELD_NAME_DISPLAY": "Seasonal Style",
+					"FIELD_VALUE_KEY": "New",
+					"FIELD_VALUE_DISPLAY": "New",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "16578090",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "seasonCode",
+					"FIELD_NAME_DISPLAY": "Season Code",
+					"FIELD_VALUE_KEY": "18-1SP",
+					"FIELD_VALUE_DISPLAY": "18-1SP",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "16578090",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "year",
+					"FIELD_NAME_DISPLAY": "Year",
+					"FIELD_VALUE_KEY": "2018",
+					"FIELD_VALUE_DISPLAY": "2018",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "16578090",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "masterStyle",
+					"FIELD_NAME_DISPLAY": "Master Style",
+					"FIELD_VALUE_KEY": "5 Year Basic T",
+					"FIELD_VALUE_DISPLAY": "5 Year Basic T",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "16578090",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "brand",
+					"FIELD_NAME_DISPLAY": "Brand",
+					"FIELD_VALUE_KEY": "100",
+					"FIELD_VALUE_DISPLAY": "lululemon",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "16578090",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "class",
+					"FIELD_NAME_DISPLAY": "Class",
+					"FIELD_VALUE_KEY": "100110100104",
+					"FIELD_VALUE_DISPLAY": "Mens SS-LS Tops",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "16578090",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "subClass",
+					"FIELD_NAME_DISPLAY": "SubClass",
+					"FIELD_VALUE_KEY": "100110100104104",
+					"FIELD_VALUE_DISPLAY": "Mens SS Tops",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "16578090",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "division",
+					"FIELD_NAME_DISPLAY": "Division",
+					"FIELD_VALUE_KEY": "100110",
+					"FIELD_VALUE_DISPLAY": "lulu Mens",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "16578090",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "department",
+					"FIELD_NAME_DISPLAY": "Dept",
+					"FIELD_VALUE_KEY": "100110100",
+					"FIELD_VALUE_DISPLAY": "Mens Tops",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "16578090",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "sizeScale",
+					"FIELD_NAME_DISPLAY": "Size Scale",
+					"FIELD_VALUE_KEY": "E",
+					"FIELD_VALUE_DISPLAY": "E",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "16578090",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "thumbnail",
+					"FIELD_NAME_DISPLAY": "Thumbnail",
+					"FIELD_VALUE_KEY": "/Windchill/images/Screen_Shot_2017-04-19_at_4.26.06_PM2.png",
+					"FIELD_VALUE_DISPLAY": "/Windchill/images/Screen_Shot_2017-04-19_at_4.26.06_PM2.png",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "lCSSEASON",
+					"OBJECT_ID": "7438069",
+					"FLEXTYPE": "SEASON",
+					"FIELD_NAME_KEY": "seasonCode",
+					"FIELD_NAME_DISPLAY": "Season Code",
+					"FIELD_VALUE_KEY": "18-1SP",
+					"FIELD_VALUE_DISPLAY": "18-1SP",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "lCSSEASON",
+					"OBJECT_ID": "7438069",
+					"FLEXTYPE": "SEASON",
+					"FIELD_NAME_KEY": "seasonName",
+					"FIELD_NAME_DISPLAY": "Season Name",
+					"FIELD_VALUE_KEY": " Spring 2018",
+					"FIELD_VALUE_DISPLAY": "Spring 2018",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "lCSSEASON",
+					"OBJECT_ID": "7438069",
+					"FLEXTYPE": "SEASON",
+					"FIELD_NAME_KEY": "year",
+					"FIELD_NAME_DISPLAY": "Year",
+					"FIELD_VALUE_KEY": "2018",
+					"FIELD_VALUE_DISPLAY": "2018",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "16578090",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "category",
+					"FIELD_NAME_DISPLAY": "Category",
+					"FIELD_VALUE_KEY": "tops",
+					"FIELD_VALUE_DISPLAY": "3-Tops",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSPRODUCT",
+					"OBJECT_ID": "16578090",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "designLine",
+					"FIELD_NAME_DISPLAY": "Design Line",
+					"FIELD_VALUE_KEY": "noSweat",
+					"FIELD_VALUE_DISPLAY": "No Sweat",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSSEASONPRODUCTLINK",
+					"OBJECT_ID": "279096",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "calendarTrack",
+					"FIELD_NAME_DISPLAY": "Calendar Track",
+					"FIELD_VALUE_KEY": "lltDevelopment ",
+					"FIELD_VALUE_DISPLAY": "LLT Development",
+					"FIELD_TYPE": "USERLIST",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSSEASONPRODUCTLINK",
+					"OBJECT_ID": "279096",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "protoSampleStatus",
+					"FIELD_NAME_DISPLAY": "Proto Sample Status",
+					"FIELD_VALUE_KEY": "approved",
+					"FIELD_VALUE_DISPLAY": "APPROVED",
+					"FIELD_TYPE": "USERLIST",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSSEASONPRODUCTLINK",
+					"OBJECT_ID": "279096",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "sizeRunSampleStatus",
+					"FIELD_NAME_DISPLAY": "Size Run Sample Status",
+					"FIELD_VALUE_KEY": "inProgress",
+					"FIELD_VALUE_DISPLAY": "In Progress",
+					"FIELD_TYPE": "USERLIST",
+					"CHANGE_IND": "Y"
+				},
+				{
+					"OBJECT_LEVEL": "LCSSEASONPRODUCTLINK",
+					"OBJECT_ID": "279096",
+					"FLEXTYPE": "PRODUCT",
+					"FIELD_NAME_KEY": "initialProtoReviewMtgNotes",
+					"FIELD_NAME_DISPLAY": "Seasonal Style Meeting Notes",
+					"FIELD_VALUE_KEY": "Base Style",
+					"FIELD_VALUE_DISPLAY": "Base Style",
+					"FIELD_TYPE": "TEXT",
+					"CHANGE_IND": "Y"
+				}
+			]
+		}
+	}
+}

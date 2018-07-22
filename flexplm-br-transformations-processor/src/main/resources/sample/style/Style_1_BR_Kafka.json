@@ -7,26 +7,25 @@
         "@description" : "&go Cityfarer Anorak",
         "@season" : "18-3FA",
         "@season_year" : "2018",
-        "@alt_desc1" : " ",
+        "@alt_desc1" : "",
         "@status_04" : "N",
         "@request_type" : "FG",
-        "@status" : "ACTIVE",
-        "@buy_program_no" : "105122",
-        "@commodity" : "WSWEAT",
+        "@status_06" : "ACTIVE",
+        "@memo1" : "WSWEAT",
         "@brand" : "100",
         "@class" : "100110100104",
         "@subclass" : "100110100104104",
-        "@dept" : "100110100",
         "@division" : "100110",
-        "@size_ranges" : {
+        "@ref_no" : "18-3FA",
+        "size_ranges" : {
           "@size_range" : "I"
         },
-        "@quote_ext" : {
-          "@pattern_maker" : "Thompson Amy ",
-          "@prodmgr" : "Elischer Leora ",
+        "quote_ext" : {
+          "@pattern_maker" : "Thompson Amy",
+          "@prodmgr" : "Elischer Leora",
           "@designer" : "London Alexander"
         },
-        "@attachment" : {
+        "attachment" : {
           "@location" : "LW4H61S.png",
           "@attachment_no" : "IMAGE",
           "@custom_location" : "custom/LW4H61S.png",

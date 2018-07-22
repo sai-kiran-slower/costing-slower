@@ -1,0 +1,287 @@
+{"Flex_interface": {
+   "FlexPLM_Header":{
+   
+					"EVENT":"CREATE",
+					"INTERFACE":"ARTWORK",
+                    "TIMESTAMP":"2018-05-04T16:40:59Z",
+                    "Attribute_List":[
+                        {
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"colourwayCode",
+                        "FIELD_NAME_DISPLAY":"Color ID",
+                        "FIELD_VALUE_KEY":"",
+                        "FIELD_VALUE_DISPLAY":"",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"N"
+                        },
+                        {
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"shortdescription",
+                        "FIELD_NAME_DISPLAY":"Short Name",
+                        "FIELD_VALUE_KEY":" ",
+                        "FIELD_VALUE_DISPLAY":" ",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"N"
+                        },
+                        {
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"abbreviation",
+                        "FIELD_NAME_DISPLAY":"Short Name",
+                        "FIELD_VALUE_KEY":"STAQ",
+                        "FIELD_VALUE_DISPLAY":"STAQ",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"Y"
+                        },
+                        {
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"longdescription",
+                        "FIELD_NAME_DISPLAY":"Long Name",
+                        "FIELD_VALUE_KEY":" ",
+                        "FIELD_VALUE_DISPLAY":" ",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"N"
+                        },
+                        {
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"colorName",
+                        "FIELD_NAME_DISPLAY":"Color Description",
+                        "FIELD_VALUE_KEY":"50/50 Stripe Aquamarine",
+                        "FIELD_VALUE_DISPLAY":"50/50 Stripe Aquamarine",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"Y"
+                        },
+                        {
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"colorType",
+                        "FIELD_NAME_DISPLAY":"Color Type",
+                        "FIELD_VALUE_KEY":"YARNDYE",
+                        "FIELD_VALUE_DISPLAY":"YARNDYE",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"Y"
+                        },
+                        {
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"status",
+                        "FIELD_NAME_DISPLAY":"Color Status",
+                        "FIELD_VALUE_KEY":"inProgress",
+                        "FIELD_VALUE_DISPLAY":"In Progress",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"Y"
+                        },
+                        {
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"artName",
+                        "FIELD_NAME_DISPLAY":"Art Name",
+                        "FIELD_VALUE_KEY":"50/50 Stripe",
+                        "FIELD_VALUE_DISPLAY":"50/50 Stripe",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"Y"
+                        },
+                        {
+						"OBJECT_LEVEL":"BUSINESS OBJECT",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "ARTWORK",
+                        "FIELD_NAME_KEY":"artWork",
+                        "FIELD_NAME_DISPLAY":"Art Work",
+                        "FIELD_VALUE_KEY":"11315400",
+                        "FIELD_VALUE_DISPLAY":"11315400",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"Y"
+                        },
+                        {
+						"OBJECT_LEVEL":"LCSDOCUMENT",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "COLOR",
+                        "FIELD_NAME_KEY":"attachment",
+                        "FIELD_NAME_DISPLAY":"Attachment",
+                        "FIELD_VALUE_KEY":"",
+                        "FIELD_VALUE_DISPLAY":"",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"Y"
+                        },
+						{
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"ground",
+                        "FIELD_NAME_DISPLAY":"Ground",
+                        "FIELD_VALUE_KEY":"505598003",
+                        "FIELD_VALUE_DISPLAY":"505598003",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"Y"
+                        },
+						{
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"color1",
+                        "FIELD_NAME_DISPLAY":"Color 1",
+                        "FIELD_VALUE_KEY":"195150512",
+                        "FIELD_VALUE_DISPLAY":"195150512",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"Y"
+                        },
+						{
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"color2",
+                        "FIELD_NAME_DISPLAY":"Color 2",
+                        "FIELD_VALUE_KEY":"",
+                        "FIELD_VALUE_DISPLAY":"",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"Y"
+                        },
+						{
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"color3",
+                        "FIELD_NAME_DISPLAY":"Color 3",
+                        "FIELD_VALUE_KEY":" ",
+                        "FIELD_VALUE_DISPLAY":"",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"N"
+                        },
+						{
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"color4",
+                        "FIELD_NAME_DISPLAY":"Color 4",
+                        "FIELD_VALUE_KEY":" ",
+                        "FIELD_VALUE_DISPLAY":"",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"N"
+                        },
+						{
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"color5",
+                        "FIELD_NAME_DISPLAY":"Color 5",
+                        "FIELD_VALUE_KEY":" ",
+                        "FIELD_VALUE_DISPLAY":"",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"N"
+                        },
+						{
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"color6",
+                        "FIELD_NAME_DISPLAY":"Color 6",
+                        "FIELD_VALUE_KEY":" ",
+                        "FIELD_VALUE_DISPLAY":"",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"N"
+                        },
+						{
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"color7",
+                        "FIELD_NAME_DISPLAY":"Color 7",
+                        "FIELD_VALUE_KEY":" ",
+                        "FIELD_VALUE_DISPLAY":"",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"N"
+                        },
+						{
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"color8",
+                        "FIELD_NAME_DISPLAY":"Color 8",
+                        "FIELD_VALUE_KEY":" ",
+                        "FIELD_VALUE_DISPLAY":"",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"N"
+                        },
+						{
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"color9",
+                        "FIELD_NAME_DISPLAY":"Color 9",
+                        "FIELD_VALUE_KEY":" ",
+                        "FIELD_VALUE_DISPLAY":"",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"N"
+                        },
+						{
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"color10",
+                        "FIELD_NAME_DISPLAY":"Color 10",
+                        "FIELD_VALUE_KEY":" ",
+                        "FIELD_VALUE_DISPLAY":"",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"N"
+                        },
+                        {
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"RGB_R",
+                        "FIELD_NAME_DISPLAY":"RGB_R",
+                        "FIELD_VALUE_KEY":" ",
+                        "FIELD_VALUE_DISPLAY":" ",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"N"
+                        },
+                        {
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"RGB_G",
+                        "FIELD_NAME_DISPLAY":"RGB_G",
+                        "FIELD_VALUE_KEY":" ",
+                        "FIELD_VALUE_DISPLAY":" ",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"N"
+                        },
+                        {
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"RGB_B",
+                        "FIELD_NAME_DISPLAY":"RGB_B",
+                        "FIELD_VALUE_KEY":" ",
+                        "FIELD_VALUE_DISPLAY":" ",
+						"FIELD_TYPE":"TEXT",
+						"CHANGE_IND":"N"
+                        },
+                        {
+						"OBJECT_LEVEL":"LCSCOLOR",
+						"OBJECT_ID" : "324563",
+						"FLEXTYPE": "YARNDYE",
+                        "FIELD_NAME_KEY":"thumbnail",
+                        "FIELD_NAME_DISPLAY":"Thumbnail",
+                        "FIELD_VALUE_KEY":"",
+                        "FIELD_VALUE_DISPLAY":"",
+						"FIELD_TYPE":"IMAGE_LOCATION",
+						"CHANGE_IND":"Y"
+                        }
+						
+									]
+					}
+                }
+			}

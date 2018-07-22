@@ -1,0 +1,21 @@
+{
+  "document" : {
+    "@xmlns:xsi" : "http://www.w3.org/2001/XMLSchema-instance",
+    "color_library" : {
+      "colorlib_h" : {
+        "@memo3" : "769690",
+        "@owner" : "LULULEMON",
+        "@active_ind" : "Y",
+        "attachment" : {
+          "@location" : "HHBW.jpg",
+          "@attachment_no" : "IMAGE",
+          "@custom_location" : "custom/HHBW.jpg",
+          "@icon_location" : "icons/HHBW.jpg",
+          "@largeview_location" : "largeview/HHBW.jpg",
+          "@overview_location" : "overview/HHBW.jpg",
+          "@thumbnail_location" : "thumbnails/HHBW.jpg"
+        }
+      }
+    }
+  }
+}
