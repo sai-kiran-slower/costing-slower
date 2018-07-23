@@ -23,7 +23,15 @@ public class ColorResponseHandler {
         final FlexplmHeader flexplmHeader = colorFlexPLMResponse.getFlexInterface().getFlexPLMHeader();
         final List<Attribute> attributeList = flexplmHeader.getAttributeList();
 
+        // This stays as is
         colorlibHBuilder.setActiveInd(flexplmHeader.getEVENT());
+
+        // TODO Replace with dynamic lookup
+        // TODO Add "Field if NUll Handler"
+        // TODO Add "length handler"
+        // TODO Add "lookup handler"
+        // TODO Add "is attachment handler"
+        // TODO Add "static defaults "
 
         for (final Attribute attribute : attributeList) {
             final String nameKey = attribute.getFIELDNAMEKEY();

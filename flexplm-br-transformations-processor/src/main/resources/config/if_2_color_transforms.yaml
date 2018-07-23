@@ -1,0 +1,38 @@
+color:
+  dynamic:
+    colourwayCode:
+        - output: memo3
+          length: 10
+          field_if_null: OBJECT_ID
+    shortDescription:
+        - output: color_name
+          length: 35
+    abbreviation:
+        - output: color_name
+          length: 35
+    colorName:
+        - output: alt_name1
+          length: 35
+    longDescription:
+        - output: alt_name1
+          length: 35
+    colorType:
+        - output: memo2
+          length: 35
+          lookup: category
+    RGB_R:
+        - output: rgb_r
+          length: 3
+    RGB_B:
+        - output: rgb_b
+          length: 3
+    RGB_G:
+        - output: rgb_b
+          length: 3
+    thumbnail:
+        - output: location
+          length: 45
+          is_attachment: true
+  static_defaults:
+    - owner: lululemon
+    - attachment_no: IMAGE
