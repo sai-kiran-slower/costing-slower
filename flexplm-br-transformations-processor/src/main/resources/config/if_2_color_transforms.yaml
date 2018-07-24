@@ -1,42 +1,41 @@
 dynamic:
     colourwayCode:
-        - output: memo3
-          length: 10
-          object_id_if_empty: true
-          always_included: true
+        output: memo3
+        length: 10
+        object_id_if_empty: true
+        always_included: true
     shortDescription:
-        - output: color_name
-          length: 35
+        output: color_name
+        length: 35
     abbreviation:
-        - output: color_name
-          length: 35
+        output: color_name
+        length: 35
     colorName:
-        - output: alt_name1
-          length: 35
+        output: alt_name1
+        length: 35
     longDescription:
-        - output: alt_name1
-          length: 35
+        output: alt_name1
+        length: 35
     colorType:
-        - output: memo2
-          length: 35
-          lookup: color_category
+        output: memo2
+        length: 35
+        lookup: color_category
     status:
-        - output: status
-          length: 8
-          lookup: color_status
+        output: status
+        length: 8
+        lookup: color_status
     RGB_R:
-        - output: rgb_r
-          length: 3
+        output: rgb_r
+        length: 3
     RGB_B:
-        - output: rgb_b
-          length: 3
+        output: rgb_b
+        length: 3
     RGB_G:
-        - output: rgb_b
-          length: 3
+        output: rgb_g
+        length: 3
     thumbnail:
-        - output: location
-          length: 45
-          is_attachment: true
+        output: location
+        length: 45
+        is_attachment: true
 static_defaults:
-    - owner: lululemon
-    - attachment_no: IMAGE
+    owner: LULULEMON

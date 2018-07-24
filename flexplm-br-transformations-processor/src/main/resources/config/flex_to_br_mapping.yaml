@@ -27,7 +27,7 @@ mapping_rules:
     - flex_code: colorwayCombination
       br_code: COLORCOM
     - flex_code: spaceDye
-      br_code: spacedye
+      br_code: SPACEDYE
     - flex_code: Solid
       br_code: SOLID
     - flex_code: Heather
