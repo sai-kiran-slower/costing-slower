@@ -2,7 +2,6 @@ package com.slower.lulu.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import com.slower.lulu.config.ColorMapping;
 import com.slower.lulu.config.FlexBrMapping;
 import com.slower.lulu.config.MappingConfig;
 import com.slower.lulu.config.MappingRule;
@@ -42,21 +41,17 @@ public class Functions {
 
     /**
      *
-     * @param mappingDomain e.g. Color
      * @param fieldToMap E.g. colorType
      * @param flexValue Value from flex
      * @return
      */
-    public static String getBRCodeReflected(String mappingDomain, String fieldToMap, String flexValue) {
+    public static String getBRCodeReflected(String fieldToMap, String flexValue) {
         final MappingConfig mappingConfig = Functions.getMappingConfigs();
 
         final MappingRule mappingRules = mappingConfig.getMappingRules();
-        final ColorMapping specificMapping;
         try {
-            specificMapping = (ColorMapping) mappingRules.getClass().getMethod(getMappingCC(mappingDomain.toLowerCase())).invoke(mappingRules);
-
             final String lookup = fieldToMap.toLowerCase();
-            final List<FlexBrMapping> mappings = (List<FlexBrMapping>) specificMapping.getClass().getMethod(getToCamelCase(lookup)).invoke(specificMapping);
+            final List<FlexBrMapping> mappings = (List<FlexBrMapping>) mappingRules.getClass().getMethod(getToCamelCase(lookup)).invoke(mappingRules);
             for (FlexBrMapping flexBrMapping : mappings) {
                 if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexValue))
                     return flexBrMapping.getBrCode();
@@ -67,12 +62,12 @@ public class Functions {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
             // TODO Add explanation that we passed an unsupported mapping domain or mapping type
-            logger.error(String.format("Failed to find mapping for domain %s, field %s, and value %s. ",
-                    mappingDomain, fieldToMap, flexValue));
+            logger.error(String.format("Failed to find mapping for field %s, and value %s. ",
+                    fieldToMap, flexValue));
         }
 
         throw new IllegalArgumentException(
-                String.format("Failed to find mapping for flex code: %s with domain %s and type %s", flexValue, mappingDomain, fieldToMap)
+                String.format("Failed to find mapping for flex code: %s with type %s", flexValue, fieldToMap)
         );
     }
 
@@ -83,55 +78,55 @@ public class Functions {
 
             switch (mappingType.toLowerCase()) {
                 case "seasonal_type":
-                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getSeasonalType()) {
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteSeasonalType()) {
                         if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
                             brCode = flexBrMapping.getBrCode();
                     }
                     break;
                 case "season_style_level_status":
-                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getSeasonStyleLevelStatus()) {
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteSeasonStyleLevelStatus()) {
                         if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
                             brCode = flexBrMapping.getBrCode();
                     }
                     break;
                 case "season_style_option_level_status":
-                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getSeasonStyleOptionLevelStatus()) {
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteSeasonStyleOptionLevelStatus()) {
                         if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
                             brCode = flexBrMapping.getBrCode();
                     }
                     break;
                 case "category":
-                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getCategory()) {
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteCategory()) {
                         if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
                             brCode = flexBrMapping.getBrCode();
                     }
                     break;
                 case "design_line":
-                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getDesignLine()) {
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteDesignLine()) {
                         if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
                             brCode = flexBrMapping.getBrCode();
                     }
                     break;
                 case "calendar_track":
-                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getCalendarTrack()) {
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteCalendarTrack()) {
                         if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
                             brCode = flexBrMapping.getBrCode();
                     }
                     break;
                 case "proto_sample_status":
-                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getProtoSampleStatus()) {
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteProtoSampleStatus()) {
                         if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
                             brCode = flexBrMapping.getBrCode();
                     }
                     break;
                 case "size_run_sample_status":
-                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getSizeRunSampleStatus()) {
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteSizeRunSampleStatus()) {
                         if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
                             brCode = flexBrMapping.getBrCode();
                     }
                     break;
                 case "design_pod":
-                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteMapping().getDesignPod()) {
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getQuoteDesignPod()) {
                         if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
                             brCode = flexBrMapping.getBrCode();
                     }
@@ -143,13 +138,13 @@ public class Functions {
         else if (mappingDomain.equalsIgnoreCase("color")) {
             switch (mappingType.toLowerCase()) {
                 case "status":
-                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getColorMapping().getStatus()) {
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getColorStatus()) {
                         if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
                             brCode = flexBrMapping.getBrCode();
                     }
                     break;
                 case "category":
-                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getColorMapping().getCategory()) {
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getColorCategory()) {
                         if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
                             brCode = flexBrMapping.getBrCode();
                     }
@@ -161,7 +156,7 @@ public class Functions {
         else if (mappingDomain.equalsIgnoreCase("common")) {
             switch (mappingType.toLowerCase()) {
                 case "active_ind":
-                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getCommonMapping().getActiveInd()) {
+                    for (FlexBrMapping flexBrMapping : mappingConfig.getMappingRules().getActiveInd()) {
                         if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
                             brCode = flexBrMapping.getBrCode();
                     }

@@ -32,11 +32,11 @@ public class ColorlibHBuilder extends ColorlibH{
     }
 
     public void setMemo2(String memo2) {
-        this.memo2 = Functions.charLimit(Functions.getBRCodeReflected("color", "category", memo2), 35);
+        this.memo2 = Functions.charLimit(Functions.getBRCodeReflected("color_category", memo2), 35);
     }
 
     public void setStatus(final String status) {
-        this.status = Functions.charLimit(Functions.getBRCodeReflected("color", "status", status), 8);
+        this.status = Functions.charLimit(Functions.getBRCodeReflected("color_status", status), 8);
     }
 
     public void setRgbR(final String rgbR) {
@@ -56,7 +56,7 @@ public class ColorlibHBuilder extends ColorlibH{
     }
 
     public void setActiveInd(final String activeInd) {
-        this.activeInd = Functions.charLimit(Functions.getBRCodeReflected("common", "active_ind", activeInd), 1);
+        this.activeInd = Functions.charLimit(Functions.getBRCodeReflected("active_ind", activeInd), 1);
     }
 
     public void setAttachment(final Attachment attachment) {

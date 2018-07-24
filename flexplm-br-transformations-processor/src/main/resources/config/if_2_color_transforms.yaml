@@ -19,7 +19,11 @@ dynamic:
     colorType:
         - output: memo2
           length: 35
-          lookup: category
+          lookup: color_category
+    status:
+        - output: status
+          length: 8
+          lookup: color_status
     RGB_R:
         - output: rgb_r
           length: 3

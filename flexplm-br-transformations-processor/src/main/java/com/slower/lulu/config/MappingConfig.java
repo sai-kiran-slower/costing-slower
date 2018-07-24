@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * MappingConfig
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-07-05T02:02:28.246-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-07-23T22:31:43.648-07:00")
 
 public class MappingConfig   {
   @JsonProperty("mapping_rules")

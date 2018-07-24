@@ -120,7 +120,7 @@ public class ColorResponseHandler {
         // This stays as is
         colorlibHBuilder.setActiveInd(flexplmHeader.getEVENT());
 
-        final Map transformations = DynamicTransform.getTransformations("color/if_2_color_transforms.yaml");
+        final Map transformations = DynamicTransform.getTransformations("config/if_2_color_transforms.yaml");
 
         final List<Map.Entry<String, String>> staticDefaults = DynamicTransform.getStaticDefaults(transformations);
 
