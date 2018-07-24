@@ -400,69 +400,51 @@ definitions:
   mapping_rule:
     type: object
     properties:
-      common_mapping:
-        $ref: '#/definitions/common_mapping'
-      color_mapping:
-        $ref: '#/definitions/color_mapping'
-      quote_mapping:
-        $ref: '#/definitions/quote_mapping'
-
-  common_mapping:
-    type: object
-    properties:
       active_ind:
         type: array
         items:
           $ref: '#/definitions/flex_br_mapping'
-
-  color_mapping:
-    type: object
-    properties:
-      status:
+      color_status:
         type: array
         items:
           $ref: '#/definitions/flex_br_mapping'
-      category:
+      color_category:
         type: array
         items:
           $ref: '#/definitions/flex_br_mapping'
-
-  quote_mapping:
-    type: object
-    properties:
-      seasonal_type:
+      quote_seasonal_type:
         type: array
         items:
           $ref: '#/definitions/flex_br_mapping'
-      season_style_level_status:
+      quote_season_style_level_status:
         type: array
         items:
           $ref: '#/definitions/flex_br_mapping'
-      season_style_option_level_status:
+      quote_season_style_option_level_status:
         type: array
         items:
           $ref: '#/definitions/flex_br_mapping'
-      category:
+      quote_category:
         type: array
         items:
           $ref: '#/definitions/flex_br_mapping'
-      design_line:
+      quote_design_line:
         type: array
         items:
           $ref: '#/definitions/flex_br_mapping'
-      calendar_track:
+      quote_calendar_track:
         type: array
         items:
           $ref: '#/definitions/flex_br_mapping'
-      proto_sample_status:
+      quote_proto_sample_status:
         type: array
         items:
           $ref: '#/definitions/flex_br_mapping'
-      size_run_sample_status:
+      quote_size_run_sample_status:
         type: array
         items:
           $ref: '#/definitions/flex_br_mapping'
-      design_pod:
+      quote_design_pod:
         type: array
         items:
           $ref: '#/definitions/flex_br_mapping'
@@ -473,15 +455,6 @@ definitions:
       flex_code:
         type: string
         description: "FlexPLM code"
-      flex_description:
-        type: string
-        description: "FlexPLM description"
       br_code:
         type: string
         description: "Bamboo Rose code"
-      br_description:
-        type: string
-        description: "Bamboo Rose description"
-      translation_required:
-        type: string
-        description: "translation required or not"

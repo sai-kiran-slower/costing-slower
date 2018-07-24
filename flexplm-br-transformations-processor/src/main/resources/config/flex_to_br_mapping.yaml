@@ -1,220 +1,218 @@
 mapping_rules:
-  common_mapping:
-    active_ind:
-      - flex_code: CREATE
-        br_code: Y
-      - flex_code: UPDATE
-        br_code: Y
-      - flex_code: DELETE
-        br_code: N
+  active_ind:
+    - flex_code: CREATE
+      br_code: Y
+    - flex_code: UPDATE
+      br_code: Y
+    - flex_code: DELETE
+      br_code: N
 
-  color_mapping:
-    status:
-      - flex_code: approved
-        br_code: APPROVED
-      - flex_code: cfRejected
-        br_code: CFREJECT
-      - flex_code: cancelled
-        br_code: CCL
-      - flex_code: created
-        br_code: CREATED
-      - flex_code: inProgress
-        br_code: IP
-      - flex_code: limitedApproved
-        br_code: LIMITAPP
-      - flex_code: requested
-        br_code: REQUESTD
-    category:
-      - flex_code: colorwayCombination
-        br_code: COLORCOM
-      - flex_code: spaceDye
-        br_code: spacedye
-      - flex_code: Solid
-        br_code: SOLID
-      - flex_code: Heather
-        br_code: HEATHER
-      - flex_code: Multicolor
-        br_code: MULTICOL
+  color_status:
+    - flex_code: approved
+      br_code: APPROVED
+    - flex_code: cfRejected
+      br_code: CFREJECT
+    - flex_code: cancelled
+      br_code: CCL
+    - flex_code: created
+      br_code: CREATED
+    - flex_code: inProgress
+      br_code: IP
+    - flex_code: limitedApproved
+      br_code: LIMITAPP
+    - flex_code: requested
+      br_code: REQUESTD
 
-  quote_mapping:
-    seasonal_type:
-      - flex_code: new
-        flex_description: New
-        br_code: N
-        br_description: NEW
-        translation_required: Y
-      - flex_code: carryover
-        flex_description: Carryover
-        br_code: C
-        br_description: CARRYOVER
-        translation_required: Y
-    season_style_level_status:
-      - flex_code: active
-        flex_description: Active
-        br_code: ACTIVE
-        br_description: ACTIVE
-        translation_required: N
-      - flex_code: drop
-        flex_description: Drop
-        br_code: DROP
-        br_description: DROP
-        translation_required: N
-    season_style_option_level_status:
-      - flex_code: active
-        flex_description: Active
-        br_code: ACTIVE
-        br_description: ACTIVE
-        translation_required: N
-      - flex_code: drop
-        flex_description: Drop
-        br_code: DROP
-        br_description: DROP
-        translation_required: N
-      - flex_code: cancelled
-        flex_description: cancelled
-        br_code: CCL
-        br_description: CANCELLED
-        translation_required: Y
-    category:
-      - flex_code: tanks
-        br_code: TANKS
-      - flex_code: bras
-        br_code: BRAS
-      - flex_code: tops
-        br_code: TOPS
-      - flex_code: jackets
-        br_code: JACKETS
-      - flex_code: pants
-        br_code: PANTS
-      - flex_code: crops
-        br_code: CROPS
-      - flex_code: shorts
-        br_code: SHORTS
-      - flex_code: skirts
-        br_code: SKIRTS
-      - flex_code: accessories
-        br_code: ACCESSORIES
-    design_line:
-      - flex_code: andGo
-        br_code: ANDGO
-      - flex_code: apresPractice
-        br_code: APRESPRACTICE
-      - flex_code: apresStudio
-        br_code: APRESSTUDIO
-      - flex_code: block
-        br_code: BLOCK
-      - flex_code: cycling
-        br_code: CYCLING
-      - flex_code: girlsAccessories
-        br_code: GIRLSACCESSORIES
-      - flex_code: fAndF
-        br_code: FANDF
-      - flex_code: girlsOuterwear
-        br_code: GIRLSOUTERWEAR
-      - flex_code: girlsSeamless
-        br_code: GIRLSSEAMLESS
-      - flex_code: girlsSwim
-        br_code: GIRLSSWIM
-      - flex_code: intimates
-        br_code: INTIMATES
-      - flex_code: lab
-        br_code: LAB
-      - flex_code: mensAccessories
-        br_code: MENSACCESSORIES
-      - flex_code: mensFastTurn
-        br_code: MENSFASTTURN
-      - flex_code: lTT
-        br_code: LTT
-      - flex_code: naturalPractice
-        br_code: NATURALPRACTICE
-      - flex_code: noSweat
-        br_code: NOSWEAT
-      - flex_code: postSweat
-        br_code: POSTSWEAT
-      - flex_code: rideInside
-        br_code: RIDEINSIDE
-      - flex_code: runAndDone
-        br_code: RUNANDDONE
-      - flex_code: oTC
-        br_code: OTC
-      - flex_code: seaWheeze
-        br_code: SEAWHEEZE
-      - flex_code: sweat
-        br_code: SWEAT
-      - flex_code: teamSport
-        br_code: TEAMSPORT
-      - flex_code: technicalRun
-        br_code: TECHNICALRUN
-      - flex_code: technicalYoga
-        br_code: TECHNICALYOGA
-      - flex_code: tennis
-        br_code: TENNIS
-      - flex_code: warmUpCoolDown
-        br_code: WARMUPCOOLDOWN
-      - flex_code: womensAccessories
-        br_code: WOMENSACCESSORIES
-      - flex_code: womensFastTurn
-        br_code: WOMENSFASTTURN
-      - flex_code: womensOuterwear
-        br_code: WOMENSOUTERWEAR
-      - flex_code: womensSeamless
-        br_code: WOMENSSEAMLESS
-      - flex_code: whiteSpace
-        br_code: WHITESPACE
-      - flex_code: womensSwim
-        br_code: WOMENSSWIM
-      - flex_code: yogaDanceSkateGymnasticsCheer
-        br_code: YOGADANCESKATEGYMNASTICSCHEER
-    calendar_track:
-      - flex_code: lltDevelopment
-        br_code: LLTDEV
-      - flex_code: lltMake
-        br_code: LLTMAKE
-      - flex_code: regular
-        br_code: REGULAR
-      - flex_code: socks
-        br_code: SOCKS
-      - flex_code: lab
-        br_code: LAB
-    proto_sample_status:
-      - flex_code: inProgress
-        br_code: IP
-      - flex_code: approved
-        br_code: APPROVED
-      - flex_code: approvedWithComments
-        br_code: APPWCOMT
-      - flex_code: resubmit
-        br_code: RESUBMIT
-      - flex_code: dropped
-        br_code: DROPPED
-    size_run_sample_status:
-      - flex_code: inProgress
-        br_code: IP
-      - flex_code: approved
-        br_code: APPROVED
-      - flex_code: approvedWithComments
-        br_code: APPWCOMT
-      - flex_code: resubmit
-        br_code: RESUBMIT
-      - flex_code: dropped
-        br_code: DROPPED
-    design_pod:
-      - flex_code: accessories
-        br_code: ACCESSORIES
-      - flex_code: transition
-        br_code: TRANSITION
-      - flex_code: train
-        br_code: TRAIN
-      - flex_code: mNoSweat
-        br_code: M NO SWEAT
-      - flex_code: mSweat
-        br_code: M SWEAT
-      - flex_code: wNoSweat
-        br_code: W NO SWEAT
-      - flex_code: wSweat
-        br_code: W SWEAT
-      - flex_code: fastTurn
-        br_code: FAST TURN
+  color_category:
+    - flex_code: colorwayCombination
+      br_code: COLORCOM
+    - flex_code: spaceDye
+      br_code: spacedye
+    - flex_code: Solid
+      br_code: SOLID
+    - flex_code: Heather
+      br_code: HEATHER
+    - flex_code: Multicolor
+      br_code: MULTICOL
+
+  quote_seasonal_type:
+    - flex_code: new
+      flex_description: New
+      br_code: N
+      br_description: NEW
+      translation_required: Y
+    - flex_code: carryover
+      flex_description: Carryover
+      br_code: C
+      br_description: CARRYOVER
+      translation_required: Y
+  quote_season_style_level_status:
+    - flex_code: active
+      flex_description: Active
+      br_code: ACTIVE
+      br_description: ACTIVE
+      translation_required: N
+    - flex_code: drop
+      flex_description: Drop
+      br_code: DROP
+      br_description: DROP
+      translation_required: N
+  quote_season_style_option_level_status:
+    - flex_code: active
+      flex_description: Active
+      br_code: ACTIVE
+      br_description: ACTIVE
+      translation_required: N
+    - flex_code: drop
+      flex_description: Drop
+      br_code: DROP
+      br_description: DROP
+      translation_required: N
+    - flex_code: cancelled
+      flex_description: cancelled
+      br_code: CCL
+      br_description: CANCELLED
+      translation_required: Y
+  quote_category:
+    - flex_code: tanks
+      br_code: TANKS
+    - flex_code: bras
+      br_code: BRAS
+    - flex_code: tops
+      br_code: TOPS
+    - flex_code: jackets
+      br_code: JACKETS
+    - flex_code: pants
+      br_code: PANTS
+    - flex_code: crops
+      br_code: CROPS
+    - flex_code: shorts
+      br_code: SHORTS
+    - flex_code: skirts
+      br_code: SKIRTS
+    - flex_code: accessories
+      br_code: ACCESSORIES
+  quote_design_line:
+    - flex_code: andGo
+      br_code: ANDGO
+    - flex_code: apresPractice
+      br_code: APRESPRACTICE
+    - flex_code: apresStudio
+      br_code: APRESSTUDIO
+    - flex_code: block
+      br_code: BLOCK
+    - flex_code: cycling
+      br_code: CYCLING
+    - flex_code: girlsAccessories
+      br_code: GIRLSACCESSORIES
+    - flex_code: fAndF
+      br_code: FANDF
+    - flex_code: girlsOuterwear
+      br_code: GIRLSOUTERWEAR
+    - flex_code: girlsSeamless
+      br_code: GIRLSSEAMLESS
+    - flex_code: girlsSwim
+      br_code: GIRLSSWIM
+    - flex_code: intimates
+      br_code: INTIMATES
+    - flex_code: lab
+      br_code: LAB
+    - flex_code: mensAccessories
+      br_code: MENSACCESSORIES
+    - flex_code: mensFastTurn
+      br_code: MENSFASTTURN
+    - flex_code: lTT
+      br_code: LTT
+    - flex_code: naturalPractice
+      br_code: NATURALPRACTICE
+    - flex_code: noSweat
+      br_code: NOSWEAT
+    - flex_code: postSweat
+      br_code: POSTSWEAT
+    - flex_code: rideInside
+      br_code: RIDEINSIDE
+    - flex_code: runAndDone
+      br_code: RUNANDDONE
+    - flex_code: oTC
+      br_code: OTC
+    - flex_code: seaWheeze
+      br_code: SEAWHEEZE
+    - flex_code: sweat
+      br_code: SWEAT
+    - flex_code: teamSport
+      br_code: TEAMSPORT
+    - flex_code: technicalRun
+      br_code: TECHNICALRUN
+    - flex_code: technicalYoga
+      br_code: TECHNICALYOGA
+    - flex_code: tennis
+      br_code: TENNIS
+    - flex_code: warmUpCoolDown
+      br_code: WARMUPCOOLDOWN
+    - flex_code: womensAccessories
+      br_code: WOMENSACCESSORIES
+    - flex_code: womensFastTurn
+      br_code: WOMENSFASTTURN
+    - flex_code: womensOuterwear
+      br_code: WOMENSOUTERWEAR
+    - flex_code: womensSeamless
+      br_code: WOMENSSEAMLESS
+    - flex_code: whiteSpace
+      br_code: WHITESPACE
+    - flex_code: womensSwim
+      br_code: WOMENSSWIM
+    - flex_code: yogaDanceSkateGymnasticsCheer
+      br_code: YOGADANCESKATEGYMNASTICSCHEER
+  quote_calendar_track:
+    - flex_code: lltDevelopment
+      br_code: LLTDEV
+    - flex_code: lltMake
+      br_code: LLTMAKE
+    - flex_code: regular
+      br_code: REGULAR
+    - flex_code: socks
+      br_code: SOCKS
+    - flex_code: lab
+      br_code: LAB
+  quote_proto_sample_status:
+    - flex_code: inProgress
+      br_code: IP
+    - flex_code: approved
+      br_code: APPROVED
+    - flex_code: approvedWithComments
+      br_code: APPWCOMT
+    - flex_code: resubmit
+      br_code: RESUBMIT
+    - flex_code: dropped
+      br_code: DROPPED
+  quote_size_run_sample_status:
+    - flex_code: inProgress
+      br_code: IP
+    - flex_code: approved
+      br_code: APPROVED
+    - flex_code: approvedWithComments
+      br_code: APPWCOMT
+    - flex_code: resubmit
+      br_code: RESUBMIT
+    - flex_code: dropped
+      br_code: DROPPED
+  quote_design_pod:
+    - flex_code: accessories
+      br_code: ACCESSORIES
+    - flex_code: transition
+      br_code: TRANSITION
+    - flex_code: train
+      br_code: TRAIN
+    - flex_code: mNoSweat
+      br_code: M NO SWEAT
+    - flex_code: mSweat
+      br_code: M SWEAT
+    - flex_code: wNoSweat
+      br_code: W NO SWEAT
+    - flex_code: wSweat
+      br_code: W SWEAT
+    - flex_code: fastTurn
+      br_code: FAST TURN
 
 
 
