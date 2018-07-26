@@ -6,10 +6,10 @@
         "@memo3" : "769690",
         "@color_name" : "HHBW",
         "@alt_name1" : "60% Hero Blue/10% Hero Blue/White",
-        "@memo2" : "spacedye",
+        "@memo2" : "SPACEDYE",
         "@status" : "CREATED",
         "@owner" : "LULULEMON",
-        "@active_ind" : "Y",
+        "@active_ind" : "CREATE",
         "attachment" : {
           "@location" : "Hero_Blue_White.png",
           "@attachment_no" : "IMAGE",

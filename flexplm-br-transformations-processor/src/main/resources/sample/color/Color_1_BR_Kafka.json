@@ -9,7 +9,7 @@
         "@memo2" : "SOLID",
         "@status" : "CFREJECT",
         "@owner" : "LULULEMON",
-        "@active_ind" : "Y",
+        "@active_ind" : "CREATE",
         "attachment" : {
           "@location" : "XO-65.jpg",
           "@attachment_no" : "IMAGE",
