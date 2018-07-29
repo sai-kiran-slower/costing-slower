@@ -25,7 +25,7 @@ public class PayloadProcessor {
     public String processColor(final String payload) throws Exception {
         final ObjectMapper objectMapper = new ObjectMapper();
         final ColorFlexPLMResponse colorFlexPLMResponse = objectMapper.readValue(payload, ColorFlexPLMResponse.class);
-        return new ColorResponseHandler().handleColor(colorFlexPLMResponse);
+        return new ColorResponseHandler().handleColorDynamic(colorFlexPLMResponse);
     }
 
     public String processArtwork(final String payload) throws Exception {

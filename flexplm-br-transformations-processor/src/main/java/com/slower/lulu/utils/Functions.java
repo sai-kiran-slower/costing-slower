@@ -8,6 +8,8 @@ import com.slower.lulu.config.MappingConfig;
 import com.slower.lulu.config.MappingRule;
 import com.slower.lulu.model.Attribute;
 import org.apache.commons.text.CaseUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,6 +17,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class Functions {
+    private static final Logger logger = LoggerFactory.getLogger(Functions.class);
 
     public static String charLimit(final String attrValue, final int attrLen) {
         if (attrValue.length() > attrLen) {
@@ -37,19 +40,25 @@ public class Functions {
         }
     }
 
-    public static String getBRCodeReflected(String mappingDomain, String mappingType, String flexCode) {
+    /**
+     *
+     * @param mappingDomain e.g. Color
+     * @param fieldToMap E.g. colorType
+     * @param flexValue Value from flex
+     * @return
+     */
+    public static String getBRCodeReflected(String mappingDomain, String fieldToMap, String flexValue) {
         final MappingConfig mappingConfig = Functions.getMappingConfigs();
-        final String brCode = null;
 
         final MappingRule mappingRules = mappingConfig.getMappingRules();
         final ColorMapping specificMapping;
         try {
             specificMapping = (ColorMapping) mappingRules.getClass().getMethod(getMappingCC(mappingDomain.toLowerCase())).invoke(mappingRules);
 
-            final String lookup = mappingType.toLowerCase();
-            final List<FlexBrMapping> mappings = (List<FlexBrMapping>) specificMapping.getClass().getMethod(getCC(lookup)).invoke(specificMapping);
+            final String lookup = fieldToMap.toLowerCase();
+            final List<FlexBrMapping> mappings = (List<FlexBrMapping>) specificMapping.getClass().getMethod(getToCamelCase(lookup)).invoke(specificMapping);
             for (FlexBrMapping flexBrMapping : mappings) {
-                if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexCode))
+                if (flexBrMapping.getFlexCode().equalsIgnoreCase(flexValue))
                     return flexBrMapping.getBrCode();
             }
         } catch (IllegalAccessException e) {
@@ -58,11 +67,12 @@ public class Functions {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
             // TODO Add explanation that we passed an unsupported mapping domain or mapping type
-            e.printStackTrace();
+            logger.error(String.format("Failed to find mapping for domain %s, field %s, and value %s. ",
+                    mappingDomain, fieldToMap, flexValue));
         }
 
         throw new IllegalArgumentException(
-                String.format("Failed to find mapping for flex code: %s with domain %s and type %s", flexCode, mappingDomain, mappingType)
+                String.format("Failed to find mapping for flex code: %s with domain %s and type %s", flexValue, mappingDomain, fieldToMap)
         );
     }
 
@@ -163,7 +173,7 @@ public class Functions {
         return brCode;
     }
 
-    public static String getCC(final String s) {
+    public static String getToCamelCase(final String s) {
         return CaseUtils.toCamelCase("get_" + s, false, '_');
     }
 
@@ -171,7 +181,7 @@ public class Functions {
         return CaseUtils.toCamelCase("get_" + s + "_mapping", false, '_');
     }
 
-    public static String setCC(final String s) {
+    public static String setToCamelCase(final String s) {
         return CaseUtils.toCamelCase("set_" + s, false, '_');
     }
 }

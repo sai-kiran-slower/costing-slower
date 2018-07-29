@@ -1,9 +1,9 @@
-color:
-  dynamic:
+dynamic:
     colourwayCode:
         - output: memo3
           length: 10
-          field_if_null: OBJECT_ID
+          object_id_if_empty: true
+          always_included: true
     shortDescription:
         - output: color_name
           length: 35
@@ -33,6 +33,6 @@ color:
         - output: location
           length: 45
           is_attachment: true
-  static_defaults:
+static_defaults:
     - owner: lululemon
     - attachment_no: IMAGE

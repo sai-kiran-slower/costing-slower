@@ -2,11 +2,13 @@ package com.slower.lulu;
 
 import com.google.common.collect.ImmutableList;
 import com.slower.lulu.model.ColorlibHBuilder;
+import com.slower.lulu.model.DynamicTransform;
 import org.apache.commons.text.CaseUtils;
 import org.junit.Test;
 
-import java.lang.reflect.InvocationTargetException;
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 public class ColorTester {
     @Test
@@ -24,6 +26,11 @@ public class ColorTester {
         }
     }
 
+    @Test
+    public void dynamicLoadTest() throws IOException {
+        Map transformations = DynamicTransform.getTransformations("config/if_2_color_transforms.yaml");
+
+    }
 
 
 }

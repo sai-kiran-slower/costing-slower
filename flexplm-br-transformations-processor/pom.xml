@@ -18,6 +18,14 @@
         <slf4jVersion>1.6.1</slf4jVersion>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>Sonatype-public</id>
+            <name>SnakeYAML repository</name>
+            <url>http://oss.sonatype.org/content/groups/public/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>io.swagger</groupId>
@@ -70,7 +78,11 @@
             <artifactId>commons-text</artifactId>
             <version>1.4</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.20-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 
@@ -92,7 +104,6 @@
                             <language>spring</language>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
-                                <mapper>lowerCamelCaseNamingStrategyMapper</mapper>
                             </configOptions>
                             <environmentVariables>
                                 <models/>

@@ -10,8 +10,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class Init {
-
-
     private static final Logger logger = LoggerFactory.getLogger("Init");
 
     public static void main(String[] args) {
