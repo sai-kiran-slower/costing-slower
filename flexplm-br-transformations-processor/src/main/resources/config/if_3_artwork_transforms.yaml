@@ -1,23 +1,77 @@
 
+dynamic:
+    event:
+        output: active_ind
+        length: 1
+        always_included: true
+        lookup: active_ind
+    artwork:
+        output: memo1
+        length: 10
+        always_included: true
+        builder_list: lib_b,lib_h,lib_d
+    artName:
+        output: artwork_name
+        length: 35
+        builder_list: lib_h
+    colorType:
+        output: artwork_type
+        length: 10
+        builder_list: lib_h
+    status:
+        output: color_name
+        length: 35
+        builder_list: lib_h, lib_b
+        lookup: color_status
+    colorName:
+        output: combo_name
+        length: 35
+        builder_list: lib_b
+    abbreviation:
+        output: combo_abrv
+        length: 35
+        builder_list: lib_b
+    thumbnail:
+        output: location
+        length: 45
+        is_attachment: true
+        builder_list: lib_b
+    ground:
+        output: memo3
+        length: 10
+        builder_list: lib_d
+    color1:
+        output: memo3
+        length: 10
+        builder_list: lib_d
+    color2:
+        output: memo3
+        length: 10
+        builder_list: lib_d
+    color3:
+        output: memo3
+        length: 10
+        builder_list: lib_d
+    color4:
+        output: memo3
+        length: 10
+        builder_list: lib_d
+    color5:
+        output: memo3
+        length: 10
+        builder_list: lib_d
+    color6:
+        output: memo3
+        length: 10
+        builder_list: lib_d
+    color7:
+        output: memo3
+        length: 10
+        builder_list: lib_d
+    color9:
+        output: memo3
+        length: 10
+        builder_list: lib_d
 
-com.lll.color.artwork.artWork=memo1|10-header
-com.lll.color.artwork.artName=artwork_name|35-header
-com.lll.color.artwork.colorType=artwork_type|8-header
-com.lll.color.artwork.OBJECT_ID=combo_id|10-body
-com.lll.color.artwork.abbreviation=combo_abrv|35-body
-com.lll.color.artwork.colorName=combo_name|35-body
-com.lll.color.artwork.status=status|8-body
-com.lll.color.artwork.ground=memo3|10-detail
-com.lll.color.artwork.color1=memo3|10-detail
-com.lll.color.artwork.color2=memo3|10-detail
-com.lll.color.artwork.color3=memo3|10-detail
-com.lll.color.artwork.color4=memo3|10-detail
-com.lll.color.artwork.color5=memo3|10-detail
-com.lll.color.artwork.color6=memo3|10-detail
-com.lll.color.artwork.color7=memo3|10-detail
-com.lll.color.artwork.color8=memo3|10-detail
-com.lll.color.artwork.color9=memo3|10-detail
-com.lll.color.artwork.thumbnail=location|45-attachment
-com.lll.color.artwork.default=owner:LULULEMON-header|attachment_no:IMAGE-attachment
-com.lll.color.artwork.logical=header|artWork:memo1,body|artWork:memo1&OBJECT_ID:combo_id,detail|artWork:memo1&OBJECT_ID:combo_id
-
+static_defaults:
+    owner: LULULEMON

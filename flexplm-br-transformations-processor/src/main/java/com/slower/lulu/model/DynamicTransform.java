@@ -3,33 +3,42 @@ package com.slower.lulu.model;
 import com.google.common.base.Optional;
 import com.slower.lulu.utils.Functions;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class DynamicTransform {
+    private static final Logger logger = LoggerFactory.getLogger(DynamicTransform.class);
+
     private final String outputField;
     private final int length;
-    private final boolean useObjectIdIfEmpty;
+    private final Optional<String> fieldIfEmpty;
     private final Optional<String> useLookupTable;
     private final boolean isAttachment;
     private final boolean isAlwaysIncluded;
+    private final Optional<String> builderList; // Some interfaces, e.g. artwork, have multiple builders with only a subset of data included in each, this handles that differentiation
 
     public DynamicTransform(final String outputField,
                             final int length,
-                            boolean useObjectIdIfEmpty,
+                            final Optional<String> fieldIfEmpty,
                             final Optional<String> useLookupTable,
                             final boolean isAttachment,
-                            final boolean isAlwaysIncluded) {
+                            final boolean isAlwaysIncluded,
+                            final Optional<String> builderList) {
         this.outputField = outputField;
         this.length = length;
-        this.useObjectIdIfEmpty = useObjectIdIfEmpty;
+        this.fieldIfEmpty = fieldIfEmpty;
         this.useLookupTable = useLookupTable;
         this.isAttachment = isAttachment;
         this.isAlwaysIncluded = isAlwaysIncluded;
+        this.builderList = builderList;
     }
 
     public String getOutputField() {
@@ -40,8 +49,8 @@ public class DynamicTransform {
         return length;
     }
 
-    public boolean getUseObjectIdIfEmpty() {
-        return useObjectIdIfEmpty;
+    public Optional<String> getFieldIfEmpty() {
+        return fieldIfEmpty;
     }
 
     public Optional<String> getUseLookupTable() {
@@ -56,16 +65,29 @@ public class DynamicTransform {
         return isAlwaysIncluded;
     }
 
+    public Optional<String> getBuilderList() {
+        return builderList;
+    }
+
     /**
      *
-     * Either do a lookup or a useObjectIdIfEmpty / Empty lookup
+     * Either do a lookup or a getFieldIfEmpty / Empty lookup
      * This doesn't care about the field name
      */
-    public String resolveValue(final Attribute attribute) {
+    public String resolveValue(final Attribute attribute) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         final String flexValue = attribute.getFIELDVALUEKEY();
 
-        if (getUseObjectIdIfEmpty() && (flexValue == null || flexValue.trim().isEmpty())) {
-            return attribute.getOBJECTID();
+        if (getFieldIfEmpty().isPresent() && (flexValue == null || flexValue.trim().isEmpty())) {
+            final Method getMethod;
+            final String getMethodName = "get" + getFieldIfEmpty().get().toUpperCase();
+            try {
+
+                getMethod = attribute.getClass().getMethod(getMethodName, String.class);
+                return (String) getMethod.invoke(attribute);
+            } catch (NoSuchMethodException e) {
+                logger.error("Failed to find method with name: " + getMethodName + ". Check field_if_empty definition to ensure it matches a FlexPLM field in dynamic mapping configuration file.");
+                throw e;
+            }
         } else if (useLookupTable.isPresent()) {
             return StringUtils.left(Functions.getBRCodeReflected(useLookupTable.get(), flexValue), getLength());
         } else {
@@ -103,7 +125,7 @@ public class DynamicTransform {
 
         String outputField = (String) fieldAttributes.get("output");
         int length = (int) fieldAttributes.get("length");
-        boolean fieldIfNull = (boolean) fieldAttributes.getOrDefault("object_id_if_empty", false);
+        Optional<String> fieldIfEmpty = Optional.fromNullable((String) fieldAttributes.getOrDefault("field_if_empty", null));
 
         Optional<String> lookupTable =
                 Optional.fromNullable((String) fieldAttributes.getOrDefault("lookup", null));
@@ -114,12 +136,30 @@ public class DynamicTransform {
         boolean isAlwaysIncluded  =
                 ((boolean) fieldAttributes.getOrDefault("always_included", false));
 
-        return new DynamicTransform(outputField, length, fieldIfNull, lookupTable, isAttachment, isAlwaysIncluded);
+        Optional<String> builderList =
+                Optional.fromNullable((String) fieldAttributes.getOrDefault("builder_list", null));
+
+        return new DynamicTransform(outputField, length, fieldIfEmpty, lookupTable, isAttachment, isAlwaysIncluded, builderList);
     }
 
     public static List<Map.Entry<String, String>> getStaticDefaults(final Map transformations) {
         Map<String, String> staticDefaults = (Map<String, String>) transformations.get("static_defaults");
 
         return staticDefaults.entrySet().stream().collect(Collectors.toList());
+    }
+
+    // Dynamic value etting with camel case conversion
+    public static void setValue(final Object builder,
+                                final String fieldName,
+                                final String value) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+        final Method setMethod;
+        final String setMethodName = Functions.setToCamelCase(fieldName);
+        try {
+            setMethod = builder.getClass().getMethod(setMethodName, String.class);
+            setMethod.invoke(builder, value);
+        } catch (NoSuchMethodException e) {
+            logger.error("Failed to find method with name: " + setMethodName + ". Check output field name and/or static field name in dynamic mapping configuration file.");
+            throw e;
+        }
     }
 }

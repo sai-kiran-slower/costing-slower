@@ -27,9 +27,9 @@ public class ColorResponseHandler {
         final FlexplmHeader flexplmHeader = colorFlexPLMResponse.getFlexInterface().getFlexPLMHeader();
         final List<Attribute> attributeList = flexplmHeader.getAttributeList();
 
-        colorlibHBuilder.setActiveInd(flexplmHeader.getEVENT());
-
         final Map transformations = DynamicTransform.getTransformations("config/if_2_color_transforms.yaml");
+        final DynamicTransform indicatorTransform = DynamicTransform.getDynamicTransform(transformations, "event");
+        setValue(colorlibHBuilder, indicatorTransform.getOutputField(), flexplmHeader.getEVENT());
 
         final List<Map.Entry<String, String>> staticDefaults = DynamicTransform.getStaticDefaults(transformations);
 
@@ -79,9 +79,6 @@ public class ColorResponseHandler {
             setMethod.invoke(builder, value);
         } catch (NoSuchMethodException e) {
             logger.error("Failed to find method with name: " + setMethodName + ". Check output field name and/or static field name in dynamic mapping configuration file.");
-            throw e;
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
             throw e;
         }
     }

@@ -1,8 +1,13 @@
 dynamic:
+    event:
+        output: active_ind
+        length: 1
+        always_included: true
+        lookup: active_ind
     colourwayCode:
         output: memo3
         length: 10
-        object_id_if_empty: true
+        field_if_empty: OBJECTID
         always_included: true
     shortDescription:
         output: color_name
