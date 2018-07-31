@@ -76,13 +76,16 @@ public class DynamicTransform {
      */
     public String resolveValue(final Attribute attribute) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         final String flexValue = attribute.getFIELDVALUEKEY();
+        return resolveValue(attribute, flexValue);
+    }
 
+    public String resolveValue(final Attribute attribute, final String flexValue) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         if (getFieldIfEmpty().isPresent() && (flexValue == null || flexValue.trim().isEmpty())) {
             final Method getMethod;
             final String getMethodName = "get" + getFieldIfEmpty().get().toUpperCase();
             try {
 
-                getMethod = attribute.getClass().getMethod(getMethodName, String.class);
+                getMethod = attribute.getClass().getMethod(getMethodName);
                 return (String) getMethod.invoke(attribute);
             } catch (NoSuchMethodException e) {
                 logger.error("Failed to find method with name: " + getMethodName + ". Check field_if_empty definition to ensure it matches a FlexPLM field in dynamic mapping configuration file.");

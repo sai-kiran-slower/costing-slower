@@ -19,9 +19,9 @@ dynamic:
         length: 10
         builder_list: lib_h
     status:
-        output: color_name
-        length: 35
-        builder_list: lib_h, lib_b
+        output: status
+        length: 8
+        builder_list: lib_h,lib_b
         lookup: color_status
     colorName:
         output: combo_name
@@ -68,7 +68,15 @@ dynamic:
         output: memo3
         length: 10
         builder_list: lib_d
+    color8:
+        output: memo3
+        length: 10
+        builder_list: lib_d
     color9:
+        output: memo3
+        length: 10
+        builder_list: lib_d
+    color10:
         output: memo3
         length: 10
         builder_list: lib_d

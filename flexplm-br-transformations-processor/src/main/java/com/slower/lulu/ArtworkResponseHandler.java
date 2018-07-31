@@ -21,9 +21,6 @@ import java.util.regex.Pattern;
 
 import static com.slower.lulu.model.DynamicTransform.setValue;
 
-/**
- * Created by saiki on 7/8/2018.
- */
 public class ArtworkResponseHandler {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -32,8 +29,8 @@ public class ArtworkResponseHandler {
 
         final ArtworkBambooRoseResponse artworkBambooRoseResponse = new ArtworkBambooRoseResponse();
 
-        final ArtworkLibHBuilder artworkLibHBuilder = new ArtworkLibHBuilder();
-        final ArtworkLibBBuilder artworkLibBBuilder = new ArtworkLibBBuilder();
+        final ArtworkLibH artworkLibH = new ArtworkLibH();
+        final ArtworkLibB artworkLibB = new ArtworkLibB();
         List<ArtworkLibD> artworkLibDList = new ArrayList<ArtworkLibD>();
 
         final FlexplmHeader flexplmHeader = artworkFlexPLMResponse.getFlexInterface().getFlexPLMHeader();
@@ -43,14 +40,14 @@ public class ArtworkResponseHandler {
 
         final Map<String, String> storedValues = Maps.newHashMap();
         final DynamicTransform indicatorTransform = DynamicTransform.getDynamicTransform(transformations, "event");
-        setValue(artworkLibHBuilder, indicatorTransform.getOutputField(), flexplmHeader.getEVENT());
+        setValue(artworkLibH, indicatorTransform.getOutputField(), indicatorTransform.resolveValue(null, flexplmHeader.getEVENT()));
 
         for (final Attribute attribute : attributeList) {
-            final ArtworkLibDBuilder artworkLibDBuilder = new ArtworkLibDBuilder();
+            final ArtworkLibD artworkLibD = new ArtworkLibD();
 
             // Combo ID is always set for libB and libD (but not libH)
-            artworkLibBBuilder.setComboId(attribute.getOBJECTID());
-            artworkLibDBuilder.setComboId(attribute.getOBJECTID());
+            artworkLibB.setComboId(attribute.getOBJECTID());
+            artworkLibD.setComboId(attribute.getOBJECTID());
 
             final String fieldName = attribute.getFIELDNAMEKEY();
             final String flexValue = attribute.getFIELDVALUEKEY();
@@ -58,13 +55,13 @@ public class ArtworkResponseHandler {
             final DynamicTransform transform = DynamicTransform.getDynamicTransform(transformations, fieldName);
             final List<String> defaultBuilders = ImmutableList.of("lib_h", "lib_b", "lib_d");
             final List<String> builders = transform.getBuilderList()
-                    .transform(s -> (List<String>) Lists.newArrayList(s.split(",")))
+                    .transform(s -> Lists.transform(Lists.newArrayList(s.split(",")), String::trim))
                     .or(defaultBuilders);
 
             if (transform.isAlwaysIncluded() || Functions.isChanged(attribute)) {
                 if (transform.isAttachment()) { // Special handling for attachment type
                     AttachmentBuilder attachmentBuilder = new AttachmentBuilder(flexValue);
-                    artworkLibBBuilder.setAttachment(attachmentBuilder);
+                    artworkLibB.setAttachment(attachmentBuilder);
                 }
                 else {
                     final String resolvedValue = transform.resolveValue(attribute);
@@ -73,11 +70,11 @@ public class ArtworkResponseHandler {
 
                     for (String builder : builders) {
                         switch (builder) {
-                            case "lib_h": setValue(artworkLibHBuilder, key, resolvedValue);
+                            case "lib_h": setValue(artworkLibH, key, resolvedValue);
                                 break;
-                            case "lib_b": setValue(artworkLibBBuilder, key, resolvedValue);
+                            case "lib_b": setValue(artworkLibB, key, resolvedValue);
                                 break;
-                            case "lib_d": setValue(artworkLibDBuilder, key, resolvedValue);
+                            case "lib_d": setValue(artworkLibD, key, resolvedValue);
                                 break;
                             default:
                                 throw new IllegalArgumentException("Unsupported builder! Supported (lib_h, lib_b, lib_d");
@@ -92,25 +89,26 @@ public class ArtworkResponseHandler {
                     }
 
                     final String memo1Value = storedValues.get("memo1");
-                    artworkLibDBuilder.setMemo1(memo1Value);
-                    artworkLibDBuilder.setColorPos(fieldName);
-                    artworkLibDList.add(artworkLibDBuilder.createArtworkLibD());
+                    artworkLibD.setMemo1(memo1Value);
+                    String colorPos = fieldName.equals("ground") ? "0" : fieldName.substring(fieldName.length() - 1);
+                    artworkLibD.setColorPos(colorPos);
+                    artworkLibDList.add(artworkLibD);
                 }
             }
         }
 
         // For default fields set them at the top level
         for (Map.Entry<String, String> keyValue : staticDefaults) {
-            setValue(artworkLibHBuilder, keyValue.getKey(), keyValue.getValue());
+            setValue(artworkLibH, keyValue.getKey(), keyValue.getValue());
         }
 
-        artworkLibBBuilder.setArtworkLibD(artworkLibDList);
-        artworkLibHBuilder.setArtworkLibB(artworkLibBBuilder.createArtworkLibB());
+        artworkLibB.setArtworkLibD(artworkLibDList);
+        artworkLibH.setArtworkLibB(artworkLibB);
 
         ArtworkDocument artworkDocument = new ArtworkDocument();
         ArtworkLib artworkLib = new ArtworkLib();
 
-        artworkLib.setArtworkLibH(artworkLibHBuilder.createArtworkLibH());
+        artworkLib.setArtworkLibH(artworkLibH);
         artworkDocument.setArtworkLib(artworkLib);
         artworkBambooRoseResponse.setDocument(artworkDocument);
 
