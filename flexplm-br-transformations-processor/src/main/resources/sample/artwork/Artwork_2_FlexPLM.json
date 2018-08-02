@@ -146,7 +146,7 @@
                         "FIELD_VALUE_KEY":"",
                         "FIELD_VALUE_DISPLAY":"",
 						"FIELD_TYPE":"TEXT",
-						"CHANGE_IND":"Y"
+						"CHANGE_IND":"N"
                         },
 						{
 						"OBJECT_LEVEL":"LCSCOLOR",

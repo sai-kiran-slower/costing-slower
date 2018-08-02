@@ -6,7 +6,7 @@
                     "@active_ind":"Y",
                     "@memo1":"11315400",
                     "@artwork_type":"YARNDYE",
-					"@status" : "APPROVED",
+					"@status" : "IP",
                     "artwork_lib_b":{
                         "@combo_id":"324563",
                         "@memo1":"11315400",
@@ -16,18 +16,25 @@
                         "artwork_lib_d":[
                             {
                                 "@memo3":"505598003",
-                                "@color_pos":"1",
+                                "@color_pos":"0",
                                 "@memo1":"11315400", 
                                 "@combo_id":"324563"
                             },
                             {
                                 "@memo3":"195150512",
-                                "@color_pos":"2",
+                                "@color_pos":"1",
                                 "@memo1":"11315400",
                                 "@combo_id":"324563"
                             }
                         ],
                         "attachment":{
+						"@location":"",
+                        "@attachment_no":"",
+                        "@custom_location":"",
+                        "@icon_location":"",
+                        "@largeview_location":"",
+                        "@overview_location":"",
+                        "@thumbnail_location":""
                         }
                     }
                 }

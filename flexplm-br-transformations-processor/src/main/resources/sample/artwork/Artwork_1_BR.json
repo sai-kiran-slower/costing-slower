@@ -9,16 +9,22 @@
 					"@status" : "APPROVED", // always default to APPROVED
                     "artwork_lib_b":{
                         "@combo_id":"62459214",
-                        "@memo1":"62459200", // this is memo1 from above tage <artwork_lib_h>
+                        "@memo1":"62459200", // this is memo1 from above tag <artwork_lib_h>
                         "@combo_name":"Straight Shot Silver Spoon Dark Sl",
                         "@comno_abrv":"DSSS",
 						"@status":"IP",
                         "artwork_lib_d":[
                             {
+                                "@mem03":"119278",
+                                "@color_pos":"0",
+                                "@memo1":"62459200", // this is memo1 from above tag <artwork_lib_h>
+                                "@combo_id":"62459214" // this is combo_id from above tag <artwork_lib_b>
+                            },
+							{
                                 "@mem03":"135230",
                                 "@color_pos":"1",
-                                "@memo1":"62459200", // this is memo1 from above tage <artwork_lib_h>
-                                "@combo_id":"62459214" // this is combo_id from above tage <artwork_lib_b>
+                                "@memo1":"62459200", // this is memo1 from above tag <artwork_lib_h>
+                                "@combo_id":"62459214" // this is combo_id from above tag <artwork_lib_b>
                             },
                             {
                                 "@memo3":"124302",
