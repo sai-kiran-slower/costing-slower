@@ -47,13 +47,13 @@ public class StyleResponseHandler {
                     case "productname":
                         quoteBuilder.setDescription(valueKey);
                         break;
-                    case "nameline1":
+                    case "lineoneGuestFacingName":
                         quoteBuilder.setAltDesc1(valueKey);
                         break;
                     case "productline":
                         quoteBuilder.setMemo1(valueKey);
                         break;
-                    case "seasonalstyle":
+                    case "seasonalStyleType":
                         quoteBuilder.setStatus04(valueKey);
                         break;
                     case "seasoncode":
@@ -81,7 +81,7 @@ public class StyleResponseHandler {
                     case "department":
                         quoteBuilder.setDept(valueKey);
                         break;
-                    case "status":
+                    case "styleStatus":
                         quoteBuilder.setStatus06(valueKey);
                         break;
                     case "sourcingmanager":
