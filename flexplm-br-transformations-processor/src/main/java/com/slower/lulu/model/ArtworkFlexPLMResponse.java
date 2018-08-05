@@ -8,9 +8,9 @@ import java.util.Objects;
 /**
  * ArtworkFlexPLMResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-07-08T20:22:36.542-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-02T08:10:41.428-07:00")
 
-public class ArtworkFlexPLMResponse {
+public class ArtworkFlexPLMResponse   {
   @JsonProperty("Flex_interface")
   private FlexInterface flexInterface = null;
 

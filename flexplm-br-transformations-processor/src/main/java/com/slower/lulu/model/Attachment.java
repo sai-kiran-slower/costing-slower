@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * Attachment
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-28T23:51:44.370-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-02T08:10:41.428-07:00")
 
 public class Attachment   {
   @JsonProperty("@location")
@@ -31,18 +31,6 @@ public class Attachment   {
 
   @JsonProperty("@thumbnail_location")
   private String thumbnailLocation = null;
-
-  public Attachment() {}
-
-  public Attachment(String location, String attachmentNo, String customLocation, String iconLocation, String largeviewLocation, String overviewLocation, String thumbnailLocation) {
-    this.location = location;
-    this.attachmentNo = attachmentNo;
-    this.customLocation = customLocation;
-    this.iconLocation = iconLocation;
-    this.largeviewLocation = largeviewLocation;
-    this.overviewLocation = overviewLocation;
-    this.thumbnailLocation = thumbnailLocation;
-  }
 
   public Attachment location(String location) {
     this.location = location;

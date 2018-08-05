@@ -10,6 +10,7 @@ public class SizeRangeBuilder extends SizeRange{
     }
 
     public SizeRange createSizeRange() {
-        return new SizeRange(sizeRange);
+        return new SizeRange()
+                .sizeRange(sizeRange);
     }
 }

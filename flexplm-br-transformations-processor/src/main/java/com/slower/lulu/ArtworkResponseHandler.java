@@ -51,8 +51,15 @@ public class ArtworkResponseHandler {
 
             final String fieldName = attribute.getFIELDNAMEKEY();
             final String flexValue = attribute.getFIELDVALUEKEY();
+            final DynamicTransform transform;
+            try {
+                 transform = DynamicTransform.getDynamicTransform(transformations, fieldName);
+            } catch (IllegalArgumentException e) {
+                // Failed to find transformation
+                logger.warn(e.toString());
+                continue;
+            }
 
-            final DynamicTransform transform = DynamicTransform.getDynamicTransform(transformations, fieldName);
             final List<String> defaultBuilders = ImmutableList.of("lib_h", "lib_b", "lib_d");
             final List<String> builders = transform.getBuilderList()
                     .transform(s -> Lists.transform(Lists.newArrayList(s.split(",")), String::trim))

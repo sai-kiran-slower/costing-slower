@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * ArtworkBambooRoseResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-07-08T20:42:10.136-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-02T08:10:41.428-07:00")
 
 public class ArtworkBambooRoseResponse   {
   @JsonProperty("document")

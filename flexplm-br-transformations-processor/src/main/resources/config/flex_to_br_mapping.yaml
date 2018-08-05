@@ -18,6 +18,8 @@ mapping_rules:
       br_code: CREATED
     - flex_code: inProgress
       br_code: IP
+    - flex_code: In Progress
+      br_code: IP
     - flex_code: limitedApproved
       br_code: LIMITAPP
     - flex_code: requested

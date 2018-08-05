@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * Attribute
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-28T23:51:44.370-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-02T08:10:41.428-07:00")
 
 public class Attribute   {
   @JsonProperty("OBJECT_LEVEL")

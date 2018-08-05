@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * ColorlibH
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-07-08T14:46:41.638-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-02T08:10:41.428-07:00")
 
 public class ColorlibH   {
   @JsonProperty("@memo3")
@@ -43,23 +43,6 @@ public class ColorlibH   {
 
   @JsonProperty("attachment")
   private Attachment attachment = null;
-
-  public ColorlibH() {
-  }
-
-  public ColorlibH(String memo3, String colorName, String altName1, String memo2, String status, String rgbR, String rgbG, String rgbB, String owner, String activeInd, Attachment attachment) {
-    this.memo3 = memo3;
-    this.colorName = colorName;
-    this.altName1 = altName1;
-    this.memo2 = memo2;
-    this.status = status;
-    this.rgbR = rgbR;
-    this.rgbG = rgbG;
-    this.rgbB = rgbB;
-    this.owner = owner;
-    this.activeInd = activeInd;
-    this.attachment = attachment;
-  }
 
   public ColorlibH memo3(String memo3) {
     this.memo3 = memo3;

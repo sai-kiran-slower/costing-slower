@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * ArtworkLibB
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-07-08T20:42:10.136-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-02T08:10:41.428-07:00")
 
 public class ArtworkLibB   {
   @JsonProperty("@combo_id")
@@ -33,19 +33,6 @@ public class ArtworkLibB   {
 
   @JsonProperty("attachment")
   private Attachment attachment = null;
-
-  public ArtworkLibB() {
-  }
-
-  public ArtworkLibB(String comboId, String memo1, String comboName, String comboAbrv, String status, List<ArtworkLibD> artworkLibD, Attachment attachment) {
-    this.comboId = comboId;
-    this.memo1 = memo1;
-    this.comboName = comboName;
-    this.comboAbrv = comboAbrv;
-    this.status = status;
-    this.artworkLibD = artworkLibD;
-    this.attachment = attachment;
-  }
 
   public ArtworkLibB comboId(String comboId) {
     this.comboId = comboId;

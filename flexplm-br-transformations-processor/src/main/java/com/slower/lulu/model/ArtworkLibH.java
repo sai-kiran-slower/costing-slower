@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * ArtworkLibH
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-07-08T20:42:10.136-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-02T08:10:41.428-07:00")
 
 public class ArtworkLibH   {
   @JsonProperty("@artwork_name")
@@ -31,19 +31,6 @@ public class ArtworkLibH   {
 
   @JsonProperty("artwork_lib_b")
   private ArtworkLibB artworkLibB = null;
-
-  public ArtworkLibH() {
-  }
-
-  public ArtworkLibH(String artworkName, String owner, String activeInd, String memo1, String artworkType, String status, ArtworkLibB artworkLibB) {
-    this.artworkName = artworkName;
-    this.owner = owner;
-    this.activeInd = activeInd;
-    this.memo1 = memo1;
-    this.artworkType = artworkType;
-    this.status = status;
-    this.artworkLibB = artworkLibB;
-  }
 
   public ArtworkLibH artworkName(String artworkName) {
     this.artworkName = artworkName;

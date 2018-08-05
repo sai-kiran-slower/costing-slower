@@ -39,7 +39,15 @@ public class ColorResponseHandler {
             final String fieldName = attribute.getFIELDNAMEKEY();
             final String flexValue = attribute.getFIELDVALUEKEY();
 
-            final DynamicTransform transform = DynamicTransform.getDynamicTransform(transformations, fieldName);
+            final DynamicTransform transform;
+
+            try {
+                transform = DynamicTransform.getDynamicTransform(transformations, fieldName);
+            } catch (IllegalArgumentException e) {
+                // Failed to find transform.
+                logger.warn(e.toString());
+                continue;
+            }
 
             if (transform.isAlwaysIncluded() || Functions.isChanged(attribute)) {
                 if (transform.isAttachment()) {

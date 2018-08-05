@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * ColorFlexPLMResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-29T01:48:05.312-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-02T08:10:41.428-07:00")
 
 public class ColorFlexPLMResponse   {
   @JsonProperty("Flex_interface")
