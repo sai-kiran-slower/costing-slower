@@ -308,7 +308,94 @@ definitions:
         type: string
         description: "Combo ID"
 
-# FlexPLM Response
+# IF11
+
+  if11BambooRoseResponse:
+    type: object
+    properties:
+      document:
+        $ref: '#/definitions/if11_document'
+
+  if11_document:
+    type: object
+    properties:
+      request:
+        $ref: '#/definitions/if11_request'
+
+  if11_request:
+    type: array
+    items:
+      $ref: '#/definitions/if11_quote'
+
+  if11_quote:
+    type: object
+    properties:
+      "@season":
+        type: string
+        description: "Season"
+      "@item_no":
+        type: string
+        description: "Item Number"
+      "@Fowner":
+        type: string
+        description: "owner"
+      "sell_channel":
+        type: array
+        items:
+          $ref: '#/definitions/if11_sell_channel'
+
+  if11_sell_channel:
+    type: object
+    properties:
+      "@selling_channel":
+        type: string
+        description: "Selling Channel"
+      "@plan_total":
+        type: string
+        description: "Plan Total"
+      "sell_channel_flow":
+        $ref: '#/definitions/if11_sell_channel_flow'
+
+  if11_sell_channel_flow:
+    type: object
+    properties:
+      "@plan_id":
+        type: string
+        description: "Plan ID"
+      "@plan_qty":
+        type: string
+        description: "Plan Quantity"
+      "sell_channel_d":
+        $ref: '#/definitions/if11_sell_channel_d'
+      "sell_channel_defn":
+        type: array
+        items:
+          $ref: '#/definitions/if11_sell_channel_definition'
+
+  if11_sell_channel_d:
+    type: object
+    properties:
+      "@alloc_by_1":
+        type: string
+        description: "STORE"
+      "@alloc_by_2":
+        type: string
+        description: "Plan ID"
+      "@alloc_by_3":
+        type: string
+        description: "STYC"
+
+  if11_sell_channel_definition:
+    type: object
+    properties:
+      "@attrib_value":
+        type: string
+        description: "Attribute Value"
+      "@attrib_name":
+        type: string
+        description: "Attribute Name"
+
+# FlexPLM Input
 
 # style
 
@@ -375,7 +462,7 @@ definitions:
         type: string
         description: "change indicator"
 
-# Color
+## Color
 
   colorFlexPLMResponse:
     type: object
@@ -383,7 +470,7 @@ definitions:
       Flex_interface:
         $ref: '#/definitions/flex_interface'
 
-# Artwork
+## Artwork
 
   artworkFlexPLMResponse:
     type: object
@@ -391,6 +478,7 @@ definitions:
       Flex_interface:
         $ref: '#/definitions/flex_interface'
 
+## IF 11 RPAS to BR
 
 # Rules
 

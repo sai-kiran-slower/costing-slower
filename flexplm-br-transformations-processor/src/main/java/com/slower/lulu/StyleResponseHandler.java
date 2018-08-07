@@ -13,7 +13,7 @@ public class StyleResponseHandler {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public String handleStyle(final StyleFlexPLMResponse styleFlexPLMResponse) throws Exception {
+    public String handleStyle(final StyleFlexPLMResponse styleFlexPLMInput) throws Exception {
         final StyleBambooRoseResponse styleBambooRoseResponse = new StyleBambooRoseResponse();
         final StyleDocument styleDocument = new StyleDocument();
         final Request request = new Request();
@@ -22,7 +22,7 @@ public class StyleResponseHandler {
         final SizeRangeBuilder sizeRangeBuilder = new SizeRangeBuilder();
         final QuoteExtBuilder quoteExtBuilder = new QuoteExtBuilder();
 
-        final List<Attribute> attributeList = styleFlexPLMResponse.getFlexInterface().getFlexPLMHeader().getAttributeList();
+        final List<Attribute> attributeList = styleFlexPLMInput.getFlexInterface().getFlexPLMHeader().getAttributeList();
 
         for (final Attribute attribute : attributeList) {
             final String nameKey = attribute.getFIELDNAMEKEY().trim();

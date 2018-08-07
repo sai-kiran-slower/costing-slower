@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * ColorlibH
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-02T08:10:41.428-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-06T21:58:50.169-07:00")
 
 public class ColorlibH   {
   @JsonProperty("@memo3")

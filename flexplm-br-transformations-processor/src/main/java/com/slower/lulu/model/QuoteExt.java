@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * QuoteExt
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-02T08:10:41.428-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-06T21:58:50.169-07:00")
 
 public class QuoteExt   {
   @JsonProperty("@pattern_maker")
@@ -19,15 +19,6 @@ public class QuoteExt   {
 
   @JsonProperty("@designer")
   private String designer = null;
-
-  public QuoteExt() {
-  }
-
-  public QuoteExt(String patternMaker, String prodmgr, String designer) {
-    this.patternMaker = patternMaker;
-    this.prodmgr = prodmgr;
-    this.designer = designer;
-  }
 
   public QuoteExt patternMaker(String patternMaker) {
     this.patternMaker = patternMaker;

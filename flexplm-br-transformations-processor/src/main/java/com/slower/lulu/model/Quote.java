@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * Quote
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-02T08:10:41.428-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-06T21:58:50.169-07:00")
 
 public class Quote   {
   @JsonProperty("@owner")
@@ -88,38 +88,6 @@ public class Quote   {
 
   @JsonProperty("attachment")
   private Attachment attachment = null;
-
-  public Quote() {
-  }
-
-  public Quote(String owner, String itemNo, String description, String season, String seasonYear, String altDesc1, String status04, String requestType, String status06, String buyProgramNo, String memo1, String brand, String propertyClass, String subclass, String dept, String division, String refNo, String subdept, String memo2, String status01, String status03, String status05, Note notes, SizeRange sizeRanges, QuoteExt quoteExt, Attachment attachment) {
-    this.owner = owner;
-    this.itemNo = itemNo;
-    this.description = description;
-    this.season = season;
-    this.seasonYear = seasonYear;
-    this.altDesc1 = altDesc1;
-    this.status04 = status04;
-    this.requestType = requestType;
-    this.status06 = status06;
-    this.buyProgramNo = buyProgramNo;
-    this.memo1 = memo1;
-    this.brand = brand;
-    this.propertyClass = propertyClass;
-    this.subclass = subclass;
-    this.dept = dept;
-    this.division = division;
-    this.refNo = refNo;
-    this.subdept = subdept;
-    this.memo2 = memo2;
-    this.status01 = status01;
-    this.status03 = status03;
-    this.status05 = status05;
-    this.notes = notes;
-    this.sizeRanges = sizeRanges;
-    this.quoteExt = quoteExt;
-    this.attachment = attachment;
-  }
 
   public Quote owner(String owner) {
     this.owner = owner;
