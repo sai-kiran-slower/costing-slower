@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * FlexplmHeader
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-06T21:58:50.169-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-08-08T21:12:44.291-07:00")
 
 public class FlexplmHeader   {
   @JsonProperty("EVENT")

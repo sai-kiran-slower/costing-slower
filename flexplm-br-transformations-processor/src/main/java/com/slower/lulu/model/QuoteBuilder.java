@@ -165,6 +165,32 @@ public class QuoteBuilder extends Quote{
     }
 
     public Quote createQuote() {
-        return new Quote(owner, itemNo, description, season, seasonYear, altDesc1, status04, requestType, status06, buyProgramNo, memo1, brand, propertyClass, subclass, dept, division, refNo, subdept, memo2, status01, status03, status05, notes, sizeRanges, quoteExt, attachment);
+        return new Quote()
+                .owner(owner)
+                .itemNo(itemNo)
+                .description(description)
+                .season(season)
+                .seasonYear(seasonYear)
+                .altDesc1(altDesc1)
+                .status04(status04)
+                .requestType(requestType)
+                .status06(status06)
+                .buyProgramNo(buyProgramNo)
+                .memo1(memo1)
+                .brand(brand)
+                .propertyClass(propertyClass)
+                .subclass(subclass)
+                .dept(dept)
+                .division(division)
+                .refNo(refNo)
+                .subdept(subdept)
+                .memo2(memo2)
+                .status01(status01)
+                .status03(status03)
+                .status05(status05)
+                .notes(notes)
+                .sizeRanges(sizeRanges)
+                .quoteExt(quoteExt)
+                .attachment(attachment);
     }
 }

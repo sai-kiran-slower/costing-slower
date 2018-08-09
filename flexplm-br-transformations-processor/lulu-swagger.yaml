@@ -323,9 +323,12 @@ definitions:
         $ref: '#/definitions/if11_request'
 
   if11_request:
-    type: array
-    items:
-      $ref: '#/definitions/if11_quote'
+    type: object
+    properties:
+      "request":
+        type: array
+        items:
+          $ref: '#/definitions/if11_quote'
 
   if11_quote:
     type: object

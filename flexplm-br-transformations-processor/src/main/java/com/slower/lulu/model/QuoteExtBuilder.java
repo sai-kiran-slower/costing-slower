@@ -20,6 +20,9 @@ public class QuoteExtBuilder extends QuoteExt{
     }
 
     public QuoteExt createQuoteExt() {
-        return new QuoteExt(patternMaker, prodmgr, designer);
+        return new QuoteExt()
+                .patternMaker(patternMaker)
+                .prodmgr(prodmgr)
+                .designer(designer);
     }
 }
