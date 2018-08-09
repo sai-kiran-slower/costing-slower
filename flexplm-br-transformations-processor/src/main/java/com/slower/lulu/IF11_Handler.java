@@ -169,8 +169,10 @@ public class IF11_Handler {
         final Map<Quote, List<SellChannel>> sellChannelMap = Maps.newHashMap();
         final Map<SellChannel, List<SellChannelFlow>> sellChannelFlowMap = Maps.newHashMap();
 
-        // Next we need to aggregate the RPAS records by their SellChannelFlow key (sell channel, item number, season, and plan_id)
-        final Map<SellChannelFlow, MutableLong> sellChannelCounts = Maps.newHashMap();
+
+        // We need counts both per sell channel and per sell channel flow
+        final Map<SellChannel, MutableLong> sellChannelCounts = Maps.newHashMap();
+        final Map<SellChannelFlow, MutableLong> sellChannelFlowCounts = Maps.newHashMap();
 
         // Track colors per sell channel
         final Map<SellChannelFlow, List<String>> sellChannelColors = Maps.newHashMap();
@@ -187,8 +189,11 @@ public class IF11_Handler {
             sellChannelFlowMap.putIfAbsent(sellChannel, Lists.newArrayList());
             sellChannelFlowMap.get(sellChannel).add(sellChannelFlow);
 
-            sellChannelCounts.putIfAbsent(sellChannelFlow, new MutableLong(0));
-            sellChannelCounts.get(sellChannelFlow).add(record.getPlanTotal());
+            sellChannelCounts.putIfAbsent(sellChannel, new MutableLong(0));
+            sellChannelCounts.get(sellChannel).add(record.getPlanTotal());
+
+            sellChannelFlowCounts.putIfAbsent(sellChannelFlow, new MutableLong(0));
+            sellChannelFlowCounts.get(sellChannelFlow).add(record.getPlanTotal());
 
             sellChannelColors.putIfAbsent(sellChannelFlow, Lists.newArrayList());
             sellChannelColors.get(sellChannelFlow).add(record.getColor());
@@ -203,11 +208,14 @@ public class IF11_Handler {
 
             sellChannels.forEach(sellChannel -> {
                 final If11SellChannel if11SellChannel = new If11SellChannel();
+                final long sellChannelCount = sellChannelCounts.get(sellChannel).getValue();
+                if11SellChannel.setSellingChannel(sellChannel.getSellChannel());
+                if11SellChannel.setPlanTotal(formatCount(sellChannelCount));
 
                 sellChannelFlowMap.get(sellChannel).forEach(sellChannelFlow -> {
                     final If11SellChannelFlow if11SellChannelFlow = new If11SellChannelFlow();
-                    final long planQuantity = sellChannelCounts.get(sellChannelFlow).getValue();
-                    final String formattedQuantity = String.valueOf(planQuantity);
+                    final long planQuantity = sellChannelFlowCounts.get(sellChannelFlow).getValue();
+                    final String formattedQuantity = formatCount(planQuantity);
 
                     if11SellChannelFlow.setPlanId(sellChannelFlow.getPlanId());
                     if11SellChannelFlow.setPlanQty(formattedQuantity);
@@ -239,11 +247,6 @@ public class IF11_Handler {
                     if11SellChannel.setSellChannelFlow(if11SellChannelFlow);
                 });
 
-                if11SellChannel.setSellingChannel(sellChannel.getSellChannel());
-
-                // TODO This isn't right, should be aggregated across sell channel flows
-                if11SellChannel.setPlanTotal(formattedQuantity);
-
                 if11Quote.addSellChannelItem(if11SellChannel);
             });
 
@@ -259,6 +262,10 @@ public class IF11_Handler {
         return objectMapper
                 .writerWithDefaultPrettyPrinter()
                 .writeValueAsString(if11Response);
+    }
+
+    private String formatCount(long planQuantity) {
+        return String.valueOf(planQuantity);
     }
 
     private static Map<Long, String> getSellChannelLookupMap() {
