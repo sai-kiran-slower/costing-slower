@@ -44,7 +44,7 @@ public class IF11_Handler {
     }
 
 
-    List<RpasRecord> parseRpasRecords(List<String> rawIf11Records) {
+    private List<RpasRecord> parseRpasRecords(List<String> rawIf11Records) {
 
         rawIf11Records.forEach(line -> {
             String[] splitLine= line.split(",");
@@ -55,12 +55,28 @@ public class IF11_Handler {
             long sellingChannel = Long.parseLong(splitLine[3]);
             int planTotal = (int) Math.round(Double.parseDouble(splitLine[4]));
 
-            new RpasRecord(planTotal, sellChannelLookupMap.get(sellingChannel), )
+            new RpasRecord(
+                    planTotal,
+                    sellChannelLookupMap.get(sellingChannel),
+                    )
 
 
         });
     }
 
+    /**
+     * Return a string formatted as 2017-12 from a planId passed in as w12_2017
+     */
+    private String parsePlanId(final String week) {
+
+    }
+
+    /**
+     * Return a string formatted as Spring 2017 from a planId passed in as w12_2017
+     */
+    private String parsePlanId(final String week) {
+
+    }
 
     /**
      * @param iff11Records A list of comma separated strings representing the 15+ fields (we need only 5 of these)
