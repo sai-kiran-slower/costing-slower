@@ -325,7 +325,7 @@ definitions:
   if11_request:
     type: object
     properties:
-      "request":
+      "quote":
         type: array
         items:
           $ref: '#/definitions/if11_quote'

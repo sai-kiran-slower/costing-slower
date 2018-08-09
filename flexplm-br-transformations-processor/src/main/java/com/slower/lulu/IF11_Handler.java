@@ -3,9 +3,11 @@ package com.slower.lulu;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import io.swagger.model.*;
+import org.apache.commons.lang3.mutable.MutableLong;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,49 +26,13 @@ public class IF11_Handler {
 
     private final static Map<Long, String> sellChannelLookupMap = getSellChannelLookupMap();
 
-    class RpasRecord {
-        int planTotal; // 8000
-        String styleChannelCode; // 0001
-        SellChannel sellChannelKey;
-
-        public RpasRecord(int planTotal, String sellChannel, String planId, String season, String styleChannelCode, String itemNumber) {
-            this.planTotal = planTotal;
-            this.styleChannelCode = styleChannelCode;
-            this.sellChannelKey = new SellChannel(sellChannel, planId, season, itemNumber);
-        }
-
-        public int getPlanTotal() {
-            return planTotal;
-        }
-
-        public String getStyleChannelCode() {
-            return styleChannelCode;
-        }
-
-        public SellChannel getSellChannelKey() {
-            return sellChannelKey;
-        }
-    }
-
-    class SellChannel {
+    class Quote {
         String season; // Spring 2017
         String itemNumber; // lw5ahos
-        String sellChannel; // ASIA
-        String planId; // 2017-01
 
-        public SellChannel(String sellChannel, String planId, String season, String itemNumber) {
-            this.sellChannel = sellChannel;
-            this.planId = planId;
+        public Quote(String season, String itemNumber) {
             this.season = season;
             this.itemNumber = itemNumber;
-        }
-
-        public String getSellChannel() {
-            return sellChannel;
-        }
-
-        public String getPlanId() {
-            return planId;
         }
 
         public String getSeason() {
@@ -80,23 +46,113 @@ public class IF11_Handler {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
-            SellChannel aggregate = (SellChannel) o;
+            Quote quote = (Quote) o;
 
-            if (season != null ? !season.equals(aggregate.season) : aggregate.season != null) return false;
-            if (itemNumber != null ? !itemNumber.equals(aggregate.itemNumber) : aggregate.itemNumber != null)
-                return false;
-            if (sellChannel != null ? !sellChannel.equals(aggregate.sellChannel) : aggregate.sellChannel != null)
-                return false;
-            return planId != null ? planId.equals(aggregate.planId) : aggregate.planId == null;
+            if (season != null ? !season.equals(quote.season) : quote.season != null) return false;
+            return itemNumber != null ? itemNumber.equals(quote.itemNumber) : quote.itemNumber == null;
         }
 
         @Override
         public int hashCode() {
             int result = season != null ? season.hashCode() : 0;
             result = 31 * result + (itemNumber != null ? itemNumber.hashCode() : 0);
+            return result;
+        }
+    }
+
+    class SellChannel {
+        Quote quote;
+        String sellChannel; // ASIA
+
+        public SellChannel(Quote quote, String sellChannel) {
+            this.quote = quote;
+            this.sellChannel = sellChannel;
+        }
+
+        public Quote getQuote() {
+            return quote;
+        }
+
+        public String getSellChannel() {
+            return sellChannel;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            SellChannel that = (SellChannel) o;
+
+            if (quote != null ? !quote.equals(that.quote) : that.quote != null) return false;
+            return sellChannel != null ? sellChannel.equals(that.sellChannel) : that.sellChannel == null;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = quote != null ? quote.hashCode() : 0;
             result = 31 * result + (sellChannel != null ? sellChannel.hashCode() : 0);
+            return result;
+        }
+    }
+
+    class SellChannelFlow {
+        SellChannel sellChannel;
+        String planId; // 2017-01
+
+        public SellChannelFlow(SellChannel sellChannel, String planId) {
+            this.sellChannel = sellChannel;
+            this.planId = planId;
+        }
+
+        public SellChannel getSellChannel() {
+            return sellChannel;
+        }
+
+        public String getPlanId() {
+            return planId;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            SellChannelFlow that = (SellChannelFlow) o;
+
+            if (sellChannel != null ? !sellChannel.equals(that.sellChannel) : that.sellChannel != null) return false;
+            return planId != null ? planId.equals(that.planId) : that.planId == null;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = sellChannel != null ? sellChannel.hashCode() : 0;
             result = 31 * result + (planId != null ? planId.hashCode() : 0);
             return result;
+        }
+    }
+
+    class ColorSellChannel {
+        int planTotal; // 8000
+        String color; // 0001
+        SellChannelFlow sellChannelFlow;
+
+        public ColorSellChannel(int planTotal, String sellChannel, String planId, String season, String color, String itemNumber) {
+            this.planTotal = planTotal;
+            this.color = color;
+            this.sellChannelFlow = new SellChannelFlow(new SellChannel(new Quote(season, itemNumber), sellChannel), planId);
+        }
+
+        public int getPlanTotal() {
+            return planTotal;
+        }
+
+        public String getColor() {
+            return color;
+        }
+
+        public SellChannelFlow getSellChannelFlow() {
+            return sellChannelFlow;
         }
     }
 
@@ -108,98 +164,91 @@ public class IF11_Handler {
         final If11BambooRoseResponse if11Response = new If11BambooRoseResponse();
         final If11Document if11Document = new If11Document();
         final If11Request if11Request = new If11Request();
-        final List<RpasRecord> rpasRecords = parseRpasRecords(if11Records);
+        final List<ColorSellChannel> rpasRecords = parseRpasRecords(if11Records);
 
-        // Next we need to aggregate the RPAS records by their SellChannel key (sell channel, item number, season, and plan_id)
-        final Map<SellChannel, Long> sellChannelCounts = Maps.newHashMap();
+        final Map<Quote, List<SellChannel>> sellChannelMap = Maps.newHashMap();
+        final Map<SellChannel, List<SellChannelFlow>> sellChannelFlowMap = Maps.newHashMap();
 
+        // Next we need to aggregate the RPAS records by their SellChannelFlow key (sell channel, item number, season, and plan_id)
+        final Map<SellChannelFlow, MutableLong> sellChannelCounts = Maps.newHashMap();
+
+        // Track colors per sell channel
+        final Map<SellChannelFlow, List<String>> sellChannelColors = Maps.newHashMap();
+
+        // Do 1 pass over all the records to populate our maps so we can avoid doing a rough nested tree traversal
         rpasRecords.forEach(record -> {
-            final SellChannel key = record.getSellChannelKey();
-            if (sellChannelCounts.containsKey(key)) {
-                sellChannelCounts.put(key, sellChannelCounts.get(key) + record.getPlanTotal());
-            } else {
-                sellChannelCounts.put(key, (long) record.getPlanTotal());
-            }
+            final SellChannelFlow sellChannelFlow = record.getSellChannelFlow();
+            final SellChannel sellChannel = sellChannelFlow.getSellChannel();
+            final Quote quote = sellChannel.getQuote();
+
+            sellChannelMap.putIfAbsent(quote, Lists.newArrayList());
+            sellChannelMap.get(quote).add(sellChannel);
+
+            sellChannelFlowMap.putIfAbsent(sellChannel, Lists.newArrayList());
+            sellChannelFlowMap.get(sellChannel).add(sellChannelFlow);
+
+            sellChannelCounts.putIfAbsent(sellChannelFlow, new MutableLong(0));
+            sellChannelCounts.get(sellChannelFlow).add(record.getPlanTotal());
+
+            sellChannelColors.putIfAbsent(sellChannelFlow, Lists.newArrayList());
+            sellChannelColors.get(sellChannelFlow).add(record.getColor());
         });
 
-        final Set<String> seasons = rpasRecords.stream().map(s -> s.getSellChannelKey().getSeason()).collect(Collectors.toSet());
+        sellChannelMap.forEach((quote, sellChannels) -> {
+            // We make one quote per season and item number
+            final If11Quote if11Quote = new If11Quote();
+            if11Quote.setFowner("LULULEMON");
+            if11Quote.setSeason(convertSeason(quote.getSeason()));
+            if11Quote.setItemNo(quote.getItemNumber().toUpperCase());
 
-        // We will have one quote per season and item number
+            sellChannels.forEach(sellChannel -> {
+                final If11SellChannel if11SellChannel = new If11SellChannel();
 
-        // TODO instead of filtering every time we can compose a three-layer deep map but may be unecessary optimization given data volumes
-        for (final String season : seasons) {
-            final List<RpasRecord> recordsPerSeason = rpasRecords
-                    .stream()
-                    .filter(s -> s.getSellChannelKey().getSeason().equals(season))
-                    .collect(Collectors.toList());
+                sellChannelFlowMap.get(sellChannel).forEach(sellChannelFlow -> {
+                    final If11SellChannelFlow if11SellChannelFlow = new If11SellChannelFlow();
+                    final long planQuantity = sellChannelCounts.get(sellChannelFlow).getValue();
+                    final String formattedQuantity = String.valueOf(planQuantity);
 
-            final Set<String> itemNumbers = recordsPerSeason
-                    .stream()
-                    .map(s -> s.getSellChannelKey().getItemNumber())
-                    .collect(Collectors.toSet());
+                    if11SellChannelFlow.setPlanId(sellChannelFlow.getPlanId());
+                    if11SellChannelFlow.setPlanQty(formattedQuantity);
 
-            for (String itemNumber : itemNumbers) {
-                final List<RpasRecord> recordsPerSeasonAndItemNumber = recordsPerSeason
-                        .stream()
-                        .filter(s -> s.getSellChannelKey().getItemNumber().equals(itemNumber))
-                        .collect(Collectors.toList());
+                    final List<String> colors = sellChannelColors.get(sellChannelFlow);
+                    for (String color : colors) {
+                        final If11SellChannelD sellChannelD = new If11SellChannelD();
+                        sellChannelD.allocBy1("STORE");
+                        sellChannelD.allocBy2(quote.getSeason());
+                        sellChannelD.allocBy3(color);
 
-                // We make one quote per season and item number
-                final If11Quote if11Quote = new If11Quote();
-                if11Quote.setItemNo(itemNumber.toUpperCase());
-                if11Quote.setFowner("LULULEMON");
-                if11Quote.setSeason(convertSeason(season));
+                        // Fill in sell channel defs
+                        final If11SellChannelDefinition sellChannelDefinition_1 = new If11SellChannelDefinition();
+                        final If11SellChannelDefinition sellChannelDefinition_2 = new If11SellChannelDefinition();
 
+                        sellChannelDefinition_1.setAttribValue(color);
+                        sellChannelDefinition_1.setAttribName("COLOR");
 
-                // Track which sell channels were processed since we will only add one record per sell channel per
-                // season and item number
+                        sellChannelDefinition_2.setAttribName("STORE");
+                        sellChannelDefinition_2.setAttribValue("STORE");
 
-                final Set<SellChannel> processedSellChannels = Sets.newHashSet();
-                for (final RpasRecord record: recordsPerSeasonAndItemNumber) {
-                    if (processedSellChannels.contains(record.getSellChannelKey())) {
-                        continue;
+                        // TODO This doesn't make sense, do we do this for every color??
+                        if11SellChannelFlow.setSellChannelD(sellChannelD);
+                        if11SellChannelFlow.addSellChannelDefnItem(sellChannelDefinition_1);
+                        if11SellChannelFlow.addSellChannelDefnItem(sellChannelDefinition_2);
                     }
 
-                    final String seasonCode = record.getSellChannelKey().getSeason(); //Fill me in
-                    final String stycCode = record.getStyleChannelCode(); // 0001
-                    final long planQuantity = sellChannelCounts.get(record.getSellChannelKey()); // TODO fill me in
-                    final If11SellChannelFlow sellChannelFlow = new If11SellChannelFlow();
+                    // TODO This doesnt make sense, this should be an add
+                    if11SellChannel.setSellChannelFlow(if11SellChannelFlow);
+                });
 
-                    final If11SellChannelD sellChannelD = new If11SellChannelD();
-                    sellChannelD.allocBy1("STORE");
-                    sellChannelD.allocBy2(seasonCode);
-                    sellChannelD.allocBy3(stycCode);
+                if11SellChannel.setSellingChannel(sellChannel.getSellChannel());
 
-                    // Fill in sell channel defs
-                    final If11SellChannelDefinition sellChannelDefinition_1 = new If11SellChannelDefinition();
-                    final If11SellChannelDefinition sellChannelDefinition_2 = new If11SellChannelDefinition();
+                // TODO This isn't right, should be aggregated across sell channel flows
+                if11SellChannel.setPlanTotal(formattedQuantity);
 
-                    sellChannelDefinition_1.setAttribValue(stycCode);
-                    sellChannelDefinition_1.setAttribName("COLOR");
+                if11Quote.addSellChannelItem(if11SellChannel);
+            });
 
-                    sellChannelDefinition_2.setAttribName("STORE");
-                    sellChannelDefinition_2.setAttribValue("STORE");
-
-                    sellChannelFlow.setPlanId(seasonCode);
-                    String formattedQuantity = String.valueOf(planQuantity);
-                    sellChannelFlow.setPlanQty(formattedQuantity);
-                    sellChannelFlow.setSellChannelD(sellChannelD);
-                    sellChannelFlow.addSellChannelDefnItem(sellChannelDefinition_1);
-                    sellChannelFlow.addSellChannelDefnItem(sellChannelDefinition_2);
-
-                    final If11SellChannel sellChannel = new If11SellChannel();
-                    final String sellingChannel = record.getSellChannelKey().getSellChannel();
-                    sellChannel.setSellingChannel(sellingChannel);
-                    sellChannel.setPlanTotal(formattedQuantity);
-                    sellChannel.setSellChannelFlow(sellChannelFlow);
-
-                    processedSellChannels.add(record.getSellChannelKey());
-                    if11Quote.addSellChannelItem(sellChannel);
-                }
-
-                if11Request.addRequestItem(if11Quote);
-            }
-        }
+            if11Request.addQuoteItem(if11Quote);
+        });
 
         if11Document.setRequest(if11Request);
         if11Response.setDocument(if11Document);
@@ -228,7 +277,7 @@ public class IF11_Handler {
         return lookupMap;
     }
 
-    private List<RpasRecord> parseRpasRecords(List<String> rawIf11Records) {
+    private List<ColorSellChannel> parseRpasRecords(List<String> rawIf11Records) {
         return rawIf11Records.stream().map(line -> {
             String[] splitLine= line.split(",");
 
@@ -238,7 +287,7 @@ public class IF11_Handler {
             long sellingChannel = Long.parseLong(splitLine[3]);
             int planTotal = (int) Math.round(Double.parseDouble(splitLine[4]));
 
-            return new RpasRecord(
+            return new ColorSellChannel(
                     planTotal,
                     sellChannelLookupMap.get(sellingChannel),
                     parsePlanId(week),
