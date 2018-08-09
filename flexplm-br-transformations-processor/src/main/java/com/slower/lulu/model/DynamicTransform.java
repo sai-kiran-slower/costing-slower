@@ -2,6 +2,7 @@ package com.slower.lulu.model;
 
 import com.google.common.base.Optional;
 import com.slower.lulu.utils.Functions;
+import io.swagger.client.model.Attribute;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

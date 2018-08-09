@@ -2,10 +2,10 @@ package com.slower.lulu.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import com.slower.lulu.config.FlexBrMapping;
-import com.slower.lulu.config.MappingConfig;
-import com.slower.lulu.config.MappingRule;
-import com.slower.lulu.model.Attribute;
+import io.swagger.client.model.Attribute;
+import io.swagger.client.model.FlexBrMapping;
+import io.swagger.client.model.MappingConfig;
+import io.swagger.client.model.MappingRule;
 import org.apache.commons.text.CaseUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,7 @@
 package com.slower.lulu.model;
 
 import com.slower.lulu.utils.Functions;
+import io.swagger.client.model.*;
 
 public class QuoteBuilder extends Quote{
     private String owner;

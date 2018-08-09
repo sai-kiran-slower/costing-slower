@@ -1,8 +1,10 @@
 package com.slower.lulu.model;
 
+import io.swagger.client.model.Attachment;
+
 import java.io.File;
 
-public class AttachmentBuilder extends Attachment{
+public class AttachmentBuilder extends Attachment {
     public AttachmentBuilder(final String flexPlmFilePath) {
         if (flexPlmFilePath.isEmpty()) {
             setLocation("");

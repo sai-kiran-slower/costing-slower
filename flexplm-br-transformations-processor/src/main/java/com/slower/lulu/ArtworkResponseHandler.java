@@ -8,6 +8,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.slower.lulu.model.*;
 import com.slower.lulu.utils.Functions;
+import io.swagger.client.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

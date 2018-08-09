@@ -1,9 +1,9 @@
 package com.slower.lulu;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.slower.lulu.model.ArtworkFlexPLMResponse;
-import com.slower.lulu.model.ColorFlexPLMResponse;
-import com.slower.lulu.model.StyleFlexPLMResponse;
+import io.swagger.client.model.ArtworkFlexPLMResponse;
+import io.swagger.client.model.ColorFlexPLMResponse;
+import io.swagger.client.model.StyleFlexPLMResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

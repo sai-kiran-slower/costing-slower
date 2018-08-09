@@ -100,8 +100,8 @@
                         </goals>
                         <configuration>
                             <inputSpec>lulu-swagger.yaml</inputSpec>
-                            <output>${project.build.directory}/generated-sources</output>
-                            <language>spring</language>
+                            <output>${project.basedir}</output>
+                            <language>java</language>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
                             </configOptions>

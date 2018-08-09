@@ -1,8 +1,9 @@
 package com.slower.lulu.model;
 
 import com.slower.lulu.utils.Functions;
+import io.swagger.client.model.QuoteExt;
 
-public class QuoteExtBuilder extends QuoteExt{
+public class QuoteExtBuilder extends QuoteExt {
     private String patternMaker;
     private String prodmgr;
     private String designer;
