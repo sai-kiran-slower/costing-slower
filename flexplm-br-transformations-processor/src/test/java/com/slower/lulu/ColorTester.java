@@ -1,7 +1,7 @@
 package com.slower.lulu;
 
 import com.google.common.collect.ImmutableList;
-import io.swagger.client.model.ColorlibH;
+import io.swagger.model.ColorlibH;
 import org.apache.commons.text.CaseUtils;
 import org.junit.Test;
 

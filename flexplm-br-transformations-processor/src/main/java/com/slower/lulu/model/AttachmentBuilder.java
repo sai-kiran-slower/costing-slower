@@ -1,6 +1,6 @@
 package com.slower.lulu.model;
 
-import io.swagger.client.model.Attachment;
+import io.swagger.model.Attachment;
 
 import java.io.File;
 

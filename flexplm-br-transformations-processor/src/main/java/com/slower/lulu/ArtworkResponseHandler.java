@@ -6,19 +6,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.slower.lulu.model.*;
+import com.slower.lulu.model.AttachmentBuilder;
+import com.slower.lulu.model.DynamicTransform;
 import com.slower.lulu.utils.Functions;
-import io.swagger.client.model.*;
+import io.swagger.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static com.slower.lulu.model.DynamicTransform.setValue;
 
