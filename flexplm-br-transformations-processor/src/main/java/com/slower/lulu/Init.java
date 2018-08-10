@@ -18,6 +18,13 @@ public class Init {
         String destFilePath = null;
         String payloadType = null;
         try {
+            // IF11
+            parentDirPath = "src/main/resources/sample/if11/";
+            srcFilePath = parentDirPath + "if11_input.csv";
+            destFilePath = parentDirPath + "if11_BR_Kafka.json";
+            payloadType = "IF11";
+            processPayload(srcFilePath, destFilePath, payloadType);
+
             parentDirPath = "src/main/resources/sample/style/";
 
 //            srcFilePath = parentDirPath + "Style_1_FlexPLM.json";
@@ -96,13 +103,6 @@ public class Init {
             destFilePath = parentDirPath + "Artwork_3_BR_Kafka.json";
             payloadType = "ARTWORK";
             processPayload(srcFilePath, destFilePath, payloadType);
-
-            // IF11
-            parentDirPath = "src/main/resources/sample/if11/";
-            srcFilePath = parentDirPath + "if11_rpas_export.csv";
-            destFilePath = parentDirPath + "if11_BR_Kafka.json";
-            payloadType = "IF11";
-            processPayload(srcFilePath, destFilePath, payloadType);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -125,7 +125,7 @@ public class Init {
                 brJsonStr = payloadProcessor.processArtwork(fileContent);
                 break;
             case "IF11":
-                brJsonStr = payloadProcessor.processIf11(srcFilePath);
+                brJsonStr = payloadProcessor.processIf11(fileContent);
         }
 
         writeContentToJSONFile(destFilePath, brJsonStr);

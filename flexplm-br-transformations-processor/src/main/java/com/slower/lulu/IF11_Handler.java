@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import io.swagger.model.*;
 import org.apache.commons.lang3.mutable.MutableLong;
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -57,6 +59,14 @@ public class IF11_Handler {
             result = 31 * result + (itemNumber != null ? itemNumber.hashCode() : 0);
             return result;
         }
+
+        @Override
+        public String toString() {
+            return "Quote{" +
+                    "season='" + season + '\'' +
+                    ", itemNumber='" + itemNumber + '\'' +
+                    '}';
+        }
     }
 
     class SellChannel {
@@ -92,6 +102,14 @@ public class IF11_Handler {
             int result = quote != null ? quote.hashCode() : 0;
             result = 31 * result + (sellChannel != null ? sellChannel.hashCode() : 0);
             return result;
+        }
+
+        @Override
+        public String toString() {
+            return "SellChannel{" +
+                    "quote=" + quote +
+                    ", sellChannel='" + sellChannel + '\'' +
+                    '}';
         }
     }
 
@@ -129,6 +147,14 @@ public class IF11_Handler {
             result = 31 * result + (planId != null ? planId.hashCode() : 0);
             return result;
         }
+
+        @Override
+        public String toString() {
+            return "SellChannelFlow{" +
+                    "sellChannel=" + sellChannel +
+                    ", planId='" + planId + '\'' +
+                    '}';
+        }
     }
 
     class RpasRecord {
@@ -153,6 +179,15 @@ public class IF11_Handler {
         public SellChannelFlow getSellChannelFlow() {
             return sellChannelFlow;
         }
+
+        @Override
+        public String toString() {
+            return "RpasRecord{" +
+                    "planTotal=" + planTotal +
+                    ", color='" + color + '\'' +
+                    ", sellChannelFlow=" + sellChannelFlow +
+                    '}';
+        }
     }
 
     /**
@@ -160,8 +195,8 @@ public class IF11_Handler {
      * @param if11Records A list of comma seperated values consumed from the queue (schema ssumed to be consistent with that provided on 8/1/2018
      */
     // Parse from fileName
-    public String transform(final String fileName) throws InvocationTargetException, NoSuchMethodException, JsonProcessingException, IllegalAccessException {
-        final List<RpasRecord> rpasRecords = parseRpasRecordsFromFile(fileName);
+    public String transform(final String payload) throws InvocationTargetException, NoSuchMethodException, JsonProcessingException, IllegalAccessException {
+        final List<RpasRecord> rpasRecords = parseRpasRecordsFromPayload(payload);
         return transform(rpasRecords);
     }
 
@@ -173,16 +208,15 @@ public class IF11_Handler {
         final If11Request if11Request = new If11Request();
 
 
-        final Map<Quote, List<SellChannel>> sellChannelMap = Maps.newHashMap();
-        final Map<SellChannel, List<SellChannelFlow>> sellChannelFlowMap = Maps.newHashMap();
-
+        final Map<Quote, Set<SellChannel>> sellChannelMap = Maps.newHashMap();
+        final Map<SellChannel, Set<SellChannelFlow>> sellChannelFlowMap = Maps.newHashMap();
 
         // We need counts both per sell channel and per sell channel flow
         final Map<SellChannel, MutableLong> sellChannelCounts = Maps.newHashMap();
         final Map<SellChannelFlow, MutableLong> sellChannelFlowCounts = Maps.newHashMap();
 
         // Track colors per sell channel
-        final Map<SellChannelFlow, List<String>> sellChannelColors = Maps.newHashMap();
+        final Map<SellChannel, Set<String>> sellChannelColors = Maps.newHashMap();
 
         // Do 1 pass over all the records to populate our maps so we can avoid doing a rough nested tree traversal
         rpasRecords.forEach(record -> {
@@ -190,10 +224,10 @@ public class IF11_Handler {
             final SellChannel sellChannel = sellChannelFlow.getSellChannel();
             final Quote quote = sellChannel.getQuote();
 
-            sellChannelMap.putIfAbsent(quote, Lists.newArrayList());
+            sellChannelMap.putIfAbsent(quote, Sets.newHashSet());
             sellChannelMap.get(quote).add(sellChannel);
 
-            sellChannelFlowMap.putIfAbsent(sellChannel, Lists.newArrayList());
+            sellChannelFlowMap.putIfAbsent(sellChannel, Sets.newHashSet());
             sellChannelFlowMap.get(sellChannel).add(sellChannelFlow);
 
             sellChannelCounts.putIfAbsent(sellChannel, new MutableLong(0));
@@ -202,8 +236,8 @@ public class IF11_Handler {
             sellChannelFlowCounts.putIfAbsent(sellChannelFlow, new MutableLong(0));
             sellChannelFlowCounts.get(sellChannelFlow).add(record.getPlanTotal());
 
-            sellChannelColors.putIfAbsent(sellChannelFlow, Lists.newArrayList());
-            sellChannelColors.get(sellChannelFlow).add(record.getColor());
+            sellChannelColors.putIfAbsent(sellChannel, Sets.newHashSet());
+            sellChannelColors.get(sellChannel).add(record.getColor());
         });
 
         sellChannelMap.forEach((quote, sellChannels) -> {
@@ -219,11 +253,12 @@ public class IF11_Handler {
                 if11SellChannel.setSellingChannel(sellChannel.getSellChannel());
                 if11SellChannel.setPlanTotal(formatCount(sellChannelCount));
 
+                final Set<String> colors = sellChannelColors.get(sellChannel);
+
                 sellChannelFlowMap.get(sellChannel).forEach(sellChannelFlow -> {
                     final long planQuantity = sellChannelFlowCounts.get(sellChannelFlow).getValue();
                     final String formattedQuantity = formatCount(planQuantity);
 
-                    final List<String> colors = sellChannelColors.get(sellChannelFlow);
                     for (String color : colors) {
                         final If11SellChannelFlow if11SellChannelFlow = new If11SellChannelFlow();
                         if11SellChannelFlow.setPlanId(sellChannelFlow.getPlanId());
@@ -235,22 +270,25 @@ public class IF11_Handler {
                         sellChannelD.allocBy3(color);
 
                         if11SellChannelFlow.setSellChannelD(sellChannelD);
-
-                        // Fill in sell channel defs
-                        final If11SellChannelDefinition if11SellChannelDefinition = new If11SellChannelDefinition();
-                        if11SellChannelDefinition.setAttribValue(color);
-                        if11SellChannelDefinition.setAttribName("COLOR");
-
                         if11SellChannel.addSellChannelFlowItem(if11SellChannelFlow);
-                        if11SellChannel.addSellChannelDefnItem(if11SellChannelDefinition);
                     }
-
-                    final If11SellChannelDefinition storeSellChannelDefinition = new If11SellChannelDefinition();
-                    storeSellChannelDefinition.setAttribValue("STORE");
-                    storeSellChannelDefinition.setAttribName("STORE");
-
-                    if11SellChannel.addSellChannelDefnItem(storeSellChannelDefinition);
                 });
+
+                // Fill in sell channel defs per color
+                for (String color : colors) {
+                    final If11SellChannelDefinition if11SellChannelDefinition = new If11SellChannelDefinition();
+                    if11SellChannelDefinition.setAttribValue(color);
+                    if11SellChannelDefinition.setAttribName("COLOR");
+
+                    if11SellChannel.addSellChannelDefnItem(if11SellChannelDefinition);
+                }
+
+                // Add a final static definition for store
+                final If11SellChannelDefinition storeSellChannelDefinition = new If11SellChannelDefinition();
+                storeSellChannelDefinition.setAttribValue("STORE");
+                storeSellChannelDefinition.setAttribName("STORE");
+
+                if11SellChannel.addSellChannelDefnItem(storeSellChannelDefinition);
 
                 if11Quote.addSellChannelItem(if11SellChannel);
             });
@@ -289,15 +327,17 @@ public class IF11_Handler {
         return lookupMap;
     }
 
-    // TODO This goes away to be replaced by pipe from Kafka
-    public List<RpasRecord> parseRpasRecordsFromFile(String fileName) {
-        BufferedReader br = new BufferedReader(new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName)));
-
-        Stream<String> lines = br.lines();
-        if (lines.count() == 0) {
+    public List<RpasRecord> parseRpasRecordsFromPayload(final String payload) {
+        if (payload.isEmpty()) {
             return ImmutableList.of();
         }
-        final String schema = lines.findFirst().get();
+
+        // Split lines by newline separator
+        // TODO Validate this is valid
+        String[] contents = payload.split("\n");
+        Stream<String> lines = Stream.of(contents);
+
+        final String schema = contents[0];
         final String[] splitSchema = schema.split(",");
         final Map<String, Integer> schemaMap = Maps.newHashMap();
 
@@ -314,11 +354,11 @@ public class IF11_Handler {
     private List<RpasRecord> parseRpasRecords(final Map<String, Integer> schema,
                                               final List<String> rawIf11Records) {
         return rawIf11Records.stream().map(line -> {
-            String[] splitLine= line.split(",");
+            String[] splitLine = line.split(",");
 
             // Hardcoded schema def for now, change later
-            String week = splitLine[schema.get("WEEK")];
-            String styleChannel = splitLine[schema.get("STYC")];
+            String week = splitLine[schema.get("WEEK")].trim();
+            String styleChannel = splitLine[schema.get("STYC")].trim();
             long sellingChannel = Long.parseLong(splitLine[schema.get("STRE")]);
             int planTotal = (int) Math.round(Double.parseDouble(splitLine[schema.get("LCP_REC_U")]));
 

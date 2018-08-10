@@ -31,7 +31,7 @@ public class PayloadProcessor {
     }
 
     // TODO Update If11 to read from stream
-    public String processIf11(final String fileName) throws Exception {
-        return new IF11_Handler().transform(fileName);
+    public String processIf11(final String payload) throws Exception {
+        return new IF11_Handler().transform(payload);
     }
 }
