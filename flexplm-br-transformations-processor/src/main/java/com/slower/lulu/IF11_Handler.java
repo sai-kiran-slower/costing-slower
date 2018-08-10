@@ -21,6 +21,14 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * At a high level, if11 output generation involves a series of groupings
+ *
+ * For every Season and Item Number we generate a set of Quotes
+ * Within each quote, we split by Sell Channel
+ * Each Sell Channel has a Sell Channel Definition and 1 or more Sell Channel Flow definitions (1 for each color and planID)
+ * A Sell Channel Definition
+ */
 public class IF11_Handler {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -255,40 +263,11 @@ public class IF11_Handler {
 
                 final Set<String> colors = sellChannelColors.get(sellChannel);
 
-                sellChannelFlowMap.get(sellChannel).forEach(sellChannelFlow -> {
-                    final long planQuantity = sellChannelFlowCounts.get(sellChannelFlow).getValue();
-                    final String formattedQuantity = formatCount(planQuantity);
+                final List<If11SellChannelFlow> sellChannelFlows = computeSellChannelFlows(sellChannelFlowMap, sellChannelFlowCounts, quote.getSeason(), sellChannel, colors);
+                final ImmutableList<If11SellChannelDefinition> sellChannelDefinitions = computeSellChannelDefinitions(colors);
 
-                    for (String color : colors) {
-                        final If11SellChannelFlow if11SellChannelFlow = new If11SellChannelFlow();
-                        if11SellChannelFlow.setPlanId(sellChannelFlow.getPlanId());
-                        if11SellChannelFlow.setPlanQty(formattedQuantity);
-
-                        final If11SellChannelD sellChannelD = new If11SellChannelD();
-                        sellChannelD.allocBy1("STORE");
-                        sellChannelD.allocBy2(quote.getSeason());
-                        sellChannelD.allocBy3(color);
-
-                        if11SellChannelFlow.setSellChannelD(sellChannelD);
-                        if11SellChannel.addSellChannelFlowItem(if11SellChannelFlow);
-                    }
-                });
-
-                // Fill in sell channel defs per color
-                for (String color : colors) {
-                    final If11SellChannelDefinition if11SellChannelDefinition = new If11SellChannelDefinition();
-                    if11SellChannelDefinition.setAttribValue(color);
-                    if11SellChannelDefinition.setAttribName("COLOR");
-
-                    if11SellChannel.addSellChannelDefnItem(if11SellChannelDefinition);
-                }
-
-                // Add a final static definition for store
-                final If11SellChannelDefinition storeSellChannelDefinition = new If11SellChannelDefinition();
-                storeSellChannelDefinition.setAttribValue("STORE");
-                storeSellChannelDefinition.setAttribName("STORE");
-
-                if11SellChannel.addSellChannelDefnItem(storeSellChannelDefinition);
+                sellChannelFlows.forEach(if11SellChannel::addSellChannelFlowItem);
+                sellChannelDefinitions.forEach(if11SellChannel::addSellChannelDefnItem);
 
                 if11Quote.addSellChannelItem(if11SellChannel);
             });
@@ -305,6 +284,51 @@ public class IF11_Handler {
         return objectMapper
                 .writerWithDefaultPrettyPrinter()
                 .writeValueAsString(if11Response);
+    }
+
+    private List<If11SellChannelFlow> computeSellChannelFlows(
+            final Map<SellChannel, Set<SellChannelFlow>> sellChannelFlowMap,
+            final Map<SellChannelFlow, MutableLong> sellChannelFlowCounts,
+            final String season,
+            final SellChannel sellChannel,
+            final Set<String> colors) {
+        return ImmutableList.copyOf(sellChannelFlowMap.get(sellChannel).stream().flatMap(sellChannelFlow -> {
+                        final long planQuantity = sellChannelFlowCounts.get(sellChannelFlow).getValue();
+                        final String formattedQuantity = formatCount(planQuantity);
+
+                        return colors.stream().map(color -> {
+                            final If11SellChannelFlow if11SellChannelFlow = new If11SellChannelFlow();
+                            if11SellChannelFlow.setPlanId(sellChannelFlow.getPlanId());
+                            if11SellChannelFlow.setPlanQty(formattedQuantity);
+
+                            final If11SellChannelD sellChannelD = new If11SellChannelD();
+                            sellChannelD.allocBy1("STORE");
+                            sellChannelD.allocBy2(season);
+                            sellChannelD.allocBy3(color);
+
+                            if11SellChannelFlow.setSellChannelD(sellChannelD);
+                            return if11SellChannelFlow;
+                        });
+                    }).collect(Collectors.toList()));
+    }
+
+    private ImmutableList<If11SellChannelDefinition> computeSellChannelDefinitions(Set<String> colors) {
+        List<If11SellChannelDefinition> sellChannelDefinitions = Lists.newArrayList();
+        for (String color : colors) {
+            final If11SellChannelDefinition if11SellChannelDefinition = new If11SellChannelDefinition();
+            if11SellChannelDefinition.setAttribValue(color);
+            if11SellChannelDefinition.setAttribName("COLOR");
+
+            sellChannelDefinitions.add(if11SellChannelDefinition);
+        }
+
+        // Add a final static definition for store
+        final If11SellChannelDefinition storeSellChannelDefinition = new If11SellChannelDefinition();
+        storeSellChannelDefinition.setAttribValue("STORE");
+        storeSellChannelDefinition.setAttribName("STORE");
+        sellChannelDefinitions.add(storeSellChannelDefinition);
+
+        return ImmutableList.copyOf(sellChannelDefinitions);
     }
 
     private String formatCount(long planQuantity) {
