@@ -16,7 +16,6 @@ import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -132,12 +131,12 @@ public class IF11_Handler {
         }
     }
 
-    class ColorSellChannel {
+    class RpasRecord {
         int planTotal; // 8000
         String color; // 0001
         SellChannelFlow sellChannelFlow;
 
-        public ColorSellChannel(int planTotal, String sellChannel, String planId, String season, String color, String itemNumber) {
+        public RpasRecord(int planTotal, String sellChannel, String planId, String season, String color, String itemNumber) {
             this.planTotal = planTotal;
             this.color = color;
             this.sellChannelFlow = new SellChannelFlow(new SellChannel(new Quote(season, itemNumber), sellChannel), planId);
@@ -158,13 +157,21 @@ public class IF11_Handler {
 
     /**
      * Compose a JSON response given an input set of IF11 records
-     * @param if11Records A set of comma seperated values consumed from the queue (schema ssumed to be consistent with that provided on 8/1/2018
+     * @param if11Records A list of comma seperated values consumed from the queue (schema ssumed to be consistent with that provided on 8/1/2018
      */
-    public String transform(final List<String> if11Records) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException, JsonProcessingException {
+    // Parse from fileName
+    public String transform(final String fileName) throws InvocationTargetException, NoSuchMethodException, JsonProcessingException, IllegalAccessException {
+        final List<RpasRecord> rpasRecords = parseRpasRecordsFromFile(fileName);
+        return transform(rpasRecords);
+    }
+
+    // TODO Add transform from Kafka stream
+
+    private String transform(final List<RpasRecord> rpasRecords) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException, JsonProcessingException {
         final If11BambooRoseResponse if11Response = new If11BambooRoseResponse();
         final If11Document if11Document = new If11Document();
         final If11Request if11Request = new If11Request();
-        final List<ColorSellChannel> rpasRecords = parseRpasRecords(if11Records);
+
 
         final Map<Quote, List<SellChannel>> sellChannelMap = Maps.newHashMap();
         final Map<SellChannel, List<SellChannelFlow>> sellChannelFlowMap = Maps.newHashMap();
@@ -213,38 +220,36 @@ public class IF11_Handler {
                 if11SellChannel.setPlanTotal(formatCount(sellChannelCount));
 
                 sellChannelFlowMap.get(sellChannel).forEach(sellChannelFlow -> {
-                    final If11SellChannelFlow if11SellChannelFlow = new If11SellChannelFlow();
                     final long planQuantity = sellChannelFlowCounts.get(sellChannelFlow).getValue();
                     final String formattedQuantity = formatCount(planQuantity);
 
-                    if11SellChannelFlow.setPlanId(sellChannelFlow.getPlanId());
-                    if11SellChannelFlow.setPlanQty(formattedQuantity);
-
                     final List<String> colors = sellChannelColors.get(sellChannelFlow);
                     for (String color : colors) {
+                        final If11SellChannelFlow if11SellChannelFlow = new If11SellChannelFlow();
+                        if11SellChannelFlow.setPlanId(sellChannelFlow.getPlanId());
+                        if11SellChannelFlow.setPlanQty(formattedQuantity);
+
                         final If11SellChannelD sellChannelD = new If11SellChannelD();
                         sellChannelD.allocBy1("STORE");
                         sellChannelD.allocBy2(quote.getSeason());
                         sellChannelD.allocBy3(color);
 
-                        // Fill in sell channel defs
-                        final If11SellChannelDefinition sellChannelDefinition_1 = new If11SellChannelDefinition();
-                        final If11SellChannelDefinition sellChannelDefinition_2 = new If11SellChannelDefinition();
-
-                        sellChannelDefinition_1.setAttribValue(color);
-                        sellChannelDefinition_1.setAttribName("COLOR");
-
-                        sellChannelDefinition_2.setAttribName("STORE");
-                        sellChannelDefinition_2.setAttribValue("STORE");
-
-                        // TODO This doesn't make sense, do we do this for every color??
                         if11SellChannelFlow.setSellChannelD(sellChannelD);
-                        if11SellChannelFlow.addSellChannelDefnItem(sellChannelDefinition_1);
-                        if11SellChannelFlow.addSellChannelDefnItem(sellChannelDefinition_2);
+
+                        // Fill in sell channel defs
+                        final If11SellChannelDefinition if11SellChannelDefinition = new If11SellChannelDefinition();
+                        if11SellChannelDefinition.setAttribValue(color);
+                        if11SellChannelDefinition.setAttribName("COLOR");
+
+                        if11SellChannel.addSellChannelFlowItem(if11SellChannelFlow);
+                        if11SellChannel.addSellChannelDefnItem(if11SellChannelDefinition);
                     }
 
-                    // TODO This doesnt make sense, this should be an add
-                    if11SellChannel.setSellChannelFlow(if11SellChannelFlow);
+                    final If11SellChannelDefinition storeSellChannelDefinition = new If11SellChannelDefinition();
+                    storeSellChannelDefinition.setAttribValue("STORE");
+                    storeSellChannelDefinition.setAttribName("STORE");
+
+                    if11SellChannel.addSellChannelDefnItem(storeSellChannelDefinition);
                 });
 
                 if11Quote.addSellChannelItem(if11SellChannel);
@@ -284,17 +289,40 @@ public class IF11_Handler {
         return lookupMap;
     }
 
-    private List<ColorSellChannel> parseRpasRecords(List<String> rawIf11Records) {
+    // TODO This goes away to be replaced by pipe from Kafka
+    public List<RpasRecord> parseRpasRecordsFromFile(String fileName) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName)));
+
+        Stream<String> lines = br.lines();
+        if (lines.count() == 0) {
+            return ImmutableList.of();
+        }
+        final String schema = lines.findFirst().get();
+        final String[] splitSchema = schema.split(",");
+        final Map<String, Integer> schemaMap = Maps.newHashMap();
+
+        // We know that this data won't contain commas, this format may hange when consuing from RPAS directly
+        for (int i = 0; i < splitSchema.length; i++) {
+            schemaMap.put(splitSchema[i].replace("\"", "").trim(), i);
+        }
+
+        final List<String> rpasLines = lines.skip(1).map(line -> line.replace("\"", "")).collect(Collectors.toList());
+
+        return parseRpasRecords(schemaMap, rpasLines);
+    }
+
+    private List<RpasRecord> parseRpasRecords(final Map<String, Integer> schema,
+                                              final List<String> rawIf11Records) {
         return rawIf11Records.stream().map(line -> {
             String[] splitLine= line.split(",");
 
             // Hardcoded schema def for now, change later
-            String week = splitLine[1];
-            String styleChannel = splitLine[2];
-            long sellingChannel = Long.parseLong(splitLine[3]);
-            int planTotal = (int) Math.round(Double.parseDouble(splitLine[4]));
+            String week = splitLine[schema.get("WEEK")];
+            String styleChannel = splitLine[schema.get("STYC")];
+            long sellingChannel = Long.parseLong(splitLine[schema.get("STRE")]);
+            int planTotal = (int) Math.round(Double.parseDouble(splitLine[schema.get("LCP_REC_U")]));
 
-            return new ColorSellChannel(
+            return new RpasRecord(
                     planTotal,
                     sellChannelLookupMap.get(sellingChannel),
                     parsePlanId(week),

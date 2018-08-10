@@ -357,7 +357,13 @@ definitions:
         type: string
         description: "Plan Total"
       "sell_channel_flow":
-        $ref: '#/definitions/if11_sell_channel_flow'
+        type: array
+        items:
+          $ref: '#/definitions/if11_sell_channel_flow'
+      "sell_channel_defn":
+        type: array
+        items:
+          $ref: '#/definitions/if11_sell_channel_definition'
 
   if11_sell_channel_flow:
     type: object
@@ -370,10 +376,6 @@ definitions:
         description: "Plan Quantity"
       "sell_channel_d":
         $ref: '#/definitions/if11_sell_channel_d'
-      "sell_channel_defn":
-        type: array
-        items:
-          $ref: '#/definitions/if11_sell_channel_definition'
 
   if11_sell_channel_d:
     type: object

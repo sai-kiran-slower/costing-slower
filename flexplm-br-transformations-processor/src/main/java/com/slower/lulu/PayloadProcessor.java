@@ -3,6 +3,7 @@ package com.slower.lulu;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.model.ArtworkFlexPLMResponse;
 import io.swagger.model.ColorFlexPLMResponse;
+import io.swagger.model.If11BambooRoseResponse;
 import io.swagger.model.StyleFlexPLMResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,4 +30,8 @@ public class PayloadProcessor {
         return new ArtworkResponseHandler().handleArtwork(artworkFlexPLMResponse);
     }
 
+    // TODO Update If11 to read from stream
+    public String processIf11(final String fileName) throws Exception {
+        return new IF11_Handler().transform(fileName);
+    }
 }
