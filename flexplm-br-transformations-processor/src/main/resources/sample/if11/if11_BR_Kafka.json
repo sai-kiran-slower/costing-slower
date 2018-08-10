@@ -1,0 +1,434 @@
+{
+  "document" : {
+    "request" : {
+      "quote" : [ {
+        "@season" : "17-1SP",
+        "@item_no" : "LW7AMJS",
+        "@Fowner" : "LULULEMON",
+        "sell_channel" : [ {
+          "@selling_channel" : " USA",
+          "@plan_total" : "72",
+          "sell_channel_flow" : [ {
+            "@plan_id" : "2017-05",
+            "@plan_qty" : "72",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Spring 2017",
+              "@alloc_by_3" : "028896"
+            }
+          } ],
+          "sell_channel_defn" : [ {
+            "@attrib_value" : "028896",
+            "@attrib_name" : "COLOR"
+          }, {
+            "@attrib_value" : "STORE",
+            "@attrib_name" : "STORE"
+          } ]
+        } ]
+      }, {
+        "@season" : "16-4WI",
+        "@item_no" : "LW5ALWS",
+        "@Fowner" : "LULULEMON",
+        "sell_channel" : [ {
+          "@selling_channel" : " USA",
+          "@plan_total" : "170",
+          "sell_channel_flow" : [ {
+            "@plan_id" : "2016-51",
+            "@plan_qty" : "96",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Winter 2016",
+              "@alloc_by_3" : "0001"
+            }
+          }, {
+            "@plan_id" : "2016-42",
+            "@plan_qty" : "74",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Winter 2016",
+              "@alloc_by_3" : "0001"
+            }
+          } ],
+          "sell_channel_defn" : [ {
+            "@attrib_value" : "0001",
+            "@attrib_name" : "COLOR"
+          }, {
+            "@attrib_value" : "STORE",
+            "@attrib_name" : "STORE"
+          } ]
+        } ]
+      }, {
+        "@season" : "16-4WI",
+        "@item_no" : "LW5AM9S",
+        "@Fowner" : "LULULEMON",
+        "sell_channel" : [ {
+          "@selling_channel" : " USA",
+          "@plan_total" : "71",
+          "sell_channel_flow" : [ {
+            "@plan_id" : "2016-47",
+            "@plan_qty" : "71",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Winter 2016",
+              "@alloc_by_3" : "0001"
+            }
+          } ],
+          "sell_channel_defn" : [ {
+            "@attrib_value" : "0001",
+            "@attrib_name" : "COLOR"
+          }, {
+            "@attrib_value" : "STORE",
+            "@attrib_name" : "STORE"
+          } ]
+        } ]
+      }, {
+        "@season" : "16-3FA",
+        "@item_no" : "LW7AJBR",
+        "@Fowner" : "LULULEMON",
+        "sell_channel" : [ {
+          "@selling_channel" : " CANADA",
+          "@plan_total" : "85",
+          "sell_channel_flow" : [ {
+            "@plan_id" : "2016-30",
+            "@plan_qty" : "85",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Fall 2016",
+              "@alloc_by_3" : "0001"
+            }
+          } ],
+          "sell_channel_defn" : [ {
+            "@attrib_value" : "0001",
+            "@attrib_name" : "COLOR"
+          }, {
+            "@attrib_value" : "STORE",
+            "@attrib_name" : "STORE"
+          } ]
+        } ]
+      }, {
+        "@season" : "17-1SP",
+        "@item_no" : "LW7AK0S",
+        "@Fowner" : "LULULEMON",
+        "sell_channel" : [ {
+          "@selling_channel" : " USA",
+          "@plan_total" : "74",
+          "sell_channel_flow" : [ {
+            "@plan_id" : "2017-12",
+            "@plan_qty" : "74",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Spring 2017",
+              "@alloc_by_3" : "0001"
+            }
+          } ],
+          "sell_channel_defn" : [ {
+            "@attrib_value" : "0001",
+            "@attrib_name" : "COLOR"
+          }, {
+            "@attrib_value" : "STORE",
+            "@attrib_name" : "STORE"
+          } ]
+        } ]
+      }, {
+        "@season" : "16-4WI",
+        "@item_no" : "LW5AMOS",
+        "@Fowner" : "LULULEMON",
+        "sell_channel" : [ {
+          "@selling_channel" : " USA",
+          "@plan_total" : "94",
+          "sell_channel_flow" : [ {
+            "@plan_id" : "2016-42",
+            "@plan_qty" : "94",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Winter 2016",
+              "@alloc_by_3" : "0001"
+            }
+          } ],
+          "sell_channel_defn" : [ {
+            "@attrib_value" : "0001",
+            "@attrib_name" : "COLOR"
+          }, {
+            "@attrib_value" : "STORE",
+            "@attrib_name" : "STORE"
+          } ]
+        } ]
+      }, {
+        "@season" : "16-4WI",
+        "@item_no" : "LW5LJFS",
+        "@Fowner" : "LULULEMON",
+        "sell_channel" : [ {
+          "@selling_channel" : " USA",
+          "@plan_total" : "90",
+          "sell_channel_flow" : [ {
+            "@plan_id" : "2016-51",
+            "@plan_qty" : "90",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Winter 2016",
+              "@alloc_by_3" : "026083"
+            }
+          } ],
+          "sell_channel_defn" : [ {
+            "@attrib_value" : "026083",
+            "@attrib_name" : "COLOR"
+          }, {
+            "@attrib_value" : "STORE",
+            "@attrib_name" : "STORE"
+          } ]
+        } ]
+      }, {
+        "@season" : "16-2SU",
+        "@item_no" : "LW7AJBR",
+        "@Fowner" : "LULULEMON",
+        "sell_channel" : [ {
+          "@selling_channel" : " CANADA",
+          "@plan_total" : "80",
+          "sell_channel_flow" : [ {
+            "@plan_id" : "2016-26",
+            "@plan_qty" : "80",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Summer 2016",
+              "@alloc_by_3" : "0001"
+            }
+          } ],
+          "sell_channel_defn" : [ {
+            "@attrib_value" : "0001",
+            "@attrib_name" : "COLOR"
+          }, {
+            "@attrib_value" : "STORE",
+            "@attrib_name" : "STORE"
+          } ]
+        } ]
+      }, {
+        "@season" : "17-1SP",
+        "@item_no" : "LW5LJFS",
+        "@Fowner" : "LULULEMON",
+        "sell_channel" : [ {
+          "@selling_channel" : " USA",
+          "@plan_total" : "171",
+          "sell_channel_flow" : [ {
+            "@plan_id" : "2017-07",
+            "@plan_qty" : "84",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Spring 2017",
+              "@alloc_by_3" : "0001"
+            }
+          }, {
+            "@plan_id" : "2017-12",
+            "@plan_qty" : "87",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Spring 2017",
+              "@alloc_by_3" : "0001"
+            }
+          } ],
+          "sell_channel_defn" : [ {
+            "@attrib_value" : "0001",
+            "@attrib_name" : "COLOR"
+          }, {
+            "@attrib_value" : "STORE",
+            "@attrib_name" : "STORE"
+          } ]
+        } ]
+      }, {
+        "@season" : "16-2SU",
+        "@item_no" : "LW5ATIS",
+        "@Fowner" : "LULULEMON",
+        "sell_channel" : [ {
+          "@selling_channel" : " USA",
+          "@plan_total" : "93",
+          "sell_channel_flow" : [ {
+            "@plan_id" : "2016-25",
+            "@plan_qty" : "93",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Summer 2016",
+              "@alloc_by_3" : "0001"
+            }
+          } ],
+          "sell_channel_defn" : [ {
+            "@attrib_value" : "0001",
+            "@attrib_name" : "COLOR"
+          }, {
+            "@attrib_value" : "STORE",
+            "@attrib_name" : "STORE"
+          } ]
+        } ]
+      }, {
+        "@season" : "16-3FA",
+        "@item_no" : "LW5ALWS",
+        "@Fowner" : "LULULEMON",
+        "sell_channel" : [ {
+          "@selling_channel" : " USA",
+          "@plan_total" : "99",
+          "sell_channel_flow" : [ {
+            "@plan_id" : "2016-38",
+            "@plan_qty" : "99",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Fall 2016",
+              "@alloc_by_3" : "0001"
+            }
+          } ],
+          "sell_channel_defn" : [ {
+            "@attrib_value" : "0001",
+            "@attrib_name" : "COLOR"
+          }, {
+            "@attrib_value" : "STORE",
+            "@attrib_name" : "STORE"
+          } ]
+        } ]
+      }, {
+        "@season" : "17-1SP",
+        "@item_no" : "LW5ALWS",
+        "@Fowner" : "LULULEMON",
+        "sell_channel" : [ {
+          "@selling_channel" : " USA",
+          "@plan_total" : "74",
+          "sell_channel_flow" : [ {
+            "@plan_id" : "2017-08",
+            "@plan_qty" : "74",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Spring 2017",
+              "@alloc_by_3" : "0001"
+            }
+          } ],
+          "sell_channel_defn" : [ {
+            "@attrib_value" : "0001",
+            "@attrib_name" : "COLOR"
+          }, {
+            "@attrib_value" : "STORE",
+            "@attrib_name" : "STORE"
+          } ]
+        } ]
+      }, {
+        "@season" : "16-3FA",
+        "@item_no" : "LW5AM9S",
+        "@Fowner" : "LULULEMON",
+        "sell_channel" : [ {
+          "@selling_channel" : " USA",
+          "@plan_total" : "168",
+          "sell_channel_flow" : [ {
+            "@plan_id" : "2016-34",
+            "@plan_qty" : "82",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Fall 2016",
+              "@alloc_by_3" : "0001"
+            }
+          }, {
+            "@plan_id" : "2016-29",
+            "@plan_qty" : "86",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Fall 2016",
+              "@alloc_by_3" : "0001"
+            }
+          } ],
+          "sell_channel_defn" : [ {
+            "@attrib_value" : "0001",
+            "@attrib_name" : "COLOR"
+          }, {
+            "@attrib_value" : "STORE",
+            "@attrib_name" : "STORE"
+          } ]
+        } ]
+      }, {
+        "@season" : "17-2SU",
+        "@item_no" : "LW7AK0S",
+        "@Fowner" : "LULULEMON",
+        "sell_channel" : [ {
+          "@selling_channel" : " USA",
+          "@plan_total" : "79",
+          "sell_channel_flow" : [ {
+            "@plan_id" : "2017-20",
+            "@plan_qty" : "79",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Summer 2017",
+              "@alloc_by_3" : "0001"
+            }
+          } ],
+          "sell_channel_defn" : [ {
+            "@attrib_value" : "0001",
+            "@attrib_name" : "COLOR"
+          }, {
+            "@attrib_value" : "STORE",
+            "@attrib_name" : "STORE"
+          } ]
+        }, {
+          "@selling_channel" : " CANADA",
+          "@plan_total" : "73",
+          "sell_channel_flow" : [ {
+            "@plan_id" : "2017-16",
+            "@plan_qty" : "73",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Summer 2017",
+              "@alloc_by_3" : "0001"
+            }
+          } ],
+          "sell_channel_defn" : [ {
+            "@attrib_value" : "0001",
+            "@attrib_name" : "COLOR"
+          }, {
+            "@attrib_value" : "STORE",
+            "@attrib_name" : "STORE"
+          } ]
+        } ]
+      }, {
+        "@season" : "17-1SP",
+        "@item_no" : "LW7AA6S",
+        "@Fowner" : "LULULEMON",
+        "sell_channel" : [ {
+          "@selling_channel" : " USA",
+          "@plan_total" : "74",
+          "sell_channel_flow" : [ {
+            "@plan_id" : "2017-12",
+            "@plan_qty" : "74",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Spring 2017",
+              "@alloc_by_3" : "033190"
+            }
+          } ],
+          "sell_channel_defn" : [ {
+            "@attrib_value" : "033190",
+            "@attrib_name" : "COLOR"
+          }, {
+            "@attrib_value" : "STORE",
+            "@attrib_name" : "STORE"
+          } ]
+        } ]
+      }, {
+        "@season" : "17-2SU",
+        "@item_no" : "LW7ANSR",
+        "@Fowner" : "LULULEMON",
+        "sell_channel" : [ {
+          "@selling_channel" : " USA",
+          "@plan_total" : "85",
+          "sell_channel_flow" : [ {
+            "@plan_id" : "2017-20",
+            "@plan_qty" : "85",
+            "sell_channel_d" : {
+              "@alloc_by_1" : "STORE",
+              "@alloc_by_2" : "Summer 2017",
+              "@alloc_by_3" : "033144"
+            }
+          } ],
+          "sell_channel_defn" : [ {
+            "@attrib_value" : "033144",
+            "@attrib_name" : "COLOR"
+          }, {
+            "@attrib_value" : "STORE",
+            "@attrib_name" : "STORE"
+          } ]
+        } ]
+      } ]
+    }
+  }
+}
